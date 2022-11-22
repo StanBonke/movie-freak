@@ -1,0 +1,43 @@
+﻿/* Primary color instellen*/
+.bg-primary {
+    background-color: #3D5A80 !important;
+}
+
+.pad-left {
+    padding-left: 40px;
+    text-align: right;
+}
+
+/* Link teksten vet maken */
+a.nav-link {
+    font-size: 14pt;
+    font-family: Poppins;
+    font-weight: 400;
+}
+
+/* Tekstkleur van navbar brand/tekst wit maken */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: white;
+}
+
+/* Tekstkleur van navbar links wit maken */
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+}
+
+/* Tekstkleur van navbar links (bij active/hover) roze maken */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #98C1D9;
+}
+
+/* Hamburger icoon van toggler wit maken */
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Rand rond hamburger icoon van toggler wit maken */
+.custom-toggler.navbar-toggler {
+    border-color: white;
+}
