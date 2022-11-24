@@ -1,10 +1,23 @@
-﻿/* Primary color instellen*/
-.bg-primary {
-    background-color: #3D5A80 !important;
+﻿:root {
+    --accent: #98C1D9;
+    --link: #EE6C4D;
+    --main: #3D5A80;
+    --darkText: #293241;
+    --lightText: #FFFFFF;
 }
 
+body {
+    font-family: Poppins;
+}
+
+/* Primary color instellen */
+.bg-primary {
+    background-color: var(--main) !important;
+}
+
+/* Navbar */
 .pad-left {
-    padding-left: 40px;
+    padding-left: 30px;
     text-align: right;
 }
 
@@ -18,18 +31,18 @@ a.nav-link {
 /* Tekstkleur van navbar brand/tekst wit maken */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-    color: white;
+    color: var(--lightText);
 }
 
 /* Tekstkleur van navbar links wit maken */
 .navbar-custom .navbar-nav .nav-link {
-    color: white;
+    color: var(--lightText);
 }
 
 /* Tekstkleur van navbar links (bij active/hover) roze maken */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: #98C1D9;
+    color: var(--accent);
 }
 
 /* Hamburger icoon van toggler wit maken */
@@ -39,5 +52,50 @@ a.nav-link {
 
 /* Rand rond hamburger icoon van toggler wit maken */
 .custom-toggler.navbar-toggler {
-    border-color: white;
+    border-color: var(--lightText);
 }
+
+/* Header */
+.spotlight {
+    margin-left: 64px;
+    margin-top: 100px;
+}
+
+.spotlightInfo {
+    margin-top: 100px;
+}
+
+.h4-home {
+    color: var(--link);
+}
+
+.hr-blue {
+    color: var(--accent);
+    border: none;
+    border-top: 2px solid var(--accent);
+    height: 1px;
+}
+
+.fs {
+    font-size: 15pt;
+}
+
+.text-container {
+    position: absolute;
+    margin-top: 20px;
+}
+
+.btn-home {
+    position: absolute;
+    bottom: 0;
+    margin: 5px;
+    color: var(--lightText);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+    .btn-home:hover {
+        color: var(--lightText);
+        background: var(--main);
+        border-color: var(--main);
+    }
