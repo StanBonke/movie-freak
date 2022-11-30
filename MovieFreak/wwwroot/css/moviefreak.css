@@ -15,10 +15,8 @@ body {
     background-color: var(--main) !important;
 }
 
-/* Navbar */
-.pad-left {
-    padding-left: 30px;
-    text-align: right;
+.bg-accent {
+    background-color: var(--accent);
 }
 
 /* Link teksten vet maken */
@@ -27,6 +25,14 @@ a.nav-link {
     font-family: Poppins;
     font-weight: 400;
 }
+
+.link-color {
+    color: var(--link);
+}
+
+    .link-color:hover {
+        color: var(--link);
+    }
 
 /* Tekstkleur van navbar brand/tekst wit maken */
 .navbar-custom .navbar-brand,
@@ -56,39 +62,47 @@ a.nav-link {
 }
 
 /* Header */
+
+.img-trans {
+    border: none;
+    background: transparent;
+}
+
 .spotlight {
-    margin-left: 64px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .spotlightInfo {
     margin-top: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .h4-home {
+    font-size: 14pt;
+    color: var(--link);
+}
+
+.h5-home {
+    font-size: 11pt;
     color: var(--link);
 }
 
 .hr-blue {
-    color: var(--accent);
-    border: none;
-    border-top: 2px solid var(--accent);
-    height: 1px;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
 }
 
 .fs {
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 .text-container {
-    position: absolute;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .btn-home {
-    position: absolute;
-    bottom: 0;
-    margin: 5px;
     color: var(--lightText);
     background: var(--accent);
     border-color: var(--accent);
@@ -99,3 +113,6 @@ a.nav-link {
         background: var(--main);
         border-color: var(--main);
     }
+
+.max-lines {
+}

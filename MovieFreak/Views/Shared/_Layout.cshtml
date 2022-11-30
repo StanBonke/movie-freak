@@ -11,25 +11,24 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom bg-primary py-0">
-            <div class="container-fluid mx-5 px-sm-0">
-
+            <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <img src="~/images/MovieFreak.png" alt="MovieFreak Logo">
                 </a>
 
-                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCustom" aria-controls="navbarCustom" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse collapse" id="navbarCustom">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item pad-left">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarCustom">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item pad-left">
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Film" asp-action="Index">Film</a>
                         </li>
-                        <li class="nav-item pad-left">
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Account" asp-action="Index">Account</a>
                         </li>
                     </ul>
@@ -37,18 +36,18 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid px-5 py-5">
-        <main role="main" class="pb-3">
+    <div class="container py-4">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid px-md-5 px-sm-0">
-            &copy; 2022 - MovieFreak - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer border-top text-muted">
+        <div class="container d-flex justify-content-center align-content-center">
+            &copy; 2022 - MovieFreak - <a class="link-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

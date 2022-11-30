@@ -2,44 +2,210 @@
     ViewData["Title"] = "Home";
 }
 
-<header class="container-fluid">
+@*LAPTOP LARGE*@
+<header class="container d-none d-xl-block">
 
-    <div class="row">
-        <div class="col-xl-6 overflow-hidden d-sm-none col-lg-12 d-md-block pt-5 px-0">
-            <img class="m-3 position-absolute" src="~/images/movie-freak-home.png" alt="MovieFreakRoundLogo" >
-            <img class="spotlight" src="~/images/placeholder.png" alt="Placeholder">
-        </div>
-
-        <div class="col-xl-6 overflow-hidden d-sm-none col-lg-12 d-md-block pt-5 px-0 spotlightInfo">
-            <h1 class="m-0">Film Titel</h1>
-            <div class="container px-0 py-3">
-                <div class="row m-0 p-0">
-                    <div class="col-3 h4-home p-0">
-                        <h5>Duurtijd</h5>
-                    </div>
-                    <div class="col-3 h4-home">
-                        <h5>Taal</h5>
-                    </div>
-                    <div class="col-3 h4-home">
-                        <h5>Genre</h5>
-                    </div>
-                </div>
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 mt-3">
+                <img class="position-absolute" src="~/images/movie-freak-home.png" alt="MovieFreakRoundLogo">
             </div>
-            <hr class="hr-blue m-0" />
-            <div class="text-container">
-                <p class="fs m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-            </div>
-            <button type="button" class="btn btn-home btn-lg">
-                Meer details
-            </button>
-            <div>
-
-            </div>
-            
         </div>
     </div>
 
+    <div class="row gx-5 spotlight">
+        <div class="col">
+            <div class="p-3">
+                <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 ">
+                <h1 class="m-0">Film Titel</h1>
+                <div class="container px-0 py-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-3 h4-home p-0">
+                            <h5>Duurtijd</h5>
+                        </div>
+                        <div class="col-3 h4-home">
+                            <h5>Taal</h5>
+                        </div>
+                        <div class="col-3 h4-home">
+                            <h5>Genre</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-blue m-0"/>
+                <div class="text-container">
+                    <p class="fs m-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-home btn-lg">
+                        Meer details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@*LAPTOP*@
+<header class="container d-xl-none d-none d-lg-block">
+    <div class="row">
+        <div class="col">
+            <div class="p-3 mt-3">
+                <img class="position-absolute" src="~/images/movie-freak-home.png" alt="MovieFreakRoundLogo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row spotlight">
+        <div class="col">
+            <div class="p-3">
+                <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col pt-4">
+            <div class="p-3">
+                <h1 class="m-0">Film Titel</h1>
+                <div class="container px-0 py-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-3 h4-home p-0">
+                            <h5>Duurtijd</h5>
+                        </div>
+                        <div class="col-3 h4-home">
+                            <h5>Taal</h5>
+                        </div>
+                        <div class="col-3 h4-home">
+                            <h5>Genre</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-blue m-0" />
+                <div class="text-container">
+                    <p class="fs m-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-home btn-lg">
+                        Meer details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@*TABLET*@
+<header class="container d-lg-none d-none d-md-block">
+    <div class="row">
+        <div class="col">
+            <div class="py-3 px-0 mt-3">
+                <img class="img-thumbnail img-trans" src="~/images/movie-freak-home.png" alt="MovieFreakRoundLogo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center align-content-center">
+            <div class="">
+                <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-3 px-3">
+        <div class="col">
+            <div class="py-3">
+                <h1 class="m-0 d-flex justify-content-center align-content-center">Film Titel</h1>
+                <div class="container px-0 py-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h4 class="h4-home">Duurtijd</h4>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h4 class="h4-home">Taal</h4>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h4 class="h4-home">Genre</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-blue m-0" />
+                <div class="text-container">
+                    <p class="m-0 max-lines">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                </div>
+
+                <div class="d-flex justify-content-center align-content-center">
+                    <button type="button" class="btn btn-home btn-lg">
+                        Meer details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@*SMARTPHONE*@
+<header class="container d-md-none">
+    
+    <div class="row">
+        <div class="col">
+            <div class="py-3 px-0 mt-3">
+                <img class="img-thumbnail img-trans" src="~/images/movie-freak-home.png" alt="MovieFreakRoundLogo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center align-content-center">
+            <div class="">
+                <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-3 px-3">
+        <div class="col">
+            <div class="py-3">
+                <h3 class="m-0 d-flex justify-content-center align-content-center">Film Titel</h3>
+                <div class="container px-0 py-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h5 class="h5-home">Duurtijd</h5>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h5 class="h5-home">Taal</h5>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-content-center">
+                            <h5 class="h5-home">Genre</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-blue m-0" />             
+                <div class="text-container">
+                    <p class="m-0 max-lines">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                </div>
+
+                <div class="d-grid">
+                    <button type="button" class="btn btn-home btn-lg">
+                        Meer details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
