@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Sign up";
+}
+
+@*REGISTREREN*@
+<section class="text-center" id="sign-up">
+    <div class="body-sign-in">
+        <div class="form-signup">
+            <form>
+                <div class="d-flex justify-content-center align-content-center">
+                    <img class="w-25" src="~/images/MovieFreakRound.png" alt="">
+                </div>
+                <h1 class="h3 mt-4 fw-normal">Account aanmaken</h1>
+                <hr class="hr-blue my-4" />
+
+                <div class="row">
+                    <div class="col">
+                         <div class="form-floating">
+                             <input type="text" class="form-control" id="floatingInput" placeholder="Voornaam">
+                             <label for="floatingInput">Voornaam</label>
+                         </div>   
+                    </div>
+
+                    <div class="col">
+                         <div class="form-floating">
+                             <input type="text" class="form-control" id="floatingInput" placeholder="Achternaam">
+                             <label for="floatingInput">Achternaam</label>
+                         </div>   
+                    </div>
+                </div>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Wachtwoord</label>
+                </div>
+
+                <div class="checkbox my-4">
+                    <label class="text-muted">
+                        <input class="checkbox" type="checkbox" value="remember-me"> Algemene voorwaarden
+                    </label>
+                </div>
+
+                <button class="w-100 btn btn-lg btn-home" type="submit">Registreren</button>
+
+                <div class="text-muted fs-s mb-0 mt-4">
+                    Al een account? <a class="link-color" asp-area="" asp-controller="Account" asp-action="SignIn">Log je hier in!</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

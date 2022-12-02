@@ -97,6 +97,10 @@ a.nav-link {
     font-size: 13pt;
 }
 
+.fs-s {
+    font-size: 10pt;
+}
+
 .text-container {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -115,4 +119,46 @@ a.nav-link {
     }
 
 .max-lines {
+}
+
+/*Sign-in / registreer pagina*/
+.body-sign-in {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-signin,
+.form-signup {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
+}
+
+    .form-signin .checkbox {
+        font-weight: 300;
+    }
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="text"],
+    .form-signin input[type="email"],
+    .form-signin input[type="password"],
+    .form-signup input[type="text"],
+    .form-signup input[type="email"],
+    .form-signup input[type="password"] {
+        margin-bottom: 10px;
+        border-radius: 0px;
+        border: 1px solid var(--accent);
+        border-left: 0px;
+        border-right: 0px;
+        border-top: 0px;
+    }
+
+input[type=checkbox] {
+    accent-color: var(--link);
 }
