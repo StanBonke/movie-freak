@@ -3,8 +3,177 @@
 @{
     ViewData["Title"] = "Films";
 }
-<div class="container-fluid">
-    <div class="row">
+
+<section class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
+            <h1 class="m-0 pb-3 pb-sm-0">Films</h1> 
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <input type="search" class="form-control border-blue" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            </div>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+@*LAPTOP & TABLET*@
+<section class="container d-none d-sm-block">
+    <div class="row row-cols-1 row-cols-lg-2">
+
+        <div class="col">
+            <div class="card mb-4 border-0" style="max-width: 540px;">
+                <div class="row gx-0">
+                    <div class="col-md-5">
+                        <img src="/images/placeholder-film.png" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-7 py-1">
+                        <div class="card-body py-0">
+                            <h5 class="card-title mt-0 mb-1">The Shawshank Redemption</h5>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
+                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 border-0" style="max-width: 540px;">
+                <div class="row gx-0">
+                    <div class="col-md-5">
+                        <img src="/images/placeholder-film.png" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-7 py-1">
+                        <div class="card-body py-0">
+                            <h5 class="card-title mt-0 mb-1">Top Gun: Maverick</h5>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
+                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 border-0" style="max-width: 540px;">
+                <div class="row gx-0">
+                    <div class="col-md-5">
+                        <img src="/images/placeholder-film.png" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-7 py-1">
+                        <div class="card-body py-0">
+                            <h5 class="card-title mt-0 mb-1">The Lord of the Rings: The Fellowship of the Ring</h5>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
+                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 border-0" style="max-width: 540px;">
+                <div class="row gx-0">
+                    <div class="col-md-5">
+                        <img src="/images/placeholder-film.png" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-7 py-1">
+                        <div class="card-body py-0">
+                            <h5 class="card-title mt-0 mb-1">Fast Five</h5>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
+                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
+                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
 
     </div>
-</div>
+</section>
+
+@*SMARTPHONE*@
+<section class="container d-md-none">
+    <div class="row row-cols-2 g-4">
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Film title</h5>
+                    <p class="card-text">Genre</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

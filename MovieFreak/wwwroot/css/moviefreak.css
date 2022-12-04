@@ -118,8 +118,24 @@ a.nav-link {
         border-color: var(--main);
     }
 
-.max-lines {
+    .btn-check:focus + .btn-home, .btn-home:focus {
+        color: var(--lightText);
+        background: var(--main);
+        border-color: var(--main);
+        box-shadow: 0 0 0 0.20rem var(--accent);
+    }
+
+.border-blue {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid var(--link);
+    border-radius: 0px;
 }
+
+    .border-blue:focus {
+        box-shadow: 0 0 0 0.20rem var(--accent);
+    }
 
 /*Sign-in / registreer pagina*/
 .body-sign-in {
@@ -137,11 +153,13 @@ a.nav-link {
     margin: auto;
 }
 
-    .form-signin .checkbox {
+    .form-signin .checkbox,
+    .form-signup .checkbox {
         font-weight: 300;
     }
 
-    .form-signin .form-floating:focus-within {
+    .form-signin .form-floating:focus-within,
+    .form-signup .form-floating:focus-within {
         z-index: 2;
     }
 
