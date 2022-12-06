@@ -16,5 +16,10 @@ namespace MovieFreak.Controllers
         {
             return View();
         }
+
+        public IActionResult FilmDetails()
+        {
+            return View();
+        }
     }
 }
