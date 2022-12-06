@@ -1,4 +1,6 @@
-﻿:root {
+﻿/* GLOBAL */
+
+:root {
     --accent: #98C1D9;
     --link: #EE6C4D;
     --main: #3D5A80;
@@ -8,6 +10,10 @@
 
 body {
     font-family: Poppins;
+}
+
+.txt-accent {
+    color: var(--accent);
 }
 
 /* Primary color instellen */
@@ -57,8 +63,12 @@ a.nav-link {
 }
 
 /* Rand rond hamburger icoon van toggler wit maken */
-.custom-toggler.navbar-toggler {
+/*.custom-toggler.navbar-toggler {
     border-color: var(--lightText);
+}*/
+
+.custom-toggler.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.20rem var(--main);
 }
 
 /* Header */
@@ -83,6 +93,11 @@ a.nav-link {
     color: var(--link);
 }
 
+.h4-details {
+    font-size: 13pt;
+    font-weight: normal;
+}
+
 .h5-home {
     font-size: 11pt;
     color: var(--link);
@@ -91,6 +106,10 @@ a.nav-link {
 .hr-blue {
     border: 2px solid var(--accent);
     border-radius: 10px;
+}
+
+.vl {
+    border-left: 1px solid var(--link);
 }
 
 .fs {
@@ -125,17 +144,67 @@ a.nav-link {
         box-shadow: 0 0 0 0.20rem var(--accent);
     }
 
-.border-blue {
+.btn-trailer {
+    color: var(--main);
+    background: transparent;
+    border: 0px;
+}
+
+.btn-details {
+    color: var(--main);
+    background: transparent;
+    border: 0px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.btn-details-tablet {
+    color: var(--main);
+    background: transparent;
+    border: 0px;
+    position: absolute;
+    bottom: 0;
+}
+
+    .btn-details:hover,
+    .btn-details-tablet:hover,
+    .btn-trailer:hover {
+        color: var(--accent);
+        background: transparent;
+        border: 0px;
+    }
+
+    .btn-check:focus + .btn-details, .btn-details:focus,
+    .btn-check:focus + .btn-details-tablet, .btn-details-tablet:focus,
+    .btn-check:focus + .btn-trailer, .btn-trailer:focus {
+        color: var(--accent);
+        background: transparent;
+        border: 0px;
+    }
+
+.border-orange {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
     border-bottom: 1px solid var(--link);
     border-radius: 0px;
+    background: transparent;
 }
 
-    .border-blue:focus {
-        box-shadow: 0 0 0 0.20rem var(--accent);
-    }
+.fa-main {
+    color: var(--main);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.genre-mobile {
+    position: absolute;
+    bottom: 0;
+}
 
 /*Sign-in / registreer pagina*/
 .body-sign-in {
@@ -180,3 +249,16 @@ a.nav-link {
 input[type=checkbox] {
     accent-color: var(--link);
 }
+
+input[type="search"],
+input[type="search"]:focus {
+    border-radius: 0px;
+    border: 1px solid var(--link);
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+}
+
+    input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+    }
