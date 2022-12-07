@@ -18,6 +18,43 @@ namespace MovieFreak.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.HasDefaultSchema("MovieFreak");
+            mb.Entity<Film>().ToTable("Film");
+            mb.Entity<FilmTaal>().ToTable("Filmtaal");
+            mb.Entity<Genre>().ToTable("Genre");
+            mb.Entity<Personage>().ToTable("Personage");
+            mb.Entity<Persoon>().ToTable("Persoon");
+            mb.Entity<Taal>().ToTable("Taal");
+
+            mb.Entity<Film>()
+                .HasOne(g => g.Genre)
+                .WithMany(x => x.Films)
+                .HasForeignKey(g => g.GenreId)
+                .IsRequired();
+
+            mb.Entity<Personage>()
+                .HasOne(p => p.Persoon)
+                .WithMany(x => x.Personages)
+                .HasForeignKey(p => p.PersoonId)
+                .IsRequired();
+
+            mb.Entity<Personage>()
+                .HasOne(f => f.Film)
+                .WithMany(x => x.Personages)
+                .HasForeignKey(f => f.FilmId)
+                .IsRequired();
+
+            mb.Entity<FilmTaal>()
+                .HasOne(t => t.Taal)
+                .WithMany(x => x.FilmTalen)
+                .HasForeignKey(t => t.TaalId)
+                .IsRequired();
+
+            mb.Entity<FilmTaal>()
+                .HasOne(f => f.Film)
+                .WithMany(x => x.FilmTalen)
+                .HasForeignKey(f => f.FilmId)
+                .IsRequired();
         }
     }
 }

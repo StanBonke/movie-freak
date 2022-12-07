@@ -16,7 +16,7 @@ namespace MovieFreak.Models
         public string Trailerlink { get; set; }
 
         // foreign keys
-        public int genreId { get; set; }
+        public int GenreId { get; set; }
 
         // navigation properties
         public ICollection<Personage> Personages { get; set; }
