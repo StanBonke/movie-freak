@@ -1,4 +1,6 @@
-﻿namespace MovieFreak.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MovieFreak.Models
 {
     public class FilmTaal
     {
