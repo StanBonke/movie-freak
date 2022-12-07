@@ -7,6 +7,9 @@ namespace MovieFreak.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Gelieve een titel in te vullen.")]
+        public string Titel { get; set; }
+
         [Required(ErrorMessage = "Gelieve een omschrijving in te vullen.")]
         public string Omschrijving { get; set; }
 

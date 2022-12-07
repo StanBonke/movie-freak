@@ -20,7 +20,6 @@ namespace MovieFreak.Models
         public string Geboorteplaats { get; set; }
         public string Geboorteland { get; set; }
 
-        [MaxLength(200)]
         public string Biografie { get; set; }
 
         [Required(ErrorMessage = "Gelieve een rol toe dienen.")]
