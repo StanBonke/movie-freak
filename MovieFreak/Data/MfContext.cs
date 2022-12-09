@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MovieFreak.Models;
 
 namespace MovieFreak.Data
 {
-    public class MfContext : DbContext
+    public class MfContext : IdentityDbContext<IdentityUser>
     {
         public MfContext(DbContextOptions<MfContext> options) : base(options)
         {
@@ -18,6 +20,8 @@ namespace MovieFreak.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            base.OnModelCreating(mb);
+
             mb.HasDefaultSchema("MovieFreak");
             mb.Entity<Film>().ToTable("Film");
             mb.Entity<FilmTaal>().ToTable("Filmtaal");
