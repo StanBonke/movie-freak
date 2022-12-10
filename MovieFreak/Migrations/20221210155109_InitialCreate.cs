@@ -3,13 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MovieFreak.Migrations
 {
-    public partial class AddIdentitySchema : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "MovieFreakDb");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -24,7 +27,7 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -49,8 +52,56 @@ namespace MovieFreak.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Genre",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilmGenre = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genre", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Persoon",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Voornaam = table.Column<string>(nullable: false),
+                    Achternaam = table.Column<string>(nullable: false),
+                    Geboortedatum = table.Column<DateTime>(nullable: false),
+                    Geboorteplaats = table.Column<string>(nullable: true),
+                    Geboorteland = table.Column<string>(nullable: true),
+                    Biografie = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Persoon", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Taal",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GesprokenTaal = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Taal", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -65,7 +116,7 @@ namespace MovieFreak.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -73,7 +124,7 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -88,7 +139,7 @@ namespace MovieFreak.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -96,7 +147,7 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
@@ -110,7 +161,7 @@ namespace MovieFreak.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -118,7 +169,7 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -130,14 +181,14 @@ namespace MovieFreak.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -145,7 +196,7 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -159,21 +210,106 @@ namespace MovieFreak.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
-                        principalSchema: "MovieFreak",
+                        principalSchema: "MovieFreakDb",
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Film",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Titel = table.Column<string>(nullable: false),
+                    Omschrijving = table.Column<string>(nullable: false),
+                    Duurtijd = table.Column<string>(nullable: false),
+                    Trailerlink = table.Column<string>(nullable: true),
+                    GenreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Film", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Film_Genre_GenreId",
+                        column: x => x.GenreId,
+                        principalSchema: "MovieFreakDb",
+                        principalTable: "Genre",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Filmtaal",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilmId = table.Column<int>(nullable: false),
+                    TaalId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Filmtaal", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Filmtaal_Film_FilmId",
+                        column: x => x.FilmId,
+                        principalSchema: "MovieFreakDb",
+                        principalTable: "Film",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Filmtaal_Taal_TaalId",
+                        column: x => x.TaalId,
+                        principalSchema: "MovieFreakDb",
+                        principalTable: "Taal",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Personage",
+                schema: "MovieFreakDb",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VoornaamPersonage = table.Column<string>(nullable: true),
+                    AchternaamPersonage = table.Column<string>(nullable: true),
+                    FilmId = table.Column<int>(nullable: false),
+                    PersoonId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Personage", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Personage_Film_FilmId",
+                        column: x => x.FilmId,
+                        principalSchema: "MovieFreakDb",
+                        principalTable: "Film",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Personage_Persoon_PersoonId",
+                        column: x => x.PersoonId,
+                        principalSchema: "MovieFreakDb",
+                        principalTable: "Persoon",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
@@ -181,66 +317,120 @@ namespace MovieFreak.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                schema: "MovieFreak",
+                schema: "MovieFreakDb",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Film_GenreId",
+                schema: "MovieFreakDb",
+                table: "Film",
+                column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Filmtaal_FilmId",
+                schema: "MovieFreakDb",
+                table: "Filmtaal",
+                column: "FilmId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Filmtaal_TaalId",
+                schema: "MovieFreakDb",
+                table: "Filmtaal",
+                column: "TaalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Personage_FilmId",
+                schema: "MovieFreakDb",
+                table: "Personage",
+                column: "FilmId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Personage_PersoonId",
+                schema: "MovieFreakDb",
+                table: "Personage",
+                column: "PersoonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetUserClaims",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetUserLogins",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetUserRoles",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Filmtaal",
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Personage",
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers",
-                schema: "MovieFreak");
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Taal",
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Film",
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Persoon",
+                schema: "MovieFreakDb");
+
+            migrationBuilder.DropTable(
+                name: "Genre",
+                schema: "MovieFreakDb");
         }
     }
 }

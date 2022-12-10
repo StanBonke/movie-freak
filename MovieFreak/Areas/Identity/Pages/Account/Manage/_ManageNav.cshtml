@@ -1,5 +1,4 @@
-﻿@using MovieFreak.Areas.Identity.Data;
-@inject SignInManager<CustomUser> SignInManager
+﻿@inject SignInManager<IdentityUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

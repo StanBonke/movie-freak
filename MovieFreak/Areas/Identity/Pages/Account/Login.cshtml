@@ -7,9 +7,9 @@
 <section class="text-center" id="sign-in">
     <div class="body-sign-in">
         <div class="form-signin">
-            <form id="account" method="post" >
+            <form id="account" method="post">
                 <div class="d-flex justify-content-center align-content-center">
-                    <img class="w-25" src="~/images/MovieFreakRound.png"/>
+                    <img class="w-25" src="~/images/MovieFreakRound.png" />
                 </div>
                 <h1 class="h3 mt-4 fw-normal">@ViewData["Title"]</h1>
                 <hr class="hr-blue my-4" />
@@ -21,8 +21,8 @@
                     </div>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="Input.Password" class="form-control" 
-                        id="floatingPassword"  placeholder="Password">
+                    <input asp-for="Input.Password" class="form-control"
+                           id="floatingPassword" placeholder="Password">
                     <label asp-for="Input.Password" for="floatingPassword">Wachtwoord</label>
                     <div class="text-start">
                         <span asp-validation-for="Input.Password" class="txt-link fs-s"></span>
