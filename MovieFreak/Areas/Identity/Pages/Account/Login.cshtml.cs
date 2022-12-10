@@ -21,7 +21,7 @@ namespace MovieFreak.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager,
+        public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager)
         {
@@ -50,7 +50,7 @@ namespace MovieFreak.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Onthoud mij")]
+            [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
 

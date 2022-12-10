@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace MovieFreak.Controllers
 {
+    [AllowAnonymous]
     public class FilmController : Controller
     {
         private readonly ILogger<FilmController> _logger;

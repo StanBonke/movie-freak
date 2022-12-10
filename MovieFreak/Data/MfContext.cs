@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MovieFreak.Models;
+using System;
 
 namespace MovieFreak.Data
 {
@@ -22,7 +23,7 @@ namespace MovieFreak.Data
         {
             base.OnModelCreating(mb);
 
-            mb.HasDefaultSchema("MovieFreak");
+            mb.HasDefaultSchema("MovieFreakDb");
             mb.Entity<Film>().ToTable("Film");
             mb.Entity<FilmTaal>().ToTable("Filmtaal");
             mb.Entity<Genre>().ToTable("Genre");
