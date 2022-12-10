@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MovieFreak.Areas.Identity.Data;
 using MovieFreak.Models;
 
 namespace MovieFreak.Data
 {
-    public class MfContext : IdentityDbContext<IdentityUser>
+    public class MfContext : IdentityDbContext<CustomUser>
     {
         public MfContext(DbContextOptions<MfContext> options) : base(options)
         {

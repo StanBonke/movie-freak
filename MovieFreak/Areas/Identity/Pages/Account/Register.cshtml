@@ -18,15 +18,21 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Voornaam">
-                            <label for="floatingInput">Voornaam</label>
+                            <input asp-for="Input.Firstname" type="text" class="form-control" id="floatingInput" placeholder="Voornaam">
+                            <label asp-for="Input.Firstname" for="floatingInput">Voornaam</label>
+                            <div class="text-start">
+                                <span asp-validation-for="Input.Firstname" class="txt-link fs-s"></span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Achternaam">
-                            <label for="floatingInput">Achternaam</label>
+                            <input asp-for="Input.Lastname" type="text" class="form-control" id="floatingInput" placeholder="Achternaam">
+                            <label asp-for="Input.Lastname" for="floatingInput">Achternaam</label>
+                            <div class="text-start">
+                                <span asp-validation-for="Input.Lastname" class="txt-link fs-s"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
