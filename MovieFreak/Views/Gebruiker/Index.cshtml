@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MovieFreak.ViewModels.GebruikerListViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h2> Gebruikers</h2>
+<p>
+    <a asp-action="Create"> Create New</a>
+</p>
+<p>
+    <a asp-action="GrantPermissions"> Change Roles</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th class="col-md-4">
+                @Html.DisplayNameFor(v => v.Gebruikers[0].Id)
+            </th>
+            <th class="col-md-4">
+                @Html.DisplayNameFor(v => v.Gebruikers[0].Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gebruiker in Model.Gebruikers)
+        {
+            <tr>
+                <td class="col-md-4">
+                    @Html.DisplayFor(modelitem => gebruiker.Id)
+                </td>
+                <td class="col-md-4">
+                    @Html.DisplayFor(modelitem => gebruiker.Email)
+                </td>
+                <td class="col-md-4">
+                    @*<a asp-action="Details" asp-route-id="@gebruiker.Id">Details</a>*@
+                    <a asp-action="Delete" asp-route-id="@gebruiker.Id">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

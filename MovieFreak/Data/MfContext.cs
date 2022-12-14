@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MovieFreak.Areas.Identity.Data;
 using MovieFreak.Models;
 using System;
 
@@ -23,7 +24,7 @@ namespace MovieFreak.Data
         {
             base.OnModelCreating(mb);
 
-            mb.HasDefaultSchema("MovieFreakDb");
+            mb.HasDefaultSchema("MovieFreak");
             mb.Entity<Film>().ToTable("Film");
             mb.Entity<FilmTaal>().ToTable("Filmtaal");
             mb.Entity<Genre>().ToTable("Genre");

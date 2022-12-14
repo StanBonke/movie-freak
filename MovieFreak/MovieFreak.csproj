@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20221210155048_InitialCrate.cs" />
-    <Compile Remove="Migrations\20221210155048_InitialCrate.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.31" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.31" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.31" />

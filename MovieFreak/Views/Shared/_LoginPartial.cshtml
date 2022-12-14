@@ -1,12 +1,20 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MovieFreak.Areas.Identity.Data;
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <li class="nav-item">
+            @if (User.IsInRole("admin"))
+            {
+                <a class="nav-link" href="/Admin/Index" title="Account">Account</a>
+            }
+            else
+            {
+                <a class="nav-link" href="/Account/Index" title="Account">Account</a>
+            }
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
