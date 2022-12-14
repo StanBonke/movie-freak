@@ -75,6 +75,12 @@ namespace MovieFreak.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                //var user = new IdentityUser
+                //{
+                //    UserName = Input.Email.Substring(0, Input.Email.IndexOf("@")),
+                //    Email = Input.Email
+                //};
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

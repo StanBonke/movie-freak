@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MovieFreak.Areas.Identity.Data;
 using MovieFreak.Data;
 using System;
 using System.Collections.Generic;
@@ -29,13 +30,14 @@ namespace MovieFreak
         {
             services.AddDbContext<MfContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MfDBConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<MfContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +65,29 @@ namespace MovieFreak
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            CreateRoles(serviceProvider).Wait();
+        }
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            MfContext context = serviceProvider.GetRequiredService<MfContext>();
+
+            IdentityResult result;
+
+            bool roleCheck = await roleManager.RoleExistsAsync("user");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("user"));
+            }
+
+            roleCheck = await roleManager.RoleExistsAsync("admin");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+            context.SaveChanges();
         }
     }
 }

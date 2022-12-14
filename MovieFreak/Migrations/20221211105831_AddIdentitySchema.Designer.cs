@@ -10,14 +10,14 @@ using MovieFreak.Data;
 namespace MovieFreak.Migrations
 {
     [DbContext(typeof(MfContext))]
-    [Migration("20221210155109_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221211105831_AddIdentitySchema")]
+    partial class AddIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("MovieFreakDb")
+                .HasDefaultSchema("MovieFreak")
                 .HasAnnotation("ProductVersion", "3.1.31")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
