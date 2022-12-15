@@ -22,9 +22,9 @@ namespace MovieFreak.Models
         public int GenreId { get; set; }
 
         // navigation properties
-        public ICollection<Personage> Personages { get; set; }
+        public List<Personage> Personages { get; set; }
 
-        public ICollection<FilmTaal> FilmTalen { get; set; }
+        public List<FilmTaal> FilmTalen { get; set; }
         public Genre Genre { get; set; }
     }
 }

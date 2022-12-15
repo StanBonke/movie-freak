@@ -26,6 +26,6 @@ namespace MovieFreak.Models
         public string Rol { get; set; }
 
         // navigation properties
-        public ICollection<Personage> Personages { get; set; }
+        public List<Personage> Personages { get; set; }
     }
 }
