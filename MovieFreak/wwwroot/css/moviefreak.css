@@ -20,6 +20,14 @@ body {
     color: var(--link);
 }
 
+.line-clamp-10 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* truncate to 4 lines */
+    -webkit-line-clamp: 10;
+}
+
 /* Primary color instellen */
 .bg-primary {
     background-color: var(--main) !important;
@@ -164,6 +172,18 @@ a.nav-link {
     border: 0px;
 }
 
+.btn-read-more {
+    color: var(--main);
+    background: transparent;
+    border: 0px;
+}
+
+    .btn-check:focus + .btn-read-more, .btn-read-more:focus {
+        color: var(--accent);
+        background: transparent;
+        border: 0px;
+    }
+
 .btn-details {
     color: var(--main);
     background: transparent;
@@ -183,7 +203,8 @@ a.nav-link {
 
     .btn-details:hover,
     .btn-details-tablet:hover,
-    .btn-trailer:hover {
+    .btn-trailer:hover,
+    .btn-read-more:hover {
         color: var(--accent);
         background: transparent;
         border: 0px;

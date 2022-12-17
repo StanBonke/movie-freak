@@ -12,6 +12,6 @@ namespace MovieFreak.Models
         public string FilmGenre { get; set; }
 
         // navigation properties
-        public ICollection<Film> Films { get; set; }
+        public List<Film> Films { get; set; }
     }
 }

@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Top Gun: Maverick";
+﻿@model MovieFreak.ViewModels.FilmDetailsViewModel;
+@{
+    ViewData["Title"] = this.Model.Titel;
 }
 
 @*LAPTOP LARGE*@
@@ -10,34 +11,50 @@
             <img src="/images/placeholder-film.png" class="img-fluid rounded"/>
         </div>
         <div class="col-8 pt-2 position-relative">
-            <h2 class="my-1">The Lord of the Rings: The Fellowship of the Ring</h2>
+            <h2 class="my-1">@this.Model.Titel</h2>
             <div class="row row-cols-2">
                 <div class="col-10">
                     <hr class="hr-blue" />
                 </div>
                 <div class="col-2">
-                    <h5 class="h4-home py-2 m-0">0h 00m</h5>
+                    <h5 class="h4-home py-2 m-0">@this.Model.Duurtijd</h5>
                 </div>
             </div>
-            <div class="row">
+            <div class="row row-cols-3">
                 <div class="col-2">
-                    <h4 class="h4-home">Genre</h4>
+                    <h4 class="h4-home">@this.Model.Genre.FilmGenre</h4>
                 </div>
-                <div class="col-2">
-                    <h4 class="h4-home">Taal</h4>
+
+                <div class="col-3">
+                    <div class="row">
+                        @foreach (var t in this.Model.FilmTalen)
+                        {
+                            <h4 class="col h4-home">
+                                @t.Taal.GesprokenTaal
+                            </h4>
+                        }
+                    </div>
                 </div>
+
             </div>
             
-            <div class="py-4 fs-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <div class="py-4 fs-6">
+                <p class="line-clamp-10">@this.Model.Omschrijving</p>
             </div>
+
             <div class="position-absolute bottom-0 pb-2">
-                <a href="https://www.youtube.com/" target="_blank">
+                <button class="btn btn-lg">
+                    <i class="fa-solid fa-bookmark fa-2x txt-link"></i>
+                </button>
+                <a href="@this.Model.Trailerlink" target="_blank">
                     <button type="button" class="btn btn-trailer">
                         > Bekijk hier de trailer
                     </button>
                 </a>
             </div>
+
+            
+
         </div>
     </div>
 
@@ -48,31 +65,38 @@
     </div>
 
     <div class="row">
-        <div class="col"> 
-
+        <div class="col">
+            
             <h2 class="pb-3">Regisseur</h2>
 
-            <div class="row row-cols-4">
-                <div class="col-2">
-                    <img src="/images/placeholder.png" class="img-fluid rounded"/>
-                </div>
-                <div class="row row-cols-3 col-10 py-2">
-                    <div class="col-6">
-                        <h3 class="mb-0">
-                        Naam <span class="fs-6">(leeftijd)</span>
-                        </h3>
-                        <h4 class="h4-details mt-0 invisible">leeftijd</h4>
-                        <div class="pt-3">
-                            <h4 class="h4-details my-2">geboortedatum</h4>
-                            <h4 class="h4-details my-2">Geboorteplaats</h4>
-                            <h4 class="h4-details my-2">Geboorteland</h4>
+            @foreach (var p in this.Model.Personages)
+            {
+                if (p.Persoon.Rol == "Regisseur")
+                {
+                    <div class="row row-cols-4">
+                        <div class="col-2">
+                            <img src="/images/placeholder.png" class="img-fluid rounded" />
+                        </div>
+                        <div class="row row-cols-3 col-10 py-2">
+                            <div class="col-6">
+                                <h3 class="mb-0">
+                                    @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                </h3>
+                                <h4 class="h4-details mt-0 invisible">Personage naam</h4>
+                                <div class="pt-3">
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboorteplaats</h4>
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboorteland</h4>
+                                </div>
+                            </div>
+                            <div class="col-6 vl ps-4">
+                                @p.Persoon.Biografie
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6 vl ps-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...
-                    </div>
-                </div>
-            </div>
+                }
+            }
+
         </div>
     </div>
 
@@ -87,71 +111,34 @@
 
             <h2 class="pb-3">Acteurs</h2>
 
-            <div class="row row-cols-4 mb-4">
-                <div class="col-2">
-                    <img src="/images/placeholder.png" class="img-fluid rounded" />
-                </div>
-                <div class="row row-cols-3 col-10 py-2">
-                    <div class="col-6">
-                        <h3 class="mb-0">
-                            Naam <span class="fs-6">(leeftijd)</span>
-                        </h3>
-                        <h4 class="h4-details mt-0 txt-accent">Personage naam</h4>
-                        <div class="pt-3">
-                            <h4 class="h4-details my-2">geboortedatum</h4>
-                            <h4 class="h4-details my-2">Geboorteplaats</h4>
-                            <h4 class="h4-details my-2">Geboorteland</h4>
+            @foreach (var p in this.Model.Personages)
+            {
+                if (p.Persoon.Rol == "Acteur")
+                {
+                    <div class="row row-cols-4 mb-4">
+                        <div class="col-2">
+                            <img src="/images/placeholder.png" class="img-fluid rounded" />
+                        </div>
+                        <div class="row row-cols-3 col-10 py-2">
+                            <div class="col-6">
+                                <h3 class="mb-0">
+                                    @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                </h3>
+                                <h4 class="h4-details mt-0 txt-accent">@p.VoornaamPersonage @p.AchternaamPersonage</h4>
+                                <div class="pt-3">
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboorteplaats</h4>
+                                    <h4 class="h4-details my-2">@p.Persoon.Geboorteland</h4>
+                                </div>
+                            </div>
+                            <div class="col-6 vl ps-4">
+                                @p.Persoon.Biografie
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6 vl ps-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...
-                    </div>
-                </div>
-            </div>
+                }
+            }
 
-            <div class="row row-cols-4 mb-4">
-                <div class="col-2">
-                    <img src="/images/placeholder.png" class="img-fluid rounded" />
-                </div>
-                <div class="row row-cols-3 col-10 py-2">
-                    <div class="col-6">
-                        <h3 class="mb-0">
-                            Naam <span class="fs-6">(leeftijd)</span>
-                        </h3>
-                        <h4 class="h4-details mt-0 txt-accent">Personage naam</h4>
-                        <div class="pt-3">
-                            <h4 class="h4-details my-2">geboortedatum</h4>
-                            <h4 class="h4-details my-2">Geboorteplaats</h4>
-                            <h4 class="h4-details my-2">Geboorteland</h4>
-                        </div>
-                    </div>
-                    <div class="col-6 vl ps-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...
-                    </div>
-                </div>
-            </div>
-
-            <div class="row row-cols-4 mb-4">
-                <div class="col-2">
-                    <img src="/images/placeholder.png" class="img-fluid rounded" />
-                </div>
-                <div class="row row-cols-3 col-10 py-2">
-                    <div class="col-6">
-                        <h3 class="mb-0">
-                            Naam <span class="fs-6">(leeftijd)</span>
-                        </h3>
-                        <h4 class="h4-details mt-0 txt-accent">Personage naam</h4>
-                        <div class="pt-3">
-                            <h4 class="h4-details my-2">geboortedatum</h4>
-                            <h4 class="h4-details my-2">Geboorteplaats</h4>
-                            <h4 class="h4-details my-2">Geboorteland</h4>
-                        </div>
-                    </div>
-                    <div class="col-6 vl ps-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

@@ -27,161 +27,59 @@
 <section class="container d-none d-sm-block">
     <div class="row row-cols-1 row-cols-lg-2">
 
-        <div class="col">
-            <div class="card mb-4 border-0" style="max-width: 540px;">
-                <div class="row gx-0">
-                    <div class="col-md-5">
-                        <a asp-controller="Film" asp-action="FilmDetails">
-                            <img src="/images/placeholder-film.png" class="img-fluid rounded">
-                        </a>
-                    </div>
-                    <div class="col-md-7 py-2">
-                        <div class="card-body py-0">
-                            <h5 class="card-title mt-0 mb-1">The Shawshank Redemption</h5>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
-                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
+        @foreach (var f in Model.Films)
+        {
+            <div class="col">
+                <div class="card mb-4 border-0" style="max-width: 540px;">
+                    <div class="row gx-0">
+                        <div class="col-md-5">
+                            <a asp-controller="Film" asp-action="FilmDetails">
+                                <img src="/images/placeholder-film.png" class="img-fluid rounded">
+                            </a>
                         </div>
+                        <div class="col-md-7 py-2">
+                            <div class="card-body py-0">
+                                <h5 class="card-title mt-0 mb-1">@f.Titel</h5>
+                                <p class="card-text my-0 fs-5"><small class="text-muted">@f.Genre.FilmGenre</small></p>
 
-                        @*LAPTOP*@
-                        <div class="card-body py-0 d-none d-lg-block">
-                            <button class="btn btn-details px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
+                                @foreach(var p in Model.Personages){
+                                    if (p.Persoon.Rol == "Regisseur")
+                                    {
+                                        <p class="card-text my-2 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
+                                    }
+                                }
+
+                                @foreach (var p in Model.Personages)
+                                {
+                                    if (p.Persoon.Rol == "Acteur")
+                                    {
+                                        <p class="card-text my-0 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
+                                    }
+                                }
+
+                            </div>
+
+                            @*LAPTOP*@
+                            <div class="card-body py-0 d-none d-lg-block">
+                                <button class="btn btn-details px-2 pb-0 mb-2">
+                                    > Meer details
+                                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
+                                </button>
+                            </div>
+
+                            @*TABLET*@
+                            <div class="card-body py-0 d-lg-none">
+                                <button class="btn btn-details-tablet px-2 pb-0 mb-2">
+                                    > Meer details
+                                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
+                                </button>
+                            </div>
+
                         </div>
-
-                        @*TABLET*@
-                        <div class="card-body py-0 d-lg-none">
-                            <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card mb-4 border-0" style="max-width: 540px;">
-                <div class="row gx-0">
-                    <div class="col-md-5">
-                        <a asp-controller="Film" asp-action="FilmDetails">
-                            <img src="/images/placeholder-film.png" class="img-fluid rounded">
-                        </a>
-                    </div>
-                    <div class="col-md-7 py-2">
-                        <div class="card-body py-0">
-                            <h5 class="card-title mt-0 mb-1">Top Gun: Maverick</h5>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
-                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
-                        </div>
-                        
-                        @*LAPTOP*@
-                        <div class="card-body py-0 d-none d-lg-block">
-                            <button class="btn btn-details px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                        @*TABLET*@
-                        <div class="card-body py-0 d-lg-none">
-                            <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="card mb-4 border-0" style="max-width: 540px;">
-                <div class="row gx-0">
-                    <div class="col-md-5">
-                        <a asp-controller="Film" asp-action="FilmDetails">
-                            <img src="/images/placeholder-film.png" class="img-fluid rounded">
-                        </a>
-                    </div>
-                    <div class="col-md-7 py-2">
-                        <div class="card-body py-0">
-                            <h5 class="card-title mt-0 mb-1">The Lord of the Rings: The Fellowship of the Ring</h5>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
-                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
-                        </div>
-
-                        @*LAPTOP*@
-                        <div class="card-body py-0 d-none d-lg-block">
-                            <button class="btn btn-details px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                        @*TABLET*@
-                        <div class="card-body py-0 d-lg-none">
-                            <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card mb-4 border-0" style="max-width: 540px;">
-                <div class="row gx-0">
-                    <div class="col-md-5">
-                        <a asp-controller="Film" asp-action="FilmDetails">
-                            <img src="/images/placeholder-film.png" class="img-fluid rounded">
-                        </a>
-                    </div>
-                    <div class="col-md-7 py-2">
-                        <div class="card-body py-0">
-                            <h5 class="card-title mt-0 mb-1">Fast Five</h5>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Genre</small></p>
-                            <p class="card-text my-2 fs-5"><small class="text-muted">Director</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 1</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 2</small></p>
-                            <p class="card-text my-0 fs-5"><small class="text-muted">Actor 3</small></p>
-                        </div>
-
-                        @*LAPTOP*@
-                        <div class="card-body py-0 d-none d-lg-block">
-                            <button class="btn btn-details px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                        @*TABLET*@
-                        <div class="card-body py-0 d-lg-none">
-                            <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                > Meer details
-                                <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
 
     </div>
 </section>
@@ -190,71 +88,19 @@
 <section class="container d-md-none">
     <div class="row row-cols-2 g-4">
 
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">The Shawshank Redemption</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
+        @foreach (var film in Model.Films)
+        {
+            <div class="col">
+                <div class="card bg-dark text-white">
+                    <img src="/images/placeholder-film.png" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">@film.Titel</h5>
+                        <p class="card-text genre-mobile">@film.Genre.FilmGenre</p>
+                        <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">The Lord of the Rings: The Fellowship of the Ring</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Film title</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Film title</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Film title</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card bg-dark text-white">
-                <img src="/images/placeholder-film.png" class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Film title</h5>
-                    <p class="card-text genre-mobile">Genre</p>
-                    <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails"></a>
-                </div>
-            </div>
-        </div>
+        }
 
     </div>
 </section>

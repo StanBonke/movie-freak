@@ -12,6 +12,6 @@ namespace MovieFreak.Models
         public string GesprokenTaal { get; set; }
 
         // navigation properties
-        public ICollection<FilmTaal> FilmTalen { get; set; }
+        public List<FilmTaal> FilmTalen { get; set; }
     }
 }
