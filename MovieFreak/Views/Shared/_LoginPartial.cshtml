@@ -6,29 +6,52 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <li class="nav-item">
-            @if (User.IsInRole("admin"))
-            {
-                <a class="nav-link" href="/Admin/Index" title="Account">Account</a>
-            }
-            else
-            {
-                <a class="nav-link" href="/Account/Index" title="Account">Account</a>
-            }
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link">Uitloggen</button>
-        </form>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" title="Account" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @User.Identity.Name
+        </a>
+        @if (User.IsInRole("admin"))
+        {
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="/Identity/Account/Manage/Index">Account instellingen</a></li>
+                    <li><a class="dropdown-item" href="/Admin/Index">Film beheer</a></li>
+                    <li><a class="dropdown-item" href="/Gebruiker/Index">Gebruikerbeheer</a></li>
+                <li class="nav-item">
+                    <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><button  type="submit" class="dropdown-item">Uitloggen</button>
+                    </form>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" href="/Identity/Account/Manage/Index">Account instellingen</a></li>
+                <li><a class="dropdown-item" href="/Account/Index">Lijsten</a></li>
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="dropdown-item">Uitloggen</button>
+                    </form>
+                </li>
+            </ul>
+        }
     </li>
 }
 else
 {
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Registreren</a></li>
+        </ul>
+    </li>
     @*<li class="nav-item">
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>*@
-    <li class="nav-item">
+    @*<li class="nav-item">
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Account</a>
-    </li>
+    </li>*@
 }
 </ul>
