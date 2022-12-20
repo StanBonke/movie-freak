@@ -8,27 +8,15 @@
     --lightText: #FFFFFF;
 }
 
+::selection {
+    color: var(--lightText);
+    background: var(--main);
+}
+
 body {
     font-family: Poppins;
 }
 
-.txt-accent {
-    color: var(--accent);
-}
-
-.txt-link {
-    color: var(--link);
-}
-
-.line-clamp-10 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    /* truncate to 4 lines */
-    -webkit-line-clamp: 10;
-}
-
-/* Primary color instellen */
 .bg-primary {
     background-color: var(--main) !important;
 }
@@ -37,80 +25,33 @@ body {
     background-color: var(--accent);
 }
 
-/* Link teksten vet maken */
-a.nav-link {
-    font-size: 14pt;
-    font-family: Poppins;
-    font-weight: 300;
+/*TYPOGRAPHY*/
+
+.txt-color-main {
+    color: var(--main);
 }
 
-.btn-link {
-    border: none;
-    font-size: 14pt;
-    font-family: Poppins;
-    font-weight: 300;
-}
-
-    .btn-link:focus {
-        box-shadow: 0rem var(--accent);
-    }
-
-.link-color {
-    color: var(--link);
-}
-
-    .link-color:hover {
-        color: var(--link);
-    }
-
-/* Tekstkleur van navbar brand/tekst wit maken */
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-    color: var(--lightText);
-}
-
-/* Tekstkleur van navbar links wit maken */
-.navbar-custom .navbar-nav .nav-link {
-    color: var(--lightText);
-}
-
-/* Tekstkleur van navbar links (bij active/hover) roze maken */
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
+.txt-color-accent {
     color: var(--accent);
 }
 
-/* Hamburger icoon van toggler wit maken */
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+.txt-color-light {
+    color: var(--lightText);
 }
 
-/* Rand rond hamburger icoon van toggler wit maken */
-/*.custom-toggler.navbar-toggler {
-    border-color: var(--lightText);
-}*/
-
-.custom-toggler.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.20rem var(--main);
+.txt-color-dark {
+    color: var(--darkText);
 }
 
-/* Header */
-
-.img-trans {
-    border: none;
+.txt-color-link {
+    color: var(--link);
 }
 
-.spotlight {
-    margin-top: 50px;
-}
+    .txt-color-link:hover {
+        color: var(--link);
+    }
 
-.spotlightInfo {
-    margin-top: 100px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.h4-home {
+.h4 {
     font-size: 14pt;
     color: var(--link);
 }
@@ -120,7 +61,7 @@ a.nav-link {
     font-weight: normal;
 }
 
-.h5-home {
+.h5 {
     font-size: 11pt;
     color: var(--link);
 }
@@ -142,24 +83,40 @@ a.nav-link {
     font-size: 10pt;
 }
 
-.text-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.fa-main {
+    color: var(--main);
 }
 
-.btn-home {
+input:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+/*BUTTONS & LINKS*/
+.link {
+    color: var(--main);
+    text-decoration: none;
+    padding: 5px;
+}
+
+    .link:hover {
+        color: var(--accent);
+    }
+
+.btn-stnd {
     color: var(--lightText);
     background: var(--accent);
     border-color: var(--accent);
+    border-radius: 8px;
 }
 
-    .btn-home:hover {
+    .btn-stnd:hover {
         color: var(--lightText);
         background: var(--main);
         border-color: var(--main);
     }
 
-    .btn-check:focus + .btn-home, .btn-home:focus {
+    .btn-check:focus + .btn-stnd, .btn-stnd:focus {
         color: var(--lightText);
         background: var(--main);
         border-color: var(--main);
@@ -218,30 +175,81 @@ a.nav-link {
         border: 0px;
     }
 
-.border-orange {
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px solid var(--link);
-    border-radius: 0px;
-    background: transparent;
+/* NAVBAR */
+a.nav-link {
+    font-size: 14pt;
+    font-family: Poppins;
+    font-weight: 300;
 }
 
-.fa-main {
-    color: var(--main);
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: var(--lightText);
 }
 
-input:focus {
-    outline: none;
-    box-shadow: none !important;
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--lightText);
 }
 
-.genre-mobile {
-    position: absolute;
-    bottom: 0;
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: var(--accent);
 }
 
-/*Sign-in / registreer pagina*/
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Rand rond hamburger icoon van toggler wit maken */
+/*.custom-toggler.navbar-toggler {
+    border-color: var(--lightText);
+}*/
+
+.custom-toggler.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.20rem var(--main);
+}
+
+.nav-dropdown {
+    color: var(--darkText);
+    background: var(--lightText);
+    border: 1px solid var(--lightText);
+    border-radius: 8px;
+    box-shadow: 0 0 5px #cecece;
+    padding: 10px;
+}
+
+.nav-dropdown-text {
+    color: var(--darkText);
+    font-weight: 300;
+}
+
+    .nav-dropdown-text:hover {
+        color: var(--accent);
+        background: var(--lightText);
+    }
+
+    .nav-dropdown-text:active {
+        color: var(--darkText);
+        background: var(--lightText);
+    }
+
+/* HOME VIEW */
+
+.img-trans {
+    border: none;
+}
+
+.spotlight {
+    margin-top: 50px;
+}
+
+.spotlightInfo {
+    margin-top: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/*INLOG EN REGISTREER LAYOUT*/
 .body-sign-in {
     display: flex;
     align-items: center;
@@ -297,3 +305,39 @@ input[type="search"]:focus {
     input[type="search"]::-webkit-search-cancel-button {
         -webkit-appearance: none;
     }
+
+.user-card {
+    background: var(--lightText);
+    border: 1px solid var(--lightText);
+    border-radius: 8px;
+    box-shadow: 0 0 5px #cecece;
+}
+
+/* OTHER */
+
+.text-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.border-orange {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid var(--link);
+    border-radius: 0px;
+    background: transparent;
+}
+
+.genre-mobile {
+    position: absolute;
+    bottom: 0;
+}
+
+.select {
+    color: var(--darkText);
+    background: var(--lightText);
+    border: 1px solid var(--lightText);
+    border-radius: 8px;
+    box-shadow: 0 0 5px #cecece;
+}

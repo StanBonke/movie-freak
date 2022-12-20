@@ -6,43 +6,37 @@
     ViewData["Title"] = "Gebruikerbeheer";
 }
 <section class="container mt-3">
-    <h2> Gebruikers</h2>
-    <p>
-        <a asp-action="Create"> Voeg gebruiker toe</a>
-    </p>
-    <p>
-        <a asp-action="GrantPermissions"> Beheer gebruikersrollen</a>
-    </p>
-    <table>
-        <thead>
-            <tr>
-                <th class="col-md-4">
-                    @Html.DisplayNameFor(v => v.Gebruikers[0].Id)
-                </th>
-                <th class="col-md-4">
-                    @Html.DisplayNameFor(v => v.Gebruikers[0].Email)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var gebruiker in Model.Gebruikers)
-            {
-                <tr>
-                    <td class="col-md-4 pe-4">
-                        @Html.DisplayFor(modelitem => gebruiker.Id)
-                    </td>
-                    <td class="col-md-4 pe-4">
-                        @Html.DisplayFor(modelitem => gebruiker.Email)
-                    </td>
-                    <td class="col-md-4">
-                        @*<a asp-action="Details" asp-route-id="@gebruiker.Id">Details</a>*@
-                        <a asp-action="Delete" asp-route-id="@gebruiker.Id">Verwijderen</a>
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col">
+            <h2>Gebruikers</h2>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <a asp-action="Create" class="link me-4">> Gebruiker toevoegen</a>
+            <a asp-action="GrantPermissions" class="link">> Beheer gebruikersrollen</a>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col">
+            <hr class="hr-blue"/>
+        </div>
+    </div>
+    <div class="row row-cols-4">
+        @foreach (var gebruiker in Model.Gebruikers)
+        {
+            <div class="col">
+                <div class="card user-card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelitem => gebruiker.UserName)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted small">@Html.DisplayFor(modelitem => gebruiker.Email)</h6>
+                        <p class="card-text text-muted small">@Html.DisplayFor(modelitem => gebruiker.Id)</p>
+                        <a class="small link" asp-action="Delete" asp-route-id="@gebruiker.Id">> Gebruiker verwijderen</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </section>
 
 
