@@ -88,7 +88,12 @@
                                 </div>
                             </div>
                             <div class="col-6 vl ps-4">
-                                @p.Persoon.Biografie
+                                <p class="p-truncate">
+                                    @p.Persoon.Biografie
+                                </p>
+
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                    > Lees meer</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +135,12 @@
                                 </div>
                             </div>
                             <div class="col-6 vl ps-4">
-                                @p.Persoon.Biografie
+                                <p class="p-truncate">
+                                    @p.Persoon.Biografie
+                                </p>
+
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                    > Lees meer</a>
                             </div>
                         </div>
                     </div>

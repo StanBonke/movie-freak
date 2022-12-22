@@ -15,7 +15,58 @@
     </div>
 
     <div class="row gx-5 spotlight">
-        <div class="col">
+
+        @foreach (Film f in Model.Films)
+        {
+            if (f.Id == 1)
+            {
+                <div class="col">
+                    <div class="p-3">
+                        <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 ">
+                        <h1 class="m-0">
+                            @f.Titel
+                        </h1>
+                        <div class="container px-0 py-3">
+                            <div class="row m-0 p-0">
+                                <div class="col-3 h4  p-0">
+                                    <h5>@f.Duurtijd</h5>
+                                </div>
+                                <div class="col-3 h4 ">
+                                    @foreach (var t in this.Model.FilmTalen)
+                                    {
+                                        <h5 class="col h4">
+                                            @t.Taal.GesprokenTaal
+                                        </h5>
+                                    }
+                                </div>
+                                <div class="col-3 h4 ">
+                                    <h5>@f.Genre.FilmGenre</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-blue m-0" />
+                        <div class="text-container">
+                            <p class="fs m-0">
+                                @f.Omschrijving
+                            </p>
+                        </div>
+
+                        <div>
+                            <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id">
+                                <button type="button" class="btn btn-stnd btn-lg">> Meer details</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+        @*<div class="col">
             <div class="p-3">
                 <img class="img-thumbnail img-trans" src="~/images/placeholder.png" alt="Placeholder">
             </div>
@@ -51,7 +102,8 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>*@
+
     </div>
 
     @if(@User.IsInRole("admin")){

@@ -30,5 +30,20 @@ namespace MovieFreak.Controllers
 
             return View(vm);
         }
+
+        public IActionResult AddFilm()
+        {
+            return View();
+        }
+
+        public IActionResult AddPerson()
+        {
+            return View();
+        }
+
+        public IActionResult AddLanguage()
+        {
+            return View();
+        }
     }
 }
