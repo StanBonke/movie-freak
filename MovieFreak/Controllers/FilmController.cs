@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
-using MovieFreak.ViewModels;
+using MovieFreak.ViewModels.FilmViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,6 +75,11 @@ namespace MovieFreak.Controllers
             {
                 return Index();
             }
+        }
+
+        public IActionResult AddFilm()
+        {
+            return View();
         }
     }
 }

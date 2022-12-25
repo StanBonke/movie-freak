@@ -13,9 +13,9 @@
         @if (User.IsInRole("admin"))
         {
             <ul class="dropdown-menu nav-dropdown" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account instellingen</a></li>
-                <li><a class="dropdown-item nav-dropdown-text" href="/Admin/Index">Film beheer</a></li>
-                <li><a class="dropdown-item nav-dropdown-text" href="/Gebruiker/Index">Gebruikerbeheer</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" href="/Admin/Index">Databeheer</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" href="/Gebruiker/Index">Gebruikersbeheer</a></li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="dropdown-item nav-dropdown-text">Uitloggen</button>
@@ -26,7 +26,7 @@
         else
         {
                 <ul class="dropdown-menu nav-dropdown" aria-labelledby="navbarScrollingDropdown">
-                    <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account instellingen</a></li>
+                    <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account</a></li>
                     <li><a class="dropdown-item nav-dropdown-text" href="/Account/Index">Lijsten</a></li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

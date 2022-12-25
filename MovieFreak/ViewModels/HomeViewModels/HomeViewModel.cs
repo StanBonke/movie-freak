@@ -1,9 +1,9 @@
 ﻿using MovieFreak.Models;
 using System.Collections.Generic;
 
-namespace MovieFreak.ViewModels
+namespace MovieFreak.ViewModels.HomeViewModels
 {
-    public class AdminViewModel
+    public class HomeViewModel
     {
         public int Id { get; set; }
 
@@ -18,12 +18,11 @@ namespace MovieFreak.ViewModels
         // foreign keys
         public int GenreId { get; set; }
 
-        public List<Personage> Personages { get; set; }
-
         public List<FilmTaal> FilmTalen { get; set; }
 
         public Genre Genre { get; set; }
 
+        // Voor het veranderen van de spotlight film
         public List<Film> Films { get; set; }
     }
 }

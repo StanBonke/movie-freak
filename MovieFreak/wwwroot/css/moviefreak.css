@@ -3,6 +3,7 @@
 :root {
     --accent: #98C1D9;
     --link: #EE6C4D;
+    --link-hover: #D44A2A;
     --main: #3D5A80;
     --darkText: #293241;
     --lightText: #FFFFFF;
@@ -31,9 +32,22 @@ body {
     color: var(--main);
 }
 
+.txt-color-accent-non-hover {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
 .txt-color-accent {
     color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
 }
+
+    .txt-color-accent:hover {
+        color: var(--link);
+        text-decoration: none;
+    }
 
 .txt-color-light {
     color: var(--lightText);
@@ -48,7 +62,7 @@ body {
 }
 
     .txt-color-link:hover {
-        color: var(--link);
+        color: var(--link-hover);
     }
 
 .h4 {
@@ -87,6 +101,22 @@ body {
     color: var(--main);
 }
 
+.fa-main-accent {
+    color: var(--main);
+}
+
+    .fa-main-accent:hover {
+        color: var(--accent);
+    }
+
+.fa-main-close {
+    color: var(--main);
+}
+
+    .fa-main-close:hover {
+        color: var(--link);
+    }
+
 .fa-accent {
     color: var(--accent);
 }
@@ -120,6 +150,27 @@ input:focus {
 
     .link:hover {
         color: var(--accent);
+    }
+
+.btn-caution {
+    color: var(--lightText);
+    background: var(--link);
+    border-color: var(--link);
+    border-radius: 8px;
+    border-radius: 8px;
+}
+
+    .btn-caution:hover {
+        color: var(--lightText);
+        background: var(--link-hover);
+        border-color: var(--link-hover);
+    }
+
+    .btn-check:focus + .btn-caution, .btn-caution:focus {
+        color: var(--lightText);
+        background: var(--link-hover);
+        border-color: var(--link-hover);
+        box-shadow: 0 0 0 0.20rem var(--link-hover);
     }
 
 .btn-stnd {
@@ -252,6 +303,30 @@ a.nav-link {
         background: var(--lightText);
     }
 
+/*TABS*/
+.nav-pills .nav-item .nav-link {
+    color: var(--darkText);
+}
+
+    .nav-pills .nav-item .nav-link:hover {
+        color: var(--accent);
+    }
+
+    .nav-pills .nav-item .nav-link.active {
+        color: var(--accent);
+        background: transparent;
+        border-bottom: 1px solid var(--accent);
+        border-radius: 0px;
+    }
+
+button.nav-link {
+    color: var(--darkText);
+}
+
+    button.nav-link:hover {
+        color: var(--accent);
+    }
+
 /* HOME VIEW */
 
 .img-trans {
@@ -268,7 +343,7 @@ a.nav-link {
     padding-right: 30px;
 }
 
-/*INLOG EN REGISTREER LAYOUT*/
+/*FROM LAYOUT*/
 .body-sign-in {
     display: flex;
     align-items: center;
@@ -294,6 +369,11 @@ a.nav-link {
     max-width: 400px;
 }
 
+.form-add {
+    width: 100%;
+    max-width: 600px;
+}
+
 .form-signin .checkbox,
 .form-signup .checkbox {
     font-weight: 300;
@@ -301,7 +381,8 @@ a.nav-link {
 
 .form-signin .form-floating:focus-within,
 .form-signup .form-floating:focus-within,
-.form-settings .form-floating:focus-within {
+.form-settings .form-floating:focus-within,
+.form-add .form-floating:focus-within {
     z-index: 2;
 }
 
@@ -312,7 +393,15 @@ a.nav-link {
 .form-signup input[type="email"],
 .form-signup input[type="password"],
 .form-settings input[type="username"],
-.form-settings input[type="email"] {
+.form-settings input[type="email"],
+.form-settings input[type="password"],
+.form-settings input[type="date"],
+.form-add input[type="username"],
+.form-add input[type="email"],
+.form-add input[type="password"],
+.form-add input[type="date"],
+.form-add input[type="text"],
+.form-add textarea {
     margin-bottom: 10px;
     border-radius: 0px;
     border: 1px solid var(--accent);
@@ -320,6 +409,10 @@ a.nav-link {
     border-right: 0px;
     border-top: 0px;
 }
+
+    .form-settings input[type="email"]:disabled {
+        background: #f3f3f3;
+    }
 
 input[type=checkbox] {
     accent-color: var(--link);
@@ -337,6 +430,23 @@ input[type="search"]:focus {
     input[type="search"]::-webkit-search-cancel-button {
         -webkit-appearance: none;
     }
+
+textarea {
+    min-height: 60px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+/*TABLE LAYOUT*/
+.table tbody td {
+    border-bottom: 0.5px dashed var(--accent);
+}
+
+.table thead th {
+    font-weight: 500;
+    border-bottom: 1px solid;
+}
 
 /*USER MANAGEMENT*/
 .user-card {

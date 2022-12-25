@@ -1,4 +1,4 @@
-﻿@model MovieFreak.ViewModels.FilmViewModel;
+﻿@model MovieFreak.ViewModels.FilmViewModels.FilmViewModel;
 
 @{
     ViewData["Title"] = "Films";
@@ -7,7 +7,7 @@
 <section class="container mt-3">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col-8">
-            <h1 class="m-0 pb-3 pb-sm-0">Films</h1> 
+            <h1 class="m-0 pb-3 pb-sm-0">@ViewData["Title"]</h1>
         </div>
         <div class="col-4">
             <div class="input-group py-1">

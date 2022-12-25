@@ -11,7 +11,7 @@
 <section class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>Account instellingen</h1>
+            <h1>Account</h1>
         </div>
     </div>
 
@@ -21,9 +21,9 @@
         </h4>
     </div>
 
-    <div class="row row-cols-6 mt-4">
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 mt-4">
 
-        <div class="col">
+        <div class="col mb-3">
             <div class="card user-card">
                 <i class="fa-solid fa-user fa-main fa-card"></i>
                 <div class="card-body">
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col mb-">
             <div class="card user-card">
                 <i class="fa-solid fa-at fa-main fa-card"></i>
                 <div class="card-body">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col mb-3">
             <div class="card user-card">
                 <i class="fa-solid fa-key fa-main fa-card"></i>
                 <div class="card-body">
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col mb-3">
             <div class="card user-card">
                 <i class="fa-solid fa-fingerprint fa-main fa-card"></i>
                 <div class="card-body">
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col mb-3">
             <div class="card user-card">
                 <i class="fa-solid fa-address-card fa-main fa-card"></i>
                 <div class="card-body">
@@ -73,15 +73,40 @@
             </div>
         </div>
 
-        <div class="col">
-            <div class="card user-card">
-                <i class="fa-solid fa-users fa-main fa-card"></i>
-                <div class="card-body">
-                    <h4 class="card-title text-center h4-details fs-6">Gebruikersbeheer</h4>
-                    <a href="/Gebruiker/Index" class="stretched-link"></a>
+        @if (User.IsInRole("admin"))
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-database fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Databeheer</h4>
+                        <a href="/Admin/Index" class="stretched-link"></a>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-users fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Gebruikersbeheer</h4>
+                        <a href="/Gebruiker/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-users fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Jouw lijsten</h4>
+                        <a href="/Account/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
 
     </div>
 </section>

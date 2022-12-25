@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
-using MovieFreak.ViewModels;
+using MovieFreak.ViewModels.HomeViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

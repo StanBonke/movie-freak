@@ -1,0 +1,33 @@
+﻿@model MovieFreak.ViewModels.PersonViewModels.DeletePersonViewModel;
+@{
+    ViewData["Title"] = $"{Model.Rol} verwijderen?";
+}
+<section class="container mt-3">
+    <h1>@ViewData["Title"]</h1>
+    <div class="row">
+        <div class="col my-2">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Weet u zeker dat u <span class="txt-color-link">@Model.Voornaam @Model.Achternaam</span> wilt verwijderen?</h4>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <form asp-action="DeletePerson">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="> @Model.Rol verwijderen" class="btn btn-caution" />
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <a asp-action="Index" class="link">> Terug naar lijst</a>
+        </div>
+    </div>
+</section>

@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
-using MovieFreak.ViewModels;
+using MovieFreak.ViewModels.AdminViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieFreak.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private readonly MfContext _context;
@@ -29,16 +33,6 @@ namespace MovieFreak.Controllers
             };
 
             return View(vm);
-        }
-
-        public IActionResult AddFilm()
-        {
-            return View();
-        }
-
-        public IActionResult AddPerson()
-        {
-            return View();
         }
 
         public IActionResult AddLanguage()

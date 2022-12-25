@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace MovieFreak.ViewModels
+namespace MovieFreak.ViewModels.GebruikerViewModels
 {
     public class GrantPermissionViewModel
     {

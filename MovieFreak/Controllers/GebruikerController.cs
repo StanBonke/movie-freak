@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieFreak.Areas.Identity.Data;
-using MovieFreak.ViewModels;
+using MovieFreak.ViewModels.GebruikerViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 

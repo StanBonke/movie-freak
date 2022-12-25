@@ -1,13 +1,17 @@
-﻿@model MovieFreak.ViewModels.GrantPermissionViewModel
+﻿@using Microsoft.AspNetCore.Identity;
+
+@model MovieFreak.ViewModels.GebruikerViewModels.GrantPermissionViewModel;
 
 @{
-    ViewData["Title"] = "Grant Permission";
+    ViewData["Title"] = "Gebruikersrollen";
 }
 
 <section class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>Gebruikersrollen beheren</h1>
+            <h1>
+                @ViewData["Title"] beheren
+            </h1>
         </div>
     </div>
     <div class="row">

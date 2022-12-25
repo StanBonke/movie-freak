@@ -1,7 +1,7 @@
 ﻿using MovieFreak.Models;
 using System.Collections.Generic;
 
-namespace MovieFreak.ViewModels
+namespace MovieFreak.ViewModels.FilmViewModels
 {
     public class FilmViewModel
     {

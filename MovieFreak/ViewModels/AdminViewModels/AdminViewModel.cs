@@ -1,11 +1,9 @@
 ﻿using MovieFreak.Models;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace MovieFreak.ViewModels
+namespace MovieFreak.ViewModels.AdminViewModels
 {
-    public class FilmDetailsViewModel
+    public class AdminViewModel
     {
         public int Id { get; set; }
 
@@ -26,10 +24,6 @@ namespace MovieFreak.ViewModels
 
         public Genre Genre { get; set; }
 
-        public int BerekenLeeftijd(DateTime geboortedatum)
-        {
-            int age = (int)((DateTime.Now - geboortedatum).TotalDays / 365.242199);
-            return age;
-        }
+        public List<Film> Films { get; set; }
     }
 }
