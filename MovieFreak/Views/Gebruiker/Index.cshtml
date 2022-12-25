@@ -1,48 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model MovieFreak.ViewModels.GebruikerListViewModel
+﻿@model MovieFreak.ViewModels.GebruikerViewModels.GebruikerListViewModel;
 @{
-    ViewData["Title"] = "Gebruikerbeheer";
+    ViewData["Title"] = "Gebruikersbeheer";
 }
 <section class="container mt-3">
-    <h2> Gebruikers</h2>
-    <p>
-        <a asp-action="Create"> Voeg gebruiker toe</a>
-    </p>
-    <p>
-        <a asp-action="GrantPermissions"> Beheer gebruikersrollen</a>
-    </p>
-    <table>
-        <thead>
-            <tr>
-                <th class="col-md-4">
-                    @Html.DisplayNameFor(v => v.Gebruikers[0].Id)
-                </th>
-                <th class="col-md-4">
-                    @Html.DisplayNameFor(v => v.Gebruikers[0].Email)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var gebruiker in Model.Gebruikers)
-            {
-                <tr>
-                    <td class="col-md-4 pe-4">
-                        @Html.DisplayFor(modelitem => gebruiker.Id)
-                    </td>
-                    <td class="col-md-4 pe-4">
-                        @Html.DisplayFor(modelitem => gebruiker.Email)
-                    </td>
-                    <td class="col-md-4">
-                        @*<a asp-action="Details" asp-route-id="@gebruiker.Id">Details</a>*@
-                        <a asp-action="Delete" asp-route-id="@gebruiker.Id">Verwijderen</a>
-                    </td>
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <div class="row row-cols-2">
+        <div class="col-8 mt-3">
+            <a asp-action="Create" class="link me-4">> Gebruiker toevoegen</a>
+            <a asp-action="GrantPermissions" class="link">> Beheer gebruikersrollen</a>
+        </div>
+        <div class="col-4">
+            <div class="input-group">
+                <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
+                <input type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            </div>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col">
+            <hr class="hr-blue"/>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        @foreach (var gebruiker in Model.Gebruikers.OrderBy(x => x.UserName))
+        {
+            <div class="col mb-3">
+                <div class="card user-card" style="width: 18rem;">
+                    <div class="card-body">
 
-                </tr>
-            }
-        </tbody>
-    </table>
+                        <div class="row">
+                            <div class="col">
+                                <i class="fa fa-user fa-main fs-3" >
+                                </i>
+                            </div>
+                            <div class="col text-end">
+
+                                <a class="" asp-action="Delete" asp-route-id="@gebruiker.Id" data-bs-toggle="tooltip" title="Gebruiker verwijderen">
+                                    <i class="fa fa-close fa-main-close fs-5"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="pt-3">
+                            <h5 class="card-title pb-2">@Html.DisplayFor(modelitem => gebruiker.UserName)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted small">@Html.DisplayFor(modelitem => gebruiker.Email)</h6>
+                            <p class="card-text text-muted small">@Html.DisplayFor(modelitem => gebruiker.Id)</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </section>
 
 

@@ -1,22 +1,27 @@
 ﻿@page
 @model RegisterConfirmationModel
 @{
-    ViewData["Title"] = "Bevestiging registratie";
+    ViewData["Title"] = "Bevestig je registratie";
 }
-
-<h1>@ViewData["Title"]</h1>
-@{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
-    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
-</p>
-    }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
-}
+<section class="container mt-3">
+    <div class="row mb-2">
+        <h1>@ViewData["Title"]!</h1>
+    </div>
+    <div class="row">
+        @{
+            if (@Model.DisplayConfirmAccountLink)
+            {
+                <p>
+                    Deze website kan momenteel je account nog niet verifieren via e-mail. Klik op de volgende link om je e-mailadres te bevestigen:
+                    <a class="txt-color-link" id="confirm-link" href="@Model.EmailConfirmationUrl"><br>> Activeer hier je account!</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Controleer je inbox om je account te activeren.
+                </p>
+            }
+        }
+    </div>
+</section>

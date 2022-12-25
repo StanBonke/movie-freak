@@ -1,7 +1,22 @@
 ﻿@page
 @model ConfirmEmailModel
 @{
-    ViewData["Title"] = "Confirm email";
+    ViewData["Title"] = "Bevestiging e-mailadres";
 }
 
-<h1>@ViewData["Title"]</h1>
+<section class="container mt-3">
+    <div class="row mb-2">
+        <h1>@ViewData["Title"]!</h1>
+    </div>
+    <div class="row">
+        <p>
+            Je e-mailadres is geverifieerd! <a asp-page="./Login" class="txt-color-link">
+                Klik hier om je in te loggen.
+            </a>
+        </p>
+    </div>
+</section>
+
+
+
+

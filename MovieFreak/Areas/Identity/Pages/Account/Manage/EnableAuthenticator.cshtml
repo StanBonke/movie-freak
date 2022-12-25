@@ -13,18 +13,19 @@
         <li>
             <p>
                 Download a two-factor authenticator app like Microsoft Authenticator for
-                <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> and
-                <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> or
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825072" class="txt-color-accent">Android</a> and
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825073" class="txt-color-accent">iOS</a> or
                 Google Authenticator for
-                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a> and
-                <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>.
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en" class="txt-color-accent">Android</a> and
+                <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" class="txt-color-accent">iOS</a>.
             </p>
         </li>
         <li>
-            <p>Scan the QR Code or enter this key <kbd>@Model.SharedKey</kbd> into your two factor authenticator app. Spaces and casing do not matter.</p>
-            <div class="alert alert-info">Learn how to <a href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
+            @*Scan the QR Code or*@
+            <p>Enter this key <span class="txt-color-link fw-bold">@Model.SharedKey</span> into your two factor authenticator app. Spaces and casing do not matter.</p>
+            @*<div class="alert">Learn how to <a class="txt-color-accent" href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
             <div id="qrCode"></div>
-            <div id="qrCodeData" data-url="@Html.Raw(@Model.AuthenticatorUri)"></div>
+            <div id="qrCodeData" data-url="@Html.Raw(@Model.AuthenticatorUri)"></div>*@
         </li>
         <li>
             <p>
@@ -32,18 +33,30 @@
                 with a unique code. Enter the code in the confirmation box below.
             </p>
             <div class="row">
-                <div class="col-md-6">
-                    <form id="send-code" method="post">
-                        <div class="form-group">
-                            <label asp-for="Input.Code" class="control-label">Verification Code</label>
-                            <input asp-for="Input.Code" class="form-control" autocomplete="off" />
-                            <span asp-validation-for="Input.Code" class="text-danger"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Verify</button>
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    </form>
+                <div class="body-settings">
+                    <div class="form-settings">
+                        <form id="account" method="post">
+
+                            <div class="form-floating">
+                                <input asp-for="Input.Code" type="username" class="form-control ps-1" id="floatingInput" placeholder="name@example.com" />
+                                <label asp-for="Input.Code" for="floatingInput" class="ps-0">Verificatie code</label>
+                                <span asp-validation-for="Input.Code" class="txt-color-link"></span>
+                            </div>
+                            
+                            <div class="form-floating">
+                                <div asp-validation-summary="ModelOnly" class="txt-color-link"></div>
+                                <div class="form-floating">
+                                    <button class="btn btn-stnd mt-3" id="email-verification" type="submit" asp-page-handler="SendVerificationEmail">Verifieer</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
                 </div>
             </div>
+
         </li>
     </ol>
 </div>

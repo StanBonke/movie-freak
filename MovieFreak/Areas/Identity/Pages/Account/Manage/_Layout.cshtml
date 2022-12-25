@@ -8,8 +8,123 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>Account</h1>
+        </div>
+    </div>
 
-<section class="container mt3">
+    <div class="row">
+        <h4>
+            Wijzig je account instellingen
+        </h4>
+    </div>
+
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 mt-4">
+
+        <div class="col mb-3">
+            <div class="card user-card">
+                <i class="fa-solid fa-user fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-6">Profiel</h4>
+                    <a asp-page="./Index" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-">
+            <div class="card user-card">
+                <i class="fa-solid fa-at fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-6">E-mail</h4>
+                    <a asp-page="./Email" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3">
+            <div class="card user-card">
+                <i class="fa-solid fa-key fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-6">Wachtwoord</h4>
+                    <a asp-page="./ChangePassword" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3">
+            <div class="card user-card">
+                <i class="fa-solid fa-fingerprint fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-6">2FA</h4>
+                    <a asp-page="./TwoFactorAuthentication" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3">
+            <div class="card user-card">
+                <i class="fa-solid fa-address-card fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-6">Persoonlijke data</h4>
+                    <a asp-page="./PersonalData" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        @if (User.IsInRole("admin"))
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-database fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Databeheer</h4>
+                        <a href="/Admin/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-users fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Gebruikersbeheer</h4>
+                        <a href="/Gebruiker/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-users fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Jouw lijsten</h4>
+                        <a href="/Account/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+<section class="container mt-5">
+        <div class="row">
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+</section>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+
+@*OLD CODE*@
+@*<section class="container mt3">
     <h2>Account instellingen</h2>
 
 <div>
@@ -20,7 +135,7 @@
             <partial name="_ManageNav" />
         </div>
         <div class="col-md-9">
-            @RenderBody()
+                @RenderBody()
         </div>
     </div>
 </div>
@@ -28,4 +143,4 @@
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
-}
+}*@

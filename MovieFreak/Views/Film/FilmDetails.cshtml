@@ -1,4 +1,4 @@
-﻿@model MovieFreak.ViewModels.FilmDetailsViewModel;
+﻿@model MovieFreak.ViewModels.FilmViewModels.FilmDetailsViewModel;
 @{
     ViewData["Title"] = this.Model.Titel;
 }
@@ -17,19 +17,19 @@
                     <hr class="hr-blue" />
                 </div>
                 <div class="col-2">
-                    <h5 class="h4-home py-2 m-0">@this.Model.Duurtijd</h5>
+                    <h5 class="h4 py-2 m-0">@this.Model.Duurtijd</h5>
                 </div>
             </div>
             <div class="row row-cols-3">
                 <div class="col-2">
-                    <h4 class="h4-home">@this.Model.Genre.FilmGenre</h4>
+                    <h4 class="h4">@this.Model.Genre.FilmGenre</h4>
                 </div>
 
                 <div class="col-3">
                     <div class="row">
                         @foreach (var t in this.Model.FilmTalen)
                         {
-                            <h4 class="col h4-home">
+                            <h4 class="col h4">
                                 @t.Taal.GesprokenTaal
                             </h4>
                         }
@@ -44,12 +44,10 @@
 
             <div class="position-absolute bottom-0 pb-2">
                 <button class="btn btn-lg">
-                    <i class="fa-solid fa-bookmark fa-2x txt-link"></i>
+                    <i class="fa-solid fa-bookmark fa-2x txt-color-link"></i>
                 </button>
-                <a href="@this.Model.Trailerlink" target="_blank">
-                    <button type="button" class="btn btn-trailer">
-                        > Bekijk hier de trailer
-                    </button>
+                <a href="@this.Model.Trailerlink" target="_blank" class="link">
+                    > Bekijk hier de trailer
                 </a>
             </div>
 
@@ -90,7 +88,13 @@
                                 </div>
                             </div>
                             <div class="col-6 vl ps-4">
-                                @p.Persoon.Biografie
+                                <p class="p-truncate">
+                                    @p.Persoon.Biografie
+                                </p>
+
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                    > Lees meer
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -124,7 +128,7 @@
                                 <h3 class="mb-0">
                                     @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
                                 </h3>
-                                <h4 class="h4-details mt-0 txt-accent">@p.VoornaamPersonage @p.AchternaamPersonage</h4>
+                                <h4 class="h4-details mt-0 txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</h4>
                                 <div class="pt-3">
                                     <h4 class="h4-details my-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
                                     <h4 class="h4-details my-2">@p.Persoon.Geboorteplaats</h4>
@@ -132,7 +136,12 @@
                                 </div>
                             </div>
                             <div class="col-6 vl ps-4">
-                                @p.Persoon.Biografie
+                                <p class="p-truncate">
+                                    @p.Persoon.Biografie
+                                </p>
+
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                    > Lees meer</a>
                             </div>
                         </div>
                     </div>

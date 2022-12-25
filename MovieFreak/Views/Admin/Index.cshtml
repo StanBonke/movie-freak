@@ -1,25 +1,78 @@
-﻿@{
-    ViewData["Title"] = "Film beheer";
+﻿@model MovieFreak.ViewModels.AdminViewModels.AdminViewModel;
+@{
+    ViewData["Title"] = "Databeheer";
 }
 
 <section class="container mt-3">
+
     <div class="row">
         <div class="col">
-            <h1>Film beheer</h1>
+            <h1>@ViewData["Title"]</h1>
         </div>
     </div>
 
-    <div class="row my-2">
+    <div class="row mt-3">
         <h4>
             Spotlight Movie aanpassen
         </h4>
     </div>
 
     <div class="row mt-2">
-        <div class="col">
-            <button class="btn btn-home p-2">
-                Nieuwe film toevoegen
-            </button>
+        <div class="col-12 col-md-5 col-lg-4">
+            <select class="form-select select" id="select">
+                <option hidden selected>Selecteer een film</option>
+                @foreach (var f in Model.Films)
+                {
+                    <option value="@f.Id">@f.Titel</option>
+                }
+            </select>
         </div>
     </div>
+    <div class="row mt-3">
+        <div class="col">
+            <button class="btn btn-stnd">> Opslaan</button>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+
+    <div class="row mt-5 mb-2">
+        <h4>
+            Data aanpassen
+        </h4>
+    </div>
+
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
+        <div class="col mb-3 mb-lg-0">
+            <div class="card user-card">
+                <i class="fa-solid fa-clapperboard fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-4">Films</h4>
+                    <a asp-controller="Film" asp-action="AddFilm" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3 mb-lg-0">
+            <div class="card user-card">
+                <i class="fa-solid fa-user fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-4">Personen</h4>
+                    <a asp-controller="Person" asp-action="Index" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-3 mb-lg-0">
+            <div class="card user-card">
+                <i class="fa-solid fa-language fa-main fa-card"></i>
+                <div class="card-body">
+                    <h4 class="card-title text-center h4-details fs-4">Talen</h4>
+                    <a asp-controller="Admin" asp-action="AddLanguage" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>

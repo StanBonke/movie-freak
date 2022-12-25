@@ -1,39 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model MovieFreak.ViewModels.CreateGebruikerViewModel
+﻿@model MovieFreak.ViewModels.GebruikerViewModels.CreateGebruikerViewModel;
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Gebruiker toevoegen";
 }
-<h1>Create</h1>
-<h4>Gebruiker</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
     </div>
 
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        <div class="col">
+            <div class="body-settings">
+                <div class="form-settings">
+                    <form asp-action="Create">
+
+                        <div class="form-floating">
+                            <input asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                            <label asp-for="Email" for="floatingInput">E-mail adres</label>
+                            <div class="text-start">
+                                <span asp-validation-for="Email" class="txt-color-link fs-s"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-floating">
+                            <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label asp-for="Password" for="floatingPassword">Wachtwoord</label>
+                            <div class="text-start">
+                                <span asp-validation-for="Password" class="txt-color-link fs-s"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-floating">
+                            <button type="submit" value="Create" class="btn btn-stnd my-3">> Toevoegen</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 @section Scripts{
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

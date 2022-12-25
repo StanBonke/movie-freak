@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieFreak.Areas.Identity.Data;
-using MovieFreak.ViewModels;
+using MovieFreak.ViewModels.GebruikerViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -88,7 +88,7 @@ namespace MovieFreak.Controllers
         {
             GrantPermissionViewModel viewModel = new GrantPermissionViewModel()
             {
-                Gebruikers = new SelectList(_userManager.Users.ToList(), "Id", "UserName"),
+                Users = new SelectList(_userManager.Users.ToList(), "Id", "UserName"),
                 Rollen = new SelectList(_roleManager.Roles.ToList(), "Id", "Name")
             };
             return View(viewModel);
@@ -100,7 +100,7 @@ namespace MovieFreak.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityUser user = await _userManager.FindByIdAsync(viewModel.GebruikerId);
+                IdentityUser user = await _userManager.FindByIdAsync(viewModel.UserId);
                 IdentityRole role = await _roleManager.FindByIdAsync(viewModel.RolId);
                 if (user != null && role != null)
                 {

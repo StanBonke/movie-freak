@@ -1,18 +1,41 @@
-﻿@model MovieFreak.ViewModels.GrantPermissionViewModel
+﻿@using Microsoft.AspNetCore.Identity;
+
+@model MovieFreak.ViewModels.GebruikerViewModels.GrantPermissionViewModel;
 
 @{
-    ViewData["Title"] = "Grant Permission";
+    ViewData["Title"] = "Gebruikersrollen";
 }
 
-<form asp-action="GrantPermissions" asp-method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <select asp-for="GebruikerId" asp-items="Model.Gebruikers"></select>
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>
+                @ViewData["Title"] beheren
+            </h1>
+        </div>
     </div>
-    <div class="form-group">
-        <select asp-for="RolId" asp-items="Model.Rollen"></select>
+    <div class="row">
+        <div class="col">
+            <hr class="hr-blue"/>
+        </div>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+    <div class="row-cols-2">
+        <div>
+            <form asp-action="GrantPermissions" asp-method="post">
+                <div class="form-group">
+                    <select class="select p-2 my-2" asp-for="UserId" asp-items="Model.Users"></select>
+                </div>
+                <div class="form-group">
+                    <select class="select p-2 my-2" asp-for="RolId" asp-items="Model.Rollen"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Opslaan" class="btn btn-stnd mt-2" />
+                </div>
+                <div asp-validation-summary="ModelOnly" class="txt-color-link small mt-2"></div>
+            </form>
+        </div>
     </div>
-</form>
+</section>
+
+
+
