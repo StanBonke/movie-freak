@@ -1,0 +1,67 @@
+﻿@model MovieFreak.ViewModels.AdminViewModels.LanguagesViewModel;
+@{
+    ViewData["Title"] = "Talen";
+}
+
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-2">
+        <div class="col-6 mt-3">
+            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Terug</a>
+        </div>
+        <div class="col-6 mt-3 text-end">
+            <a asp-action="AddLanguage" class="link">Taal toevoegen <i class="fa fa-caret-right fa-main"></i></a>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-3 table-responsive">
+            <table class="table">
+                <thead class="table-header">
+                    <tr>
+                        <th class="txt-color-dark" scope="col">Id</th>
+                        <th class="txt-color-dark" scope="col">Taal</th>
+                        <th class="txt-color-dark" scope="col"> </th>
+                        <th class="txt-color-dark" scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var t in Model.Talen)
+                    {
+                        <tr>
+                            <td class="py-3">@t.Id</td>
+                            <td class="py-3">@t.GesprokenTaal</td>
+                            <td class="py-3">
+                                <a asp-action="EditLanguage" asp-route-id="@t.Id" data-bs-toggle="tooltip" title="Film aanpassen">
+                                    <i class="fa fa-pencil fa-main-accent"></i>
+                                </a>
+                            </td>
+                            <td class="py-3">
+                                <a asp-action="DeleteLanguage" asp-route-id="@t.Id" data-bs-toggle="tooltip" title="Film verwijderen">
+                                    <i class="fa fa-close fa-main-close"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>

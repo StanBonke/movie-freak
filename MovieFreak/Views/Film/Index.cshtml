@@ -27,7 +27,7 @@
 <section class="container d-none d-sm-block">
     <div class="row row-cols-1 row-cols-lg-2">
 
-        @foreach (var f in Model.Films)
+        @foreach (var f in Model.Films.OrderBy(x => x.Titel))
         {
             <div class="col">
                 <div class="card mb-4 border-0" style="max-width: 540px;">
@@ -40,18 +40,24 @@
                         <div class="col-md-7 py-2">
                             <div class="card-body py-0">
                                 <h5 class="card-title mt-0 mb-1">@f.Titel</h5>
-                                <p class="card-text my-0 fs-5"><small class="text-muted">@f.Genre.FilmGenre</small></p>
+                                <p class="card-text my-0 fs-5">
+                                    <small class="text-muted">
+                                        @if(f.GenreId == f.Genre.Id){
+                                            @f.Genre.FilmGenre
+                                        }
+                                    </small>
+                                </p>
 
                                 @foreach(var p in Model.Personages){
-                                    if (p.Persoon.Rol == "Regisseur")
+                                    if (p.Persoon.Rol == "Regisseur" && f.Id == p.FilmId)
                                     {
                                         <p class="card-text my-2 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
                                 }
 
-                                @foreach (var p in Model.Personages)
+                                @foreach (var p in Model.Personages )
                                 {
-                                    if (p.Persoon.Rol == "Acteur")
+                                    if (p.Persoon.Rol == "Acteur" && f.Id == p.FilmId)
                                     {
                                         <p class="card-text my-0 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
@@ -62,7 +68,7 @@
                             @*LAPTOP*@
                             <div class="card-body py-0 d-none d-lg-block">
                                 <button class="btn btn-details link px-2 pb-0 mb-2">
-                                    > Details
+                                    <i class="fa fa-caret-right fa-main"></i> Details
                                     <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                                 </button>
                             </div>
@@ -70,7 +76,7 @@
                             @*TABLET*@
                             <div class="card-body py-0 d-lg-none">
                                 <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                    > Details
+                                    <i class="fa fa-caret-right fa-main"></i> Details
                                     <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                                 </button>
                             </div>
@@ -88,14 +94,19 @@
 <section class="container d-md-none">
     <div class="row row-cols-2 g-4">
 
-        @foreach (var f in Model.Films)
+        @foreach (var f in Model.Films.OrderBy(x => x.Titel))
         {
             <div class="col">
                 <div class="card bg-dark text-white">
                     <img src="/images/placeholder-film.png" class="card-img" alt="...">
                     <div class="card-img-overlay">
                         <h5 class="card-title">@f.Titel</h5>
-                        <p class="card-text genre-mobile">@f.Genre.FilmGenre</p>
+                        <p class="card-text genre-mobile">
+                            @if (f.GenreId == f.Genre.Id)
+                            {
+                                @f.Genre.FilmGenre
+                            }
+                        </p>
                         <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                     </div>
                 </div>

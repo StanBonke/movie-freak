@@ -9,9 +9,12 @@
         </div>
     </div>
     <div class="row row-cols-2">
-        <div class="col-8 mt-3">
-            <a asp-action="Create" class="link me-4">> Gebruiker toevoegen</a>
-            <a asp-action="GrantPermissions" class="link">> Beheer gebruikersrollen</a>
+        <div class="col-2 mt-3">
+            <a href="/Identity/Account/Manage/Index" class="link me-4"><i class="fa fa-caret-left fa-main"></i> Terug</a>
+        </div>
+        <div class="col-6 mt-3">
+            <a asp-action="Create" class="link me-4"><i class="fa fa-caret-right fa-main"></i> Gebruiker toevoegen</a>
+            <a asp-action="GrantPermissions" class="link"><i class="fa fa-caret-right fa-main"></i> Beheer gebruikersrollen</a>
         </div>
         <div class="col-4">
             <div class="input-group">

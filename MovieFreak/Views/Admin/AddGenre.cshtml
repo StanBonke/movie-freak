@@ -1,9 +1,9 @@
-﻿@model MovieFreak.ViewModels.AdminViewModels.AddLanguageViewModel;
+﻿@model MovieFreak.ViewModels.AdminViewModels.AddGenreViewModel;
 @{
-    ViewData["Title"] = "Taal toevoegen";
+    ViewData["Title"] = "Genre toevoegen";
 }
 <section class="container mt-3">
-    <div class="row">
+     <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
         </div>
@@ -11,7 +11,7 @@
 
     <div class="row mt-3">
         <div class="col">
-            <a asp-action="Languages" class="link"><i class="fa fa-caret-left fa-main"></i> Terug</a>
+            <a asp-action="Genres" class="link"><i class="fa fa-caret-left fa-main"></i> Terug</a>
         </div>
     </div>
 
@@ -27,17 +27,17 @@
         <div class="col">
             <div class="body-settings">
                 <div class="form-add">
-                    <form asp-action="AddLanguage">
+                    <form asp-action="AddGenre">
 
                         <div class="row">
                             <div class="col-7">
                                 <div class="row">
                                     <div class="col-9">
                                         <div class="form-floating">
-                                            <input asp-for="GesprokenTaal" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
-                                            <label asp-for="GesprokenTaal" for="floatingInput">Taal</label>
+                                            <input asp-for="FilmGenre" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
+                                            <label asp-for="FilmGenre" for="floatingInput">Genre</label>
                                             <div class="text-start">
-                                                <span asp-validation-for="GesprokenTaal" class="txt-color-link fs-s"></span>
+                                                <span asp-validation-for="FilmGenre" class="txt-color-link fs-s"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -46,7 +46,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating text-start">
-                                            <button type="submit" value="Create" class="btn btn-caution my-3">> Taal toevoegen</button>
+                                            <button type="submit" value="Create" class="btn btn-caution my-3">Genre toevoegen</button>
                                         </div>
                                     </div>
                                 </div>

@@ -10,8 +10,11 @@
     </div>
 
     <div class="row row-cols-2">
-        <div class="col-8 mt-3">
-            <a asp-action="AddPerson" class="link">> Persoon toevoegen</a>
+        <div class="col-6 mt-3">
+            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Terug</a>
+        </div>
+        <div class="col-6 mt-3 text-end">
+            <a asp-action="AddPerson" class="link">Persoon toevoegen <i class="fa fa-caret-right fa-main"></i></a>
         </div>
     </div>
 
@@ -74,12 +77,12 @@
                                                 </a>
                                             </td>
                                             <td class="py-3">
-                                                <a class="" asp-action="EditPerson" asp-route-id="@p.Id" data-bs-toggle="tooltip" title="Persoon aanpassen">
+                                                <a  asp-action="EditPerson" asp-route-id="@p.Id" data-bs-toggle="tooltip" title="Persoon aanpassen">
                                                     <i class="fa fa-pencil fa-main-accent"></i>
                                                 </a>
                                             </td>
                                             <td class="py-3">
-                                                <a class="" asp-action="DeletePerson" asp-route-id="@p.Id" data-bs-toggle="tooltip" title="Persoon verwijderen">
+                                                <a  asp-action="DeletePerson" asp-route-id="@p.Id" data-bs-toggle="tooltip" title="Persoon verwijderen">
                                                     <i class="fa fa-close fa-main-close"></i>
                                                 </a>
                                             </td>

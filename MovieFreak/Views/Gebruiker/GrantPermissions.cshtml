@@ -9,16 +9,22 @@
 <section class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>
-                @ViewData["Title"] beheren
-            </h1>
+            <h1>@ViewData["Title"]</h1>
         </div>
     </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <a asp-action="Index" class="link"><i class="fa fa-caret-left fa-main"></i> Terug</a>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
-            <hr class="hr-blue"/>
+            <hr class="hr-blue" />
         </div>
     </div>
+
     <div class="row-cols-2">
         <div>
             <form asp-action="GrantPermissions" asp-method="post">
@@ -29,7 +35,7 @@
                     <select class="select p-2 my-2" asp-for="RolId" asp-items="Model.Rollen"></select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Opslaan" class="btn btn-stnd mt-2" />
+                    <input type="submit" value="Opslaan" class="btn btn-caution mt-2" />
                 </div>
                 <div asp-validation-summary="ModelOnly" class="txt-color-link small mt-2"></div>
             </form>
