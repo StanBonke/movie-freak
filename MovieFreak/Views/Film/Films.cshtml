@@ -1,0 +1,79 @@
+﻿@model MovieFreak.ViewModels.FilmViewModels.FilmsViewModel;
+@{
+    ViewData["Title"] = "Films";
+}
+
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+            
+        </div>
+    </div>
+
+    <div class="row row-cols-2">
+        <div class="col-6 mt-3">
+            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Terug</a>
+        </div>
+        <div class="col-6 mt-3 text-end">
+            <a asp-action="AddFilm" class="link">Film toevoegen <i class="fa fa-caret-right fa-main"></i></a>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col table-responsive">
+            <table class="table">
+                <thead class="table-header">
+                    <tr>
+                        <th class="txt-color-dark" scope="col">Id</th>
+                        <th class="txt-color-dark" scope="col">Titel</th>
+                        <th class="txt-color-dark" scope="col">Duur</th>
+                        <th class="txt-color-dark" scope="col">Genre</th>
+                        <th class="txt-color-dark" scope="col">Gesproken taal</th>
+                        <th class="txt-color-dark" scope="col">Omschrijving</th>
+                        <th class="txt-color-dark" scope="col"> </th>
+                        <th class="txt-color-dark" scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var t in Model.FilmTalen)
+                    {
+                        <tr>
+                            <td class="py-3">@t.Film.Id</td>
+                            <td class="py-3">@t.Film.Titel</td>
+                            <td class="py-3">@t.Film.Duurtijd</td>
+                            <td class="py-3">@t.Film.Genre.FilmGenre</td>
+                            <td class="py-3">@t.Taal.GesprokenTaal</td>
+                            <td class="py-3">
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Omschrijving - @t.Film.Titel" data-bs-custom-class="custom-popover" data-bs-content="@t.Film.Omschrijving">
+                                    > Bio
+                                </a>
+                            </td>
+                            <td class="py-3">
+                                <a  asp-action="EditFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Film aanpassen">
+                                    <i class="fa fa-pencil fa-main-accent"></i>
+                                </a>
+                            </td>
+                            <td class="py-3">
+                                <a  asp-action="DeleteFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Film verwijderen">
+                                    <i class="fa fa-close fa-main-close"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>

@@ -38,9 +38,14 @@
                                 <div class="col-3 h4 ">
                                     @foreach (var t in this.Model.FilmTalen)
                                     {
-                                        <h5 class="col h4">
-                                            @t.Taal.GesprokenTaal
-                                        </h5>
+                                        @if (t.Id == t.FilmId)
+                                        {
+                                            <h5 class="col h4">
+                                                @t.Taal.GesprokenTaal
+                                            </h5>
+                                            break;
+                                        }
+                                        
                                     }
                                 </div>
                                 <div class="col-3 h4 ">
@@ -56,7 +61,7 @@
                         </div>
                         <div>
                             <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" class="btn btn-stnd">
-                                > Ontdek meer
+                                Ontdek meer
                             </a>
                         </div>
                     </div>
@@ -67,7 +72,7 @@
 
     </div>
 
-    @*@if(@User.IsInRole("admin")){
+    @if(@User.IsInRole("admin")){
         <div class="row ms-2 mt-2">
             <div class="col-3">
                 <h5>Verander Spotlight Movie</h5>
@@ -80,7 +85,7 @@
                 </select>
             </div>
         </div>
-    }*@
+    }
     
     
 </section>

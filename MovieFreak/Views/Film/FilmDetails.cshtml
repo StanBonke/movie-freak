@@ -29,10 +29,16 @@
                     <div class="row">
                         @foreach (var t in this.Model.FilmTalen)
                         {
-                            <h4 class="col h4">
-                                @t.Taal.GesprokenTaal
-                            </h4>
+                            @if (t.Id == t.FilmId)
+                            {
+                                <h4 class="col h4">
+                                    @t.Taal.GesprokenTaal
+                                </h4>
+                                break;
+                            }
+                            
                         }
+
                     </div>
                 </div>
 
@@ -47,7 +53,7 @@
                     <i class="fa-solid fa-bookmark fa-2x txt-color-link"></i>
                 </button>
                 <a href="@this.Model.Trailerlink" target="_blank" class="link">
-                    > Bekijk hier de trailer
+                    <i class="fa fa-caret-right fa-main"></i> Bekijk hier de trailer
                 </a>
             </div>
 
@@ -69,7 +75,7 @@
 
             @foreach (var p in this.Model.Personages)
             {
-                if (p.Persoon.Rol == "Regisseur")
+                if (p.Persoon.Rol == "Regisseur" && this.Model.Id == p.FilmId)
                 {
                     <div class="row row-cols-4">
                         <div class="col-2">
@@ -93,7 +99,7 @@
                                 </p>
 
                                 <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    > Lees meer
+                                    <i class="fa fa-caret-right fa-main"></i> Lees meer
                                 </a>
                             </div>
                         </div>
@@ -117,7 +123,7 @@
 
             @foreach (var p in this.Model.Personages)
             {
-                if (p.Persoon.Rol == "Acteur")
+                if (p.Persoon.Rol == "Acteur" && this.Model.Id == p.FilmId)
                 {
                     <div class="row row-cols-4 mb-4">
                         <div class="col-2">
@@ -141,7 +147,7 @@
                                 </p>
 
                                 <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    > Lees meer</a>
+                                    <i class="fa fa-caret-right fa-main"></i> Lees meer</a>
                             </div>
                         </div>
                     </div>
