@@ -22,6 +22,7 @@ namespace MovieFreak.Controllers
             _context = context;
         }
 
+        // INDEX
         [AllowAnonymous]
         public IActionResult Index()
         {
@@ -46,7 +47,72 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
+        // SEARCH
         [AllowAnonymous]
+        public IActionResult Search(FilmViewModel vm)
+        {
+            // MULTIPLE PROPERTY SEARCH
+
+            var query = _context.Films.AsQueryable();
+            var query2 = _context.Personages.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(vm.FilmSearch))
+            {
+                string[] search = vm.FilmSearch.Split(' ', ',');
+                foreach (var item in search)
+                {
+                    query = query.Where(x =>
+                        x.Titel.Contains(item) ||
+                        x.Genre.FilmGenre.Contains(item))
+                        .Include(g => g.Genre);
+                }
+
+                vm.Films = query.ToList();
+
+                vm.Personages = _context.Personages
+                    .Include(p => p.Persoon)
+                    .ToList();
+            }
+            else
+            {
+                vm.Films = query.Include(g => g.Genre).ToList();
+
+                vm.Personages = _context.Personages
+                    .Include(p => p.Persoon)
+                    .ToList();
+            }
+
+            return View("Index", vm);
+
+            // SINGLE PROPERTY SEARCH
+
+            //if (!string.IsNullOrWhiteSpace(vm.FilmSearch))
+            //{
+            //    vm.Films = _context.Films
+            //        .Where(x => x.Titel
+            //        .Contains(vm.FilmSearch))
+            //        .Include(g => g.Genre)
+            //        .ToList();
+
+            //    vm.Personages = _context.Personages
+            //        .Include(p => p.Persoon)
+            //        .ToList();
+            //}
+            //else
+            //{
+            //    vm.Films = _context.Films
+            //        .Include(g => g.Genre)
+            //        .ToList();
+
+            //    vm.Personages = _context.Personages
+            //        .Include(p => p.Persoon)
+            //        .ToList();
+            //}
+            //return View("Index", vm);
+        }
+
+        // FILM DETAILS
+        [Authorize]
         public IActionResult FilmDetails(int id)
         {
             Film film = _context.Films.Where(f => f.Id == id).FirstOrDefault();
@@ -82,6 +148,7 @@ namespace MovieFreak.Controllers
             }
         }
 
+        // FILMS
         [Authorize(Roles = "admin")]
         public IActionResult Films()
         {
@@ -102,6 +169,7 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
+        // ADD
         [Authorize(Roles = "admin")]
         public IActionResult AddFilm()
         {
@@ -136,16 +204,113 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
+        // EDIT
         [Authorize(Roles = "admin")]
-        public IActionResult EditFilm()
+        public async Task<IActionResult> EditFilm(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Film f = await _context.Films.FindAsync(id);
+            if (f == null)
+            {
+                return NotFound();
+            }
+
+            List<Genre> genres = _context.Genres.ToList();
+
+            EditFilmViewModel vm = new EditFilmViewModel()
+            {
+                Id = f.Id,
+                Titel = f.Titel,
+                Duurtijd = f.Duurtijd,
+                Trailerlink = f.Trailerlink,
+                Omschrijving = f.Omschrijving,
+                GenreId = f.Genre.Id,
+
+                Genres = genres
+            };
+            return View(vm);
         }
 
-        [Authorize(Roles = "admin")]
-        public IActionResult DeleteFilm()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditFilm(int id, EditFilmViewModel vm)
         {
-            return View();
+            if (id != vm.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Film f = new Film()
+                    {
+                        Id = vm.Id,
+                        Titel = vm.Titel,
+                        Duurtijd = vm.Duurtijd,
+                        Trailerlink = vm.Trailerlink,
+                        Omschrijving = vm.Omschrijving,
+                        GenreId = vm.GenreId,
+                    };
+                    _context.Update(f);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    if (!_context.Films.Any(e => e.Id == vm.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Films));
+            }
+            return View(vm);
+        }
+
+        // DELETE
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> DeleteFilm(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Film f = await _context.Films.FirstOrDefaultAsync(f => f.Id == id);
+            if (f == null)
+            {
+                return NotFound();
+            }
+
+            DeleteFilmViewModel vm = new DeleteFilmViewModel()
+            {
+                Id = f.Id,
+                Titel = f.Titel,
+                Duurtijd = f.Duurtijd,
+                Trailerlink = f.Trailerlink,
+                Omschrijving = f.Omschrijving,
+                GenreId = f.GenreId,
+            };
+            return View(vm);
+        }
+
+        [HttpPost, ActionName("DeleteFilm")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            Film f = await _context.Films.FindAsync(id);
+            _context.Films.Remove(f);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Films));
         }
     }
 }

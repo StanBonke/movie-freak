@@ -5,7 +5,9 @@ using MovieFreak.Data;
 using MovieFreak.Models;
 using MovieFreak.ViewModels.PersonViewModels;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace MovieFreak.Controllers
@@ -20,6 +22,7 @@ namespace MovieFreak.Controllers
             _context = context;
         }
 
+        // INDEX
         public IActionResult Index()
         {
             List<Persoon> personen = _context.Personen.ToList();
@@ -31,7 +34,32 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
-        // ADD PERSON
+        // SEARCH
+        public IActionResult Search(PersonsViewModel vm)
+        {
+            var query = _context.Personen.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(vm.PersonSearch))
+            {
+                string[] search = vm.PersonSearch.Split(' ', ',');
+                foreach (var item in search)
+                {
+                    query = query.Where(x =>
+                    x.Voornaam.Contains(item)
+                    || x.Achternaam.Contains(item));
+                }
+
+                vm.Personen = query.ToList();
+            }
+            else
+            {
+                vm.Personen = query.ToList();
+            }
+
+            return View("Index", vm);
+        }
+
+        // ADD
         public IActionResult AddPerson()
         {
             return View();
@@ -54,12 +82,12 @@ namespace MovieFreak.Controllers
                     Rol = vm.Rol
                 });
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(AddPerson));
             }
             return View(vm);
         }
 
-        // CREATE PERSON
+        // EDIT
         public async Task<IActionResult> EditPerson(int? id)
         {
             if (id == null)
@@ -130,7 +158,7 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
-        // DELETE PERSON
+        // DELETE
         public async Task<IActionResult> DeletePerson(int? id)
         {
             if (id == null)

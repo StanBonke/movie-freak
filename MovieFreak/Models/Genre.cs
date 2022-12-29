@@ -8,7 +8,7 @@ namespace MovieFreak.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een genre in te vullen.")]
+        [Required(ErrorMessage = "Genre cannot be empty")]
         public string FilmGenre { get; set; }
 
         // navigation properties

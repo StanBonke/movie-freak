@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieFreak.ViewModels.GebruikerViewModels
+namespace MovieFreak.ViewModels.UserViewModels
 {
-    public class CreateGebruikerViewModel
+    public class AddUserViewModel
     {
         public string Email { get; set; }
 

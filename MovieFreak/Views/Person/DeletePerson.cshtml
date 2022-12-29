@@ -1,6 +1,6 @@
 ﻿@model MovieFreak.ViewModels.PersonViewModels.DeletePersonViewModel;
 @{
-    ViewData["Title"] = $"{Model.Rol} verwijderen?";
+    ViewData["Title"] = $"Delete {this.Model.Rol}";
 }
 <section class="container mt-3">
     <div class="row">
@@ -11,7 +11,7 @@
 
     <div class="row mt-3">
         <div class="col">
-            <a asp-action="Index" class="link"><i class="fa fa-caret-left fa-main"></i> Terug</a>
+            <a asp-action="Index" class="link"><i class="fa fa-caret-left fa-main"></i> Back</a>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
 
     <div class="row">
         <div class="col">
-            <h4>Weet u zeker dat u <span class="txt-color-link">@Model.Voornaam @Model.Achternaam</span> wilt verwijderen?</h4>
+            <h4>Are you sure you want to remove <span class="txt-color-link">@Model.Voornaam @Model.Achternaam</span> from the database?</h4>
         </div>
     </div>
 
@@ -31,7 +31,7 @@
         <div class="col">
             <form asp-action="DeletePerson">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" value="@Model.Rol verwijderen" class="btn btn-caution" />
+                <input type="submit" value="Yes I'm sure" class="btn btn-caution" />
             </form>
         </div>
     </div>

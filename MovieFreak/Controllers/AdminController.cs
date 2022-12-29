@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
 using MovieFreak.ViewModels.AdminViewModels;
+using MovieFreak.ViewModels.PersonViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,89 +38,52 @@ namespace MovieFreak.Controllers
             return View(vm);
         }
 
-        // GENRES
-        public IActionResult Genres()
-        {
-            List<Genre> genres = _context.Genres.ToList();
-
-            GenresViewModel vm = new GenresViewModel()
-            {
-                Genres = genres
-            };
-
-            return View(vm);
-        }
-
-        public IActionResult AddGenre()
+        // LINK PERSON TO MOVIE
+        public IActionResult AddCharacter()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddGenre(AddGenreViewModel vm)
+        public async Task<IActionResult> AddCharacter(AddCharacterViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(new Genre()
+                _context.Add(new Personage()
                 {
-                    FilmGenre = vm.FilmGenre
+                    VoornaamPersonage = vm.VoornaamPersonage,
+                    AchternaamPersonage = vm.AchternaamPersonage,
+                    FilmId = vm.FilmId,
+                    PersoonId = vm.PersoonId
                 });
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Genres));
+                return RedirectToAction(nameof(AddCharacter));
             }
             return View(vm);
         }
 
-        // LANGUAGES
-        public IActionResult Languages()
-        {
-            List<Taal> talen = _context.Talen.ToList();
-
-            LanguagesViewModel vm = new LanguagesViewModel()
-            {
-                Talen = talen
-            };
-
-            return View(vm);
-        }
-
-        public IActionResult AddLanguage()
+        // LINK LANGUAGE TO MOVIE
+        public IActionResult AddFilmLanguage()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddLanguage(AddLanguageViewModel vm)
+        public async Task<IActionResult> AddFilmLanguage(AddFilmLanguageViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(new Taal()
+                _context.Add(new FilmTaal()
                 {
-                    GesprokenTaal = vm.GesprokenTaal
+                    FilmId = vm.FilmId,
+                    TaalId = vm.TaalId
                 });
+
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Languages));
+                return RedirectToAction(nameof(AddFilmLanguage));
             }
-            return View(vm);
-        }
-
-        // DATALINK
-        public IActionResult Datalink()
-        {
-            List<Film> films = _context.Films.ToList();
-            List<Persoon> personen = _context.Personen.ToList();
-            List<Genre> genres = _context.Genres.ToList();
-            List<Taal> talen = _context.Talen.ToList();
-
-            DatalinkViewModel vm = new DatalinkViewModel()
-            {
-                Films = films,
-                Personen = personen,
-                Genres = genres,
-                Talen = talen
-            };
 
             return View(vm);
         }

@@ -1,6 +1,6 @@
 ﻿@model MovieFreak.ViewModels.FilmViewModels.FilmsViewModel;
 @{
-    ViewData["Title"] = "Films";
+    ViewData["Title"] = "Movies";
 }
 
 <section class="container mt-3">
@@ -13,10 +13,10 @@
 
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
-            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Terug</a>
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
         <div class="col-6 mt-3 text-end">
-            <a asp-action="AddFilm" class="link">Film toevoegen <i class="fa fa-caret-right fa-main"></i></a>
+            <a asp-action="AddFilm" class="btn btn-stnd">Add new movie <i class="fa fa-caret-right fa-light"></i></a>
         </div>
     </div>
 
@@ -25,20 +25,21 @@
             <hr class="hr-blue" />
         </div>
     </div>
+
 </section>
 
-<section>
+<section class="container">
     <div class="row">
         <div class="col table-responsive">
             <table class="table">
                 <thead class="table-header">
                     <tr>
                         <th class="txt-color-dark" scope="col">Id</th>
-                        <th class="txt-color-dark" scope="col">Titel</th>
-                        <th class="txt-color-dark" scope="col">Duur</th>
+                        <th class="txt-color-dark" scope="col">Title</th>
+                        <th class="txt-color-dark" scope="col">Duration</th>
                         <th class="txt-color-dark" scope="col">Genre</th>
-                        <th class="txt-color-dark" scope="col">Gesproken taal</th>
-                        <th class="txt-color-dark" scope="col">Omschrijving</th>
+                        <th class="txt-color-dark" scope="col">Spoken language</th>
+                        <th class="txt-color-dark" scope="col"> </th>
                         <th class="txt-color-dark" scope="col"> </th>
                         <th class="txt-color-dark" scope="col"> </th>
                     </tr>
@@ -53,18 +54,18 @@
                             <td class="py-3">@t.Film.Duurtijd</td>
                             <td class="py-3">@t.Film.Genre.FilmGenre</td>
                             <td class="py-3">@t.Taal.GesprokenTaal</td>
-                            <td class="py-3">
-                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Omschrijving - @t.Film.Titel" data-bs-custom-class="custom-popover" data-bs-content="@t.Film.Omschrijving">
-                                    > Bio
+                            <td class="py-3" style="max-width:max-content">
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Description - @t.Film.Titel" data-bs-custom-class="custom-popover" data-bs-content="@t.Film.Omschrijving">
+                                    <i class="fa fa-align-left fa-main-accent"></i>
                                 </a>
                             </td>
                             <td class="py-3">
-                                <a  asp-action="EditFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Film aanpassen">
+                                <a  asp-action="EditFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Edit - @t.Film.Titel">
                                     <i class="fa fa-pencil fa-main-accent"></i>
                                 </a>
                             </td>
                             <td class="py-3">
-                                <a  asp-action="DeleteFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Film verwijderen">
+                                <a asp-action="DeleteFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Delete - @t.Film.Titel">
                                     <i class="fa fa-close fa-main-close"></i>
                                 </a>
                             </td>
