@@ -6,7 +6,7 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown mb-3 mb-md-0">
         <a class="nav-link dropdown-toggle" title="Account" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             @User.Identity.Name
         </a>

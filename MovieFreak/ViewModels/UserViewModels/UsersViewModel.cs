@@ -8,6 +8,6 @@ namespace MovieFreak.ViewModels.UserViewModels
         public List<IdentityUser> Users { get; set; }
 
         // SEARCH
-        public string UserSearch { get; set; }
+        public string Search { get; set; }
     }
 }

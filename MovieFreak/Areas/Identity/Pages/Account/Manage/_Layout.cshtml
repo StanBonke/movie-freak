@@ -15,6 +15,43 @@
         </div>
     </div>
 
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 mt-4 mb-5">
+        @if (User.IsInRole("admin"))
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-film fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Manage movies</h4>
+                        <a href="/Admin/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-users fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Manage users</h4>
+                        <a href="/User/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col mb-3">
+                <div class="card user-card">
+                    <i class="fa-solid fa-heart fa-main fa-card"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center h4-details fs-6">Favorites</h4>
+                        <a href="/Account/Index" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
     <div class="row">
         <h4>
             Change your account settings
@@ -73,40 +110,7 @@
             </div>
         </div>
 
-        @if (User.IsInRole("admin"))
-        {
-            <div class="col mb-3">
-                <div class="card user-card">
-                    <i class="fa-solid fa-database fa-main fa-card"></i>
-                    <div class="card-body">
-                        <h4 class="card-title text-center h4-details fs-6">Movie data</h4>
-                        <a href="/Admin/Index" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col mb-3">
-                <div class="card user-card">
-                    <i class="fa-solid fa-users fa-main fa-card"></i>
-                    <div class="card-body">
-                        <h4 class="card-title text-center h4-details fs-6">Users</h4>
-                        <a href="/User/Index" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="col mb-3">
-                <div class="card user-card">
-                    <i class="fa-solid fa-heart fa-main fa-card"></i>
-                    <div class="card-body">
-                        <h4 class="card-title text-center h4-details fs-6">Favorites</h4>
-                        <a href="/Account/Index" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-        }
+        
 
     </div>
 </section>

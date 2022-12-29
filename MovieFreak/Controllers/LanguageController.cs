@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieFreak.Data;
 using MovieFreak.Models;
+using MovieFreak.ViewModels.GenreViewModels;
 using MovieFreak.ViewModels.LanguageViewModels;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +33,23 @@ namespace MovieFreak.Controllers
             };
 
             return View(vm);
+        }
+
+        // SEARCH
+        public IActionResult Search(LanguagesViewModel vm)
+        {
+            if (!string.IsNullOrWhiteSpace(vm.Search))
+            {
+                vm.Talen = _context.Talen
+                    .Where(x => x.GesprokenTaal == vm.Search)
+                    .ToList();
+            }
+            else
+            {
+                vm.Talen = _context.Talen
+                    .ToList();
+            }
+            return View("Index", vm);
         }
 
         // ADD

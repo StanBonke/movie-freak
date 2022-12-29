@@ -6,5 +6,8 @@ namespace MovieFreak.ViewModels.GenreViewModels
     public class GenresViewModel
     {
         public List<Genre> Genres { get; set; }
+
+        // SEARCH
+        public string Search { get; set; }
     }
 }

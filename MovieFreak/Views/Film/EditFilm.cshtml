@@ -26,12 +26,12 @@
     <div class="row">
         <div class="col">
             <div class="body-settings">
-                <div class="form-add" style="max-width:none">
+                <div class="form-add">
                     <form asp-action="EditFilm">
 
                         <input type="hidden" asp-for="Id" />
 
-                        <div class="row row-cols-2">
+                        <div class="row">
                             <div class="col">
                                 <div class="row row-cols-2">
 
@@ -99,29 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="mt-3 ms-5 col-2 table-responsive">
-                                <table class="table">
-                                    <thead class="table-header">
-                                        <tr>
-                                            <th class="txt-color-dark" scope="col">Id</th>
-                                            <th class="txt-color-dark" scope="col">Genre</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach (var g in Model.Genres)
-                                        {
-                                            <tr>
-                                                <td>@g.Id</td>
-                                                <td>@g.FilmGenre</td>
-                                            </tr>
-                                        }
-
-                                    </tbody>
-                                </table>
-                            </div>
-
                         </div>
                     </form>
                 </div>

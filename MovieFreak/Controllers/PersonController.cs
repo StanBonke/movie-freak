@@ -39,9 +39,9 @@ namespace MovieFreak.Controllers
         {
             var query = _context.Personen.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(vm.PersonSearch))
+            if (!string.IsNullOrWhiteSpace(vm.Search))
             {
-                string[] search = vm.PersonSearch.Split(' ', ',');
+                string[] search = vm.Search.Split(' ', ',');
                 foreach (var item in search)
                 {
                     query = query.Where(x =>

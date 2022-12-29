@@ -8,6 +8,6 @@ namespace MovieFreak.ViewModels.PersonViewModels
         public List<Persoon> Personen { get; set; }
 
         // SEARCH
-        public string PersonSearch { get; set; }
+        public string Search { get; set; }
     }
 }
