@@ -40,11 +40,11 @@ namespace MovieFreak.Controllers
         [AllowAnonymous]
         public IActionResult Search(UsersViewModel vm)
         {
-            if (!string.IsNullOrWhiteSpace(vm.UserSearch))
+            if (!string.IsNullOrWhiteSpace(vm.Search))
             {
                 vm.Users = _context.Users
                     .Where(x => x.UserName
-                    .Contains(vm.UserSearch))
+                    .Contains(vm.Search))
                     .ToList();
             }
             else

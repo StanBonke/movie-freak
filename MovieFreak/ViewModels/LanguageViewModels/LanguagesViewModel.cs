@@ -6,5 +6,8 @@ namespace MovieFreak.ViewModels.LanguageViewModels
     public class LanguagesViewModel
     {
         public List<Taal> Talen { get; set; }
+
+        // SEARCH
+        public string Search { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace MovieFreak.ViewModels.FilmViewModels
         public Genre Genre { get; set; }
 
         // SEARCH
-        public string FilmSearch { get; set; }
+        public string Search { get; set; }
     }
 }

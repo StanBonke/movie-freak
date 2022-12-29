@@ -51,12 +51,24 @@
         <h5>Authenticator app</h5>
         @if (!Model.HasAuthenticator)
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="link ms-2"><i class="fa fa-caret-right fa-main"></i> Add authenticator app</a>
+            <div class="row">
+                <div class="col-auto my-2">
+                    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-stnd"><i class="fa fa-caret-right fa-light"></i> Add authenticator app</a>
+                </div>
+            </div>
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="link ms-2"><i class="fa fa-caret-right fa-main"></i> Setup authenticator app</a>
-            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="link ms-2"><i class="fa fa-caret-right fa-main"></i> Reset authenticator app</a>
+            <div class="row">
+                <div class="col-auto my-2">
+                    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-stnd"><i class="fa fa-caret-right fa-light"></i> Setup authenticator app</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto my-2">
+                    <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-caution"><i class="fa fa-caret-right fa-light"></i> Reset authenticator app</a>
+                </div>
+            </div>
         }
     </div>
 </div>

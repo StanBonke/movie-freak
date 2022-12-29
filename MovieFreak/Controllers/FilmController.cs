@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using MovieFreak.Models;
 using MovieFreak.ViewModels.FilmViewModels;
 using MovieFreak.ViewModels.PersonViewModels;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,10 +19,12 @@ namespace MovieFreak.Controllers
     public class FilmController : Controller
     {
         private readonly MfContext _context;
+        private IWebHostEnvironment Environment;
 
-        public FilmController(MfContext context)
+        public FilmController(MfContext context, IWebHostEnvironment _environment)
         {
             _context = context;
+            Environment = _environment;
         }
 
         // INDEX
@@ -56,9 +61,9 @@ namespace MovieFreak.Controllers
             var query = _context.Films.AsQueryable();
             var query2 = _context.Personages.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(vm.FilmSearch))
+            if (!string.IsNullOrWhiteSpace(vm.Search))
             {
-                string[] search = vm.FilmSearch.Split(' ', ',');
+                string[] search = vm.Search.Split(' ', ',');
                 foreach (var item in search)
                 {
                     query = query.Where(x =>

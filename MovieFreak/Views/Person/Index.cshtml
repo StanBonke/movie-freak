@@ -11,10 +11,10 @@
 
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
-            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Back</a>
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
         <div class="col-6 mt-3 text-end">
-            <a asp-action="AddPerson" class="link">Add new person <i class="fa fa-caret-right fa-main"></i></a>
+            <a asp-action="AddPerson" class="btn btn-stnd">Add new person <i class="fa fa-caret-right fa-light"></i></a>
         </div>
     </div>
 
@@ -25,11 +25,11 @@
     </div>
 
     <div class="row mb-4">
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4">
             <form asp-controller="Person" asp-action="Search" method="get">
                 <div class="input-group">
                     <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
-                    <input asp-for="PersonSearch" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input asp-for="Search" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 </div>
             </form>
         </div>

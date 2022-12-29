@@ -10,7 +10,7 @@
     </div>
     <div class="row row-cols-1 row-cols-md-3">
         <div class="col-12 col-md-2 mt-3">
-            <a href="/Identity/Account/Manage/Index" class="btn btn-stnd me-4"><i class="fa fa-caret-left fa-light"></i> Back</a>
+            <a href="/Identity/Account/Manage/Index" class="btn btn-stnd"><i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
         <div class="col-12 col-md-6 pt-4">
             <a asp-action="AddUser" class="link me-4"><i class="fa fa-caret-right fa-main"></i> Add user</a>
@@ -20,7 +20,7 @@
             <form asp-controller="User" asp-action="Search" method="get">
                 <div class="input-group">
                     <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
-                    <input asp-for="UserSearch" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input asp-for="Search" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 </div>
             </form>
         </div>

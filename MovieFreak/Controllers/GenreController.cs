@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieFreak.Data;
 using MovieFreak.Models;
+using MovieFreak.ViewModels.FilmViewModels;
 using MovieFreak.ViewModels.GenreViewModels;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +33,23 @@ namespace MovieFreak.Controllers
             };
 
             return View(vm);
+        }
+
+        // SEARCH
+        public IActionResult Search(GenresViewModel vm)
+        {
+            if (!string.IsNullOrWhiteSpace(vm.Search))
+            {
+                vm.Genres = _context.Genres
+                    .Where(x => x.FilmGenre == vm.Search)
+                    .ToList();
+            }
+            else
+            {
+                vm.Genres = _context.Genres
+                    .ToList();
+            }
+            return View("Index", vm);
         }
 
         // ADD
