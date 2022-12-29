@@ -25,40 +25,31 @@
                     <h4 class="h4">@this.Model.Genre.FilmGenre</h4>
                 </div>
 
-                <div class="col-3">
+                <div class="col-auto">
                     <div class="row">
                         @foreach (var t in this.Model.FilmTalen)
                         {
-                            @if (t.Id == t.FilmId)
+                            @if (this.Model.Id == t.FilmId)
                             {
                                 <h4 class="col h4">
                                     @t.Taal.GesprokenTaal
                                 </h4>
-                                break;
                             }
-                            
                         }
-
                     </div>
                 </div>
-
             </div>
-            
             <div class="py-4 fs-6">
                 <p class="line-clamp-10">@this.Model.Omschrijving</p>
             </div>
-
             <div class="position-absolute bottom-0 pb-2">
                 <button class="btn btn-lg">
-                    <i class="fa-solid fa-bookmark fa-2x txt-color-link"></i>
+                    <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
                 </button>
                 <a href="@this.Model.Trailerlink" target="_blank" class="link">
-                    <i class="fa fa-caret-right fa-main"></i> Bekijk hier de trailer
+                    <i class="fa fa-caret-right fa-main"></i> Watch trailer
                 </a>
             </div>
-
-            
-
         </div>
     </div>
 
@@ -75,7 +66,7 @@
 
             @foreach (var p in this.Model.Personages)
             {
-                if (p.Persoon.Rol == "Regisseur" && this.Model.Id == p.FilmId)
+                if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
                 {
                     <div class="row row-cols-4">
                         <div class="col-2">
@@ -99,7 +90,7 @@
                                 </p>
 
                                 <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    <i class="fa fa-caret-right fa-main"></i> Lees meer
+                                    <i class="fa fa-caret-right fa-main"></i> Read more
                                 </a>
                             </div>
                         </div>
@@ -123,7 +114,7 @@
 
             @foreach (var p in this.Model.Personages)
             {
-                if (p.Persoon.Rol == "Acteur" && this.Model.Id == p.FilmId)
+                if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
                 {
                     <div class="row row-cols-4 mb-4">
                         <div class="col-2">
@@ -134,7 +125,9 @@
                                 <h3 class="mb-0">
                                     @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
                                 </h3>
-                                <h4 class="h4-details mt-0 txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</h4>
+                                <h4 class="h4-details mt-0">as
+                                    <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
+                                </h4>
                                 <div class="pt-3">
                                     <h4 class="h4-details my-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
                                     <h4 class="h4-details my-2">@p.Persoon.Geboorteplaats</h4>
@@ -147,7 +140,7 @@
                                 </p>
 
                                 <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    <i class="fa fa-caret-right fa-main"></i> Lees meer</a>
+                                    <i class="fa fa-caret-right fa-main"></i> Read more</a>
                             </div>
                         </div>
                     </div>

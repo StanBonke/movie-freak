@@ -1,0 +1,90 @@
+﻿@model MovieFreak.ViewModels.AdminViewModels.AddCharacterViewModel;
+@{
+    ViewData["Title"] = "Datalink person";
+}
+
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-2">
+        <div class="col-6 mt-3">
+            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Back</a>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+
+<div class="row row-cols-1">
+    <div class="col-12 col-md-7">
+
+        <div class="body-settings">
+            <div class="form-add">
+                <form asp-action="AddCharacter">
+
+                    <div class="row row-cols-2">
+                        <div class="col-12 col-lg-6">
+                            <div class="form-floating">
+                                <input asp-for="VoornaamPersonage" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
+                                <label asp-for="VoornaamPersonage" for="floatingInput">Name character</label>
+                                <div class="text-start">
+                                    <span asp-validation-for="VoornaamPersonage" class="txt-color-link fs-s"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="form-floating">
+                                <input asp-for="AchternaamPersonage" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
+                                <label asp-for="AchternaamPersonage" for="floatingInput">Surname character</label>
+                                <div class="text-start">
+                                    <span asp-validation-for="AchternaamPersonage" class="txt-color-link fs-s"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col-4 col-lg-3">
+                            <div class="form-floating">
+                                <input asp-for="FilmId" type="number" class="form-control" id="floatingInput" placeholder="firstname" />
+                                <label asp-for="FilmId" for="floatingInput">Movie Id</label>
+                                <div class="text-start">
+                                    <span asp-validation-for="FilmId" class="txt-color-link fs-s"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-lg-3">
+                            <div class="form-floating">
+                                <input asp-for="PersoonId" type="number" class="form-control" id="floatingInput" placeholder="firstname" />
+                                <label asp-for="PersoonId" for="floatingInput">Person Id</label>
+                                <div class="text-start">
+                                    <span asp-validation-for="PersoonId" class="txt-color-link fs-s"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating text-start">
+                                <button type="submit" value="Create" class="btn btn-caution my-3">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

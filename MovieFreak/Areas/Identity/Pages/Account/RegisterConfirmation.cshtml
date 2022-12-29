@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterConfirmationModel
 @{
-    ViewData["Title"] = "Bevestig je registratie";
+    ViewData["Title"] = "Confirm registration";
 }
 <section class="container mt-3">
     <div class="row mb-2">
@@ -12,14 +12,14 @@
             if (@Model.DisplayConfirmAccountLink)
             {
                 <p>
-                    Deze website kan momenteel je account nog niet verifieren via e-mail. Klik op de volgende link om je e-mailadres te bevestigen:
-                    <a class="txt-color-link" id="confirm-link" href="@Model.EmailConfirmationUrl"><br>> Activeer hier je account!</a>
+                    This website can't verify your account yet through email. Click on the next link to confirm your email address:'
+                    <a class="txt-color-link" id="confirm-link" href="@Model.EmailConfirmationUrl"><br><i class="fa fa-caret-right fa-main"></i> Activate your account!</a>
                 </p>
             }
             else
             {
                 <p>
-                    Controleer je inbox om je account te activeren.
+                    Check your inbox to activate your account!
                 </p>
             }
         }

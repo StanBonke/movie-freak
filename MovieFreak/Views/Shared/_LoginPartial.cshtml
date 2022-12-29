@@ -14,11 +14,11 @@
         {
             <ul class="dropdown-menu nav-dropdown" aria-labelledby="navbarScrollingDropdown">
                 <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account</a></li>
-                <li><a class="dropdown-item nav-dropdown-text" href="/Admin/Index">Databeheer</a></li>
-                <li><a class="dropdown-item nav-dropdown-text" href="/Gebruiker/Index">Gebruikersbeheer</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" href="/Admin/Index">Movie data</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" href="/User/Index">Users</a></li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button type="submit" class="dropdown-item nav-dropdown-text">Uitloggen</button>
+                            <button type="submit" class="dropdown-item nav-dropdown-text">Logout</button>
                     </form>
                 </li>
             </ul>
@@ -27,10 +27,10 @@
         {
                 <ul class="dropdown-menu nav-dropdown" aria-labelledby="navbarScrollingDropdown">
                     <li><a class="dropdown-item nav-dropdown-text" href="/Identity/Account/Manage/Index">Account</a></li>
-                    <li><a class="dropdown-item nav-dropdown-text" href="/Account/Index">Lijsten</a></li>
+                    <li><a class="dropdown-item nav-dropdown-text" href="/Account/Index">Favorites</a></li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button type="submit" class="dropdown-item nav-dropdown-text">Uitloggen</button>
+                            <button type="submit" class="dropdown-item nav-dropdown-text">Logout</button>
                     </form>
                 </li>
             </ul>
@@ -45,7 +45,7 @@ else
         </a>
         <ul class="dropdown-menu nav-dropdown" aria-labelledby="navbarScrollingDropdown">
                 <li><a class="dropdown-item nav-dropdown-text" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-                <li><a class="dropdown-item nav-dropdown-text" asp-area="Identity" asp-page="/Account/Register">Registreren</a></li>
+                <li><a class="dropdown-item nav-dropdown-text" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
         </ul>
     </li>
 }

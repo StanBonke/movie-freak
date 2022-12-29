@@ -5,6 +5,7 @@
     --link: #EE6C4D;
     --link-hover: #D44A2A;
     --main: #3D5A80;
+    --main-hover: #223957;
     --darkText: #293241;
     --lightText: #FFFFFF;
 }
@@ -90,11 +91,15 @@ body {
 }
 
 .fs {
-    font-size: 13pt;
+    font-size: 12pt;
 }
 
 .fs-s {
     font-size: 10pt;
+}
+
+.fa-light {
+    color: var(--lightText);
 }
 
 .fa-main {
@@ -175,22 +180,22 @@ input:focus {
 
 .btn-stnd {
     color: var(--lightText);
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--main);
+    border-color: var(--main);
     border-radius: 8px;
 }
 
     .btn-stnd:hover {
         color: var(--lightText);
-        background: var(--main);
-        border-color: var(--main);
+        background: var(--main-hover);
+        border-color: var(--main-hover);
     }
 
     .btn-check:focus + .btn-stnd, .btn-stnd:focus {
         color: var(--lightText);
-        background: var(--main);
-        border-color: var(--main);
-        box-shadow: 0 0 0 0.20rem var(--accent);
+        background: var(--main-hover);
+        border-color: var(--main-hover);
+        box-shadow: 0 0 0 0.20rem var(--main);
     }
 
 .btn-trailer {
@@ -401,6 +406,7 @@ button.nav-link {
 .form-add input[type="password"],
 .form-add input[type="date"],
 .form-add input[type="text"],
+.form-add input[type="number"],
 .form-add textarea {
     margin-bottom: 10px;
     border-radius: 0px;
@@ -448,6 +454,10 @@ textarea {
     border-bottom: 1px solid;
 }
 
+table {
+    white-space: nowrap;
+}
+
 /*USER MANAGEMENT*/
 .user-card {
     background: var(--lightText);
@@ -462,13 +472,57 @@ textarea {
     }
 
 /*BIO POPOVER*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--lightText);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--main);
+    }
+
 .custom-popover {
-    max-width: 400px;
+    max-width: 600px;
+    max-height: 600px;
     background: var(--lightText);
     border: 1px solid var(--lightText);
     border-radius: 8px;
     box-shadow: 0 0 5px #cecece;
     padding: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+    .custom-popover::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .custom-popover::-webkit-scrollbar-track {
+        background: var(--lightText);
+    }
+
+    .custom-popover::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+    }
+
+        .custom-popover::-webkit-scrollbar-thumb:hover {
+            background: var(--main);
+        }
+
+.popover {
+    white-space: pre-wrap;
 }
 
 .popover-header {

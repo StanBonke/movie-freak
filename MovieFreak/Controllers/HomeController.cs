@@ -4,8 +4,10 @@ using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
 using MovieFreak.ViewModels.HomeViewModels;
+using MovieFreak.ViewModels.PersonViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,12 +23,15 @@ namespace MovieFreak.Controllers
             _context = context;
         }
 
+        // INDEX
         public IActionResult Index()
         {
             Film film = _context.Films.FirstOrDefault();
-            Genre genre = _context.Genres.FirstOrDefault();
+            Genre genre = _context.Genres.Where(g => g.Id == film.GenreId).FirstOrDefault();
 
-            List<Film> films = _context.Films.ToList();
+            List<Film> films = _context.Films
+                .Include(g => g.Genre)
+                .ToList();
 
             List<FilmTaal> filmTalen = _context.FilmTalen
                 .Include(t => t.Taal)
@@ -52,6 +57,7 @@ namespace MovieFreak.Controllers
             }
         }
 
+        // PRIVACY
         public IActionResult Privacy()
         {
             return View();

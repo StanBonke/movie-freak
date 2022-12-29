@@ -1,0 +1,138 @@
+﻿@model MovieFreak.ViewModels.FilmViewModels.EditFilmViewModel;
+@{
+    ViewData["Title"] = "Edit movie";
+}
+<section class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <a asp-action="Films" class="btn btn-stnd"><i class="fa fa-caret-left fa-light"></i> Back</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <div class="body-settings">
+                <div class="form-add" style="max-width:none">
+                    <form asp-action="EditFilm">
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <div class="row row-cols-2">
+
+                                    <div class="col-9">
+                                        <div class="form-floating">
+                                            <input asp-for="Titel" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
+                                            <label asp-for="Titel" for="floatingInput">Title</label>
+                                            <div class="text-start">
+                                                <span asp-validation-for="Titel" class="txt-color-link fs-s"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="form-floating">
+                                            <input asp-for="Duurtijd" type="text" class="form-control" id="floatingInput" placeholder="lastname" />
+                                            <label asp-for="Duurtijd" for="floatingInput">Duration</label>
+                                            <div class="text-start">
+                                                <span asp-validation-for="Duurtijd" class="txt-color-link fs-s"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row row-cols-2">
+
+                                    <div class="col-9">
+                                        <div class="form-floating">
+                                            <input asp-for="Trailerlink" type="text" class="form-control" id="floatingInput" placeholder="lastname" />
+                                            <label asp-for="Trailerlink" for="floatingInput">Trailer link</label>
+                                            <div class="text-start">
+                                                <span asp-validation-for="Trailerlink" class="txt-color-link fs-s"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="form-floating">
+                                            <input asp-for="GenreId" type="number" class="form-control" id="floatingInput" placeholder="0" />
+                                            <label asp-for="GenreId" for="floatingInput">Genre id</label>
+                                            <div class="text-start">
+                                                <span asp-validation-for="GenreId" class="txt-color-link fs-s"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating">
+                                            <textarea asp-for="Omschrijving" type="text" class="form-control" id="floatingInput" placeholder="description" onkeyup="adjustHeight(this)"></textarea>
+                                            <label asp-for="Omschrijving" for="exampleFormControlTextarea1">Description</label>
+                                            <div class="text-start">
+                                                <span asp-validation-for="Omschrijving" class="txt-color-link fs-s"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-floating text-start">
+                                            <button type="submit" value="Create" class="btn btn-caution my-3">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 ms-5 col-2 table-responsive">
+                                <table class="table">
+                                    <thead class="table-header">
+                                        <tr>
+                                            <th class="txt-color-dark" scope="col">Id</th>
+                                            <th class="txt-color-dark" scope="col">Genre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var g in Model.Genres)
+                                        {
+                                            <tr>
+                                                <td>@g.Id</td>
+                                                <td>@g.FilmGenre</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

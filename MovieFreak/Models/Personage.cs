@@ -1,4 +1,6 @@
-﻿namespace MovieFreak.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MovieFreak.Models
 {
     public class Personage
     {
@@ -7,6 +9,7 @@
         public string AchternaamPersonage { get; set; }
 
         // foreign keys
+
         public int FilmId { get; set; }
 
         public int PersoonId { get; set; }

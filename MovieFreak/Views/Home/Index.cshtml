@@ -2,6 +2,20 @@
 @{
     ViewData["Title"] = "Home";
 }
+@{
+
+    List<int> list = new List<int>();
+
+    foreach (Film f in Model.Films)
+    {
+        list.Add(f.Id);
+    }
+
+    var random = new Random();
+    int index = random.Next(list.Count);
+
+}
+
 
 @*LAPTOP LARGE*@
 <section class="container d-none d-xl-block">
@@ -16,9 +30,11 @@
 
     <div class="row gx-5 spotlight">
 
+        
+
         @foreach (Film f in Model.Films)
         {
-            if (f.Id == 1)
+            if (f.Id == list[index])
             {
                 <div class="col">
                     <div class="p-3">
@@ -26,68 +42,57 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-3 ">
+                    <div class="p-3">
                         <h1 class="m-0">
                             @f.Titel
                         </h1>
-                        <div class="container px-0 py-3">
-                            <div class="row m-0 p-0">
-                                <div class="col-3 h4  p-0">
+                        <div class="mt-3 mb-1">
+
+                            <div class="row row-cols-3 mx-0 px-0">
+
+                                <div class="col h4 ps-0">
                                     <h5>@f.Duurtijd</h5>
                                 </div>
-                                <div class="col-3 h4 ">
-                                    @foreach (var t in this.Model.FilmTalen)
-                                    {
-                                        @if (t.Id == t.FilmId)
+
+                                <div class="col h4 ps-0">
+                                    <div class="row">
+                                        @foreach (var t in this.Model.FilmTalen)
                                         {
-                                            <h5 class="col h4">
-                                                @t.Taal.GesprokenTaal
-                                            </h5>
-                                            break;
+                                            @if (f.Id == t.FilmId)
+                                            {
+                                                <h4 class="col h4">
+                                                    @t.Taal.GesprokenTaal
+                                                </h4>
+                                            }
                                         }
-                                        
-                                    }
+                                    </div> 
                                 </div>
-                                <div class="col-3 h4 ">
-                                    <h5>@f.Genre.FilmGenre</h5>
+
+                                <div class="col h4 ps-0">
+                                    <h5>
+                                        @f.Genre.FilmGenre
+                                    </h5>
                                 </div>
-                            </div>
+
+                            </div> 
+
                         </div>
                         <hr class="hr-blue m-0" />
-                        <div class="text-container">
+                        <div class="text-container py-1">
                             <p class="fs m-0">
                                 @f.Omschrijving
                             </p>
                         </div>
                         <div>
                             <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" class="btn btn-stnd">
-                                Ontdek meer
+                                Discover more
                             </a>
                         </div>
                     </div>
                 </div>
             }
-
         }
-
     </div>
-
-    @if(@User.IsInRole("admin")){
-        <div class="row ms-2 mt-2">
-            <div class="col-3">
-                <h5>Verander Spotlight Movie</h5>
-                <select class="form-select select" id="select">
-                    <option hidden selected>Selecteer een film</option>
-                    @foreach (var f in Model.Films)
-                    {
-                        <option value="@f.Id">@f.Titel</option>
-                    }
-                </select>
-            </div>
-        </div>
-    }
-    
-    
 </section>
 
 @*LAPTOP SMALL*@
@@ -109,36 +114,54 @@
     </div>
 
     <div class="row">
-        <div class="col pt-4">
-            <div class="p-3">
-                <h1 class="m-0">Film Titel</h1>
-                <div class="container px-0 py-3">
-                    <div class="row m-0 p-0">
-                        <div class="col-3 h4  p-0">
-                            <h5>Duurtijd</h5>
+
+        @foreach (Film f in Model.Films)
+        {
+            if (f.Id == list[index])
+            {
+                <div class="col pt-4">
+                    <div class="p-3">
+                        <h1 class="m-0">@f.Titel</h1>
+                        <div class="mt-3 mb-1">
+                            <div class="row row-cols-3 mx-0 px-0">
+                                <div class="col h4 ps-0">
+                                    <h5>@f.Duurtijd</h5>
+                                </div>
+                                <div class="col h4 ps-0">
+                                    <div class="row">
+                                        @foreach (var t in this.Model.FilmTalen)
+                                        {
+                                            @if (f.Id == t.FilmId)
+                                            {
+                                                <h5 class="col">
+                                                    @t.Taal.GesprokenTaal
+                                                </h5>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col h4 ps-0">
+                                    <h5>@f.Genre.FilmGenre</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-3 h4 ">
-                            <h5>Taal</h5>
+                        <hr class="hr-blue m-0" />
+                        <div class="text-container">
+                            <p class="fs m-0">
+                                @f.Omschrijving
+                            </p>
                         </div>
-                        <div class="col-3 h4 ">
-                            <h5>Genre</h5>
+
+                        <div>
+                            <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" class="btn btn-stnd btn-lg">
+                                Discover more
+                            </a>
                         </div>
                     </div>
                 </div>
-                <hr class="hr-blue m-0" />
-                <div class="text-container">
-                    <p class="fs m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                </div>
-
-                <div>
-                    <a asp-controller="Film" asp-action="FilmDetails">
-                        <button type="button" class="btn btn-stnd btn-lg">Meer details</button>
-                    </a>
-                </div>
-            </div>
-        </div>
+            }
+        }
+        
     </div>
 </section>
 
@@ -161,36 +184,58 @@
     </div>
 
     <div class="row pt-3 px-3">
-        <div class="col">
-            <div class="py-3">
-                <h1 class="m-0 d-flex justify-content-center align-content-center">Film Titel</h1>
-                <div class="container px-0 py-3">
-                    <div class="row m-0 p-0">
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h4 class="h4 ">Duurtijd</h4>
+
+        @foreach (Film f in Model.Films)
+        {
+            if (f.Id == list[index])
+            {
+                <div class="col">
+                    <div class="py-3">
+                        <h1 class="m-0">@f.Titel</h1>
+                        <div class="mt-3 mb-1">
+                            <div class="row row-cols-3 mx-0 px-0">
+
+                                <div class="col ps-0">
+                                    <h4 class="h4">@f.Duurtijd</h4>
+                                </div>
+
+                                <div class="col ps-0">
+                                    <div class="row">
+                                        @foreach (var t in this.Model.FilmTalen)
+                                        {
+                                            @if (f.Id == t.FilmId)
+                                            {
+                                                <h4 class="h4">
+                                                    @t.Taal.GesprokenTaal
+                                                </h4>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col ps-0">
+                                    <h4 class="h4">@f.Genre.FilmGenre</h4>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h4 class="h4 ">Taal</h4>
+                        <hr class="hr-blue m-0" />
+                        <div class="text-container">
+                            <p class="m-0 max-lines">
+                                @f.Omschrijving
+                            </p>
                         </div>
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h4 class="h4 ">Genre</h4>
+
+                        <div>
+                            <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" class="btn btn-stnd btn-lg">
+                                Discover more
+                            </a>
                         </div>
                     </div>
                 </div>
-                <hr class="hr-blue m-0" />
-                <div class="text-container">
-                    <p class="m-0 max-lines">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                </div>
+            }
+        }
 
-                <div class="d-flex justify-content-center align-content-center">
-                    <a asp-controller="Film" asp-action="FilmDetails">
-                        <button type="button" class="btn btn-stnd btn-lg">Meer details</button>
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -214,36 +259,57 @@
     </div>
 
     <div class="row pt-3 px-3">
-        <div class="col">
-            <div class="py-3">
-                <h3 class="m-0 d-flex justify-content-center align-content-center">Film titel</h3>
-                <div class="container px-0 py-3">
-                    <div class="row m-0 p-0">
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h5 class="h5">Duurtijd</h5>
+
+        @foreach (Film f in Model.Films)
+        {
+            if (f.Id == list[index])
+            {
+                <div class="col">
+                    <div class="py-3">
+                        <h3 class="m-0">@f.Titel</h3>
+                        <div class="mt-3 mb-1">
+                            <div class="row row-cols-3 mx-0 px-0">
+
+                                <div class="col ps-0">
+                                    <h5 class="h5">@f.Duurtijd</h5>
+                                </div>
+
+                                <div class="col ps-0">
+                                    <div class="row">
+                                        @foreach (var t in this.Model.FilmTalen)
+                                        {
+                                            @if (f.Id == t.FilmId)
+                                            {
+                                                <h5 class="h5">
+                                                    @t.Taal.GesprokenTaal
+                                                </h5>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col ps-0">
+                                    <h5 class="h5">@f.Genre.FilmGenre</h5>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h5 class="h5">Taal</h5>
+                        <hr class="hr-blue m-0" />
+                        <div class="text-container">
+                            <p class="m-0 max-lines">
+                                @f.Omschrijving
+                            </p>
                         </div>
-                        <div class="col-4 d-flex justify-content-center align-content-center">
-                            <h5 class="h5">Genre</h5>
+
+                        <div class="d-grid">
+                            <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" class="btn btn-stnd btn-lg">
+                                Discover more
+                            </a>
                         </div>
                     </div>
                 </div>
-                <hr class="hr-blue m-0" />             
-                <div class="text-container">
-                    <p class="m-0 max-lines">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                </div>
-
-                <div class="d-grid">
-                    <a asp-controller="Film" asp-action="FilmDetails">
-                        <button type="button" class="btn btn-stnd btn-lg">Meer details</button>
-                    </a>
-                </div>
-            </div>
-        </div>
+            }
+        }        
     </div>
 </section>
 

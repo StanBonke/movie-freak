@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace MovieFreak.ViewModels.GebruikerViewModels
+namespace MovieFreak.ViewModels.UserViewModels
 {
-    public class GrantPermissionViewModel
+    public class UserRoleViewModel
     {
         public SelectList Users { get; set; }
         public SelectList Rollen { get; set; }

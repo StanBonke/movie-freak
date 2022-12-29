@@ -1,9 +1,9 @@
-﻿@model MovieFreak.ViewModels.AdminViewModels.AddGenreViewModel;
+﻿@model MovieFreak.ViewModels.GenreViewModels.AddGenreViewModel;
 @{
-    ViewData["Title"] = "Genre toevoegen";
+    ViewData["Title"] = "Add genre";
 }
 <section class="container mt-3">
-     <div class="row">
+    <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
         </div>
@@ -11,7 +11,7 @@
 
     <div class="row mt-3">
         <div class="col">
-            <a asp-action="Genres" class="link"><i class="fa fa-caret-left fa-main"></i> Terug</a>
+            <a asp-action="Index" class="link"><i class="fa fa-caret-left fa-main"></i> Back</a>
         </div>
     </div>
 
@@ -46,16 +46,22 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating text-start">
-                                            <button type="submit" value="Create" class="btn btn-caution my-3">Genre toevoegen</button>
+                                            <button type="submit" value="Create" class="btn btn-caution my-3">Add</button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

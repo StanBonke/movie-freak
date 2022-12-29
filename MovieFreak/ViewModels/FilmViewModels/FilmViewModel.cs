@@ -8,5 +8,8 @@ namespace MovieFreak.ViewModels.FilmViewModels
         public List<Film> Films { get; set; }
         public List<Personage> Personages { get; set; }
         public Genre Genre { get; set; }
+
+        // SEARCH
+        public string FilmSearch { get; set; }
     }
 }

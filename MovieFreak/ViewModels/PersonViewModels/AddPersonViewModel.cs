@@ -7,13 +7,13 @@ namespace MovieFreak.ViewModels.PersonViewModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een voornaam in te vullen.")]
+        [Required(ErrorMessage = "Firstname cannot be empty")]
         public string Voornaam { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een achternaam in te vullen.")]
+        [Required(ErrorMessage = "Lastname cannot be empty")]
         public string Achternaam { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een geboortedatum in te vullen.")]
+        [Required(ErrorMessage = "Date of birth cannot be empty")]
         public DateTime Geboortedatum { get; set; }
 
         public string Geboorteplaats { get; set; }
@@ -21,7 +21,7 @@ namespace MovieFreak.ViewModels.PersonViewModels
 
         public string Biografie { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een rol toe dienen.")]
+        [Required(ErrorMessage = "Give this person a role (actor or director)")]
         public string Rol { get; set; }
     }
 }

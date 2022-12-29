@@ -1,7 +1,7 @@
 ﻿using MovieFreak.Models;
 using System.Collections.Generic;
 
-namespace MovieFreak.ViewModels.AdminViewModels
+namespace MovieFreak.ViewModels.LanguageViewModels
 {
     public class LanguagesViewModel
     {

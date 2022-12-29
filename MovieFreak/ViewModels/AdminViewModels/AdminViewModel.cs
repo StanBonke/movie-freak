@@ -1,5 +1,6 @@
 ﻿using MovieFreak.Models;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MovieFreak.ViewModels.AdminViewModels
 {

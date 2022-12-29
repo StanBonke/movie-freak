@@ -1,6 +1,6 @@
-﻿@model MovieFreak.ViewModels.AdminViewModels.LanguagesViewModel;
+﻿@model MovieFreak.ViewModels.GenreViewModels.GenresViewModel;
 @{
-    ViewData["Title"] = "Talen";
+    ViewData["Title"] = "Genres";
 }
 
 <section class="container mt-3">
@@ -12,10 +12,10 @@
 
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
-            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Terug</a>
+            <a asp-controller="Admin" asp-action="Index" class="link"> <i class="fa fa-caret-left fa-main"></i> Back</a>
         </div>
         <div class="col-6 mt-3 text-end">
-            <a asp-action="AddLanguage" class="link">Taal toevoegen <i class="fa fa-caret-right fa-main"></i></a>
+            <a asp-action="AddGenre" class="link">Add new genre <i class="fa fa-caret-right fa-main"></i></a>
         </div>
     </div>
 
@@ -26,33 +26,32 @@
     </div>
 </section>
 
-
 <section class="container">
     <div class="row">
-        <div class="col-3 table-responsive">
+        <div class="col-auto table-responsive">
             <table class="table">
                 <thead class="table-header">
                     <tr>
                         <th class="txt-color-dark" scope="col">Id</th>
-                        <th class="txt-color-dark" scope="col">Taal</th>
+                        <th class="txt-color-dark" scope="col">Genre</th>
                         <th class="txt-color-dark" scope="col"> </th>
                         <th class="txt-color-dark" scope="col"> </th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach (var t in Model.Talen)
+                    @foreach (var g in Model.Genres)
                     {
                         <tr>
-                            <td class="py-3">@t.Id</td>
-                            <td class="py-3">@t.GesprokenTaal</td>
+                            <td class="py-3">@g.Id</td>
+                            <td class="py-3">@g.FilmGenre</td>
                             <td class="py-3">
-                                <a asp-action="EditLanguage" asp-route-id="@t.Id" data-bs-toggle="tooltip" title="Film aanpassen">
+                                <a asp-action="EditGenre" asp-route-id="@g.Id" data-bs-toggle="tooltip" title="Edit genre">
                                     <i class="fa fa-pencil fa-main-accent"></i>
                                 </a>
                             </td>
                             <td class="py-3">
-                                <a asp-action="DeleteLanguage" asp-route-id="@t.Id" data-bs-toggle="tooltip" title="Film verwijderen">
+                                <a asp-action="DeleteGenre" asp-route-id="@g.Id" data-bs-toggle="tooltip" title="Delete genre">
                                     <i class="fa fa-close fa-main-close"></i>
                                 </a>
                             </td>

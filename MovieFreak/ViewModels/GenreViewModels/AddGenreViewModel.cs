@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieFreak.ViewModels.AdminViewModels
+namespace MovieFreak.ViewModels.GenreViewModels
 {
     public class AddGenreViewModel
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een genre in te vullen.")]
+        [Required(ErrorMessage = "Genre cannot be empty")]
         public string FilmGenre { get; set; }
     }
 }

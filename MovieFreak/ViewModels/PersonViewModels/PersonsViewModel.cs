@@ -6,5 +6,8 @@ namespace MovieFreak.ViewModels.PersonViewModels
     public class PersonsViewModel
     {
         public List<Persoon> Personen { get; set; }
+
+        // SEARCH
+        public string PersonSearch { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace MovieFreak.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een taal in te vullen.")]
+        [Required(ErrorMessage = "Language cannot be empty")]
         public string GesprokenTaal { get; set; }
 
         // navigation properties

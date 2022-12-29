@@ -1,7 +1,7 @@
 ﻿@model MovieFreak.ViewModels.FilmViewModels.FilmViewModel;
 
 @{
-    ViewData["Title"] = "Films";
+    ViewData["Title"] = "Movies";
 }
 
 <section class="container mt-3">
@@ -10,10 +10,12 @@
             <h1 class="m-0 pb-3 pb-sm-0">@ViewData["Title"]</h1>
         </div>
         <div class="col-4">
-            <div class="input-group py-1">
-                <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
-                <input type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            </div>
+            <form asp-controller="Film" asp-action="Search" method="get">
+                <div class="input-group py-1">
+                    <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
+                    <input asp-for="FilmSearch" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </div>
+            </form>
         </div>
     </div>
     <div class="row py-1">
@@ -27,7 +29,7 @@
 <section class="container d-none d-sm-block">
     <div class="row row-cols-1 row-cols-lg-2">
 
-        @foreach (var f in Model.Films.OrderBy(x => x.Titel))
+        @foreach (var f in Model.Films.OrderBy(x => x.Id))
         {
             <div class="col">
                 <div class="card mb-4 border-0" style="max-width: 540px;">
@@ -49,7 +51,7 @@
                                 </p>
 
                                 @foreach(var p in Model.Personages){
-                                    if (p.Persoon.Rol == "Regisseur" && f.Id == p.FilmId)
+                                    if (p.Persoon.Rol == "Director" && f.Id == p.FilmId)
                                     {
                                         <p class="card-text my-2 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
@@ -57,7 +59,7 @@
 
                                 @foreach (var p in Model.Personages )
                                 {
-                                    if (p.Persoon.Rol == "Acteur" && f.Id == p.FilmId)
+                                    if (p.Persoon.Rol == "Actor" && f.Id == p.FilmId)
                                     {
                                         <p class="card-text my-0 fs-5"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
@@ -68,7 +70,7 @@
                             @*LAPTOP*@
                             <div class="card-body py-0 d-none d-lg-block">
                                 <button class="btn btn-details link px-2 pb-0 mb-2">
-                                    <i class="fa fa-caret-right fa-main"></i> Details
+                                    <i class="fa fa-caret-right fa-main"></i> Discover more
                                     <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                                 </button>
                             </div>
@@ -76,7 +78,7 @@
                             @*TABLET*@
                             <div class="card-body py-0 d-lg-none">
                                 <button class="btn btn-details-tablet px-2 pb-0 mb-2">
-                                    <i class="fa fa-caret-right fa-main"></i> Details
+                                    <i class="fa fa-caret-right fa-main"></i> Discover more
                                     <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                                 </button>
                             </div>

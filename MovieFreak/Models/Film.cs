@@ -7,13 +7,13 @@ namespace MovieFreak.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een titel in te vullen.")]
+        [Required(ErrorMessage = "Title cannot be empty")]
         public string Titel { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een omschrijving in te vullen.")]
+        [Required(ErrorMessage = "Description cannot be empty")]
         public string Omschrijving { get; set; }
 
-        [Required(ErrorMessage = "Gelieve een duurtijd in te vullen.")]
+        [Required(ErrorMessage = "Duration cannot be empty")]
         public string Duurtijd { get; set; }
 
         public string Trailerlink { get; set; }
