@@ -6,11 +6,9 @@
 
 <section class="container mt-3">
     <div class="row row-cols-1 row-cols-md-2">
-
         <div class="col-6 col-md-7 col-lg-8">
             <h1 class="m-0 pb-3 pb-sm-0">@ViewData["Title"]</h1>
         </div>
-
         <div class="col-6 col-md-5 col-lg-4">
             <form asp-controller="Film" asp-action="Search" method="get">
                 <div class="input-group py-1">
@@ -20,7 +18,6 @@
             </form>
         </div>
     </div>
-
     <div class="row py-1">
         <div class="col">
             <hr class="hr-blue" />
@@ -30,8 +27,7 @@
 
 @*LAPTOP & TABLET*@
 <section class="container d-none d-sm-block">
-    <div class="row row-cols-1 row-cols-lg-2">
-
+    <div class="row row-cols-1 row-cols-lg-2" id="cardlist">
         @foreach (var f in Model.Films.OrderBy(x => x.Id))
         {
             <div class="col">
@@ -47,12 +43,10 @@
                                 <h5 class="card-title mt-0 mb-1">@f.Titel</h5>
                                 <p class="card-text my-0 fs-5">
                                     <small class="text-muted">
-                                        @if(f.GenreId == f.Genre.Id){
-                                            @f.Genre.FilmGenre
-                                        }
+                                        @if(f.GenreId == f.Genre.Id)
+                                        { @f.Genre.FilmGenre }
                                     </small>
                                 </p>
-
                                 @foreach(var p in Model.Personages){
                                     if (p.Persoon.Rol == "Director" && f.Id == p.FilmId)
                                     {
@@ -60,7 +54,6 @@
                                         <p class="card-text my-2 fs-5 d-lg-none"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
                                 }
-
                                 @foreach (var p in Model.Personages )
                                 {
                                     if (p.Persoon.Rol == "Actor" && f.Id == p.FilmId)
@@ -69,10 +62,9 @@
                                         <p class="card-text my-0 fs-5 d-lg-none"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
                                 }
-
                             </div>
 
-                            @*LAPTOP*@
+                            @* BUTTON - LAPTOP *@
                             <div class="card-body py-0 d-none d-lg-block">
                                 <button class="btn btn-details link px-2 pb-0 mb-2">
                                     <i class="fa fa-caret-right fa-main"></i> Discover more
@@ -80,27 +72,24 @@
                                 </button>
                             </div>
 
-                            @*TABLET*@
+                            @*BUTTON - TABLET*@
                             <div class="card-body py-0 d-lg-none">
                                 <button class="btn btn-details-tablet px-2 pb-0 mb-2">
                                     <i class="fa fa-caret-right fa-main"></i> Discover more
                                     <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         }
-
     </div>
 </section>
 
 @*SMARTPHONE*@
 <section class="container d-md-none">
     <div class="row row-cols-2 g-4">
-
         @foreach (var f in Model.Films.OrderBy(x => x.Id))
         {
             <div class="col">
@@ -110,15 +99,12 @@
                         <h5 class="card-title txt-color-main">@f.Titel</h5>
                         <p class="card-text genre-mobile txt-color-link">
                             @if (f.GenreId == f.Genre.Id)
-                            {
-                                @f.Genre.FilmGenre
-                            }
+                            { @f.Genre.FilmGenre }
                         </p>
                         <a class="stretched-link" asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id"></a>
                     </div>
                 </div>
             </div>
         }
-
     </div>
 </section>

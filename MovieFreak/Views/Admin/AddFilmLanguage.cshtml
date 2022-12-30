@@ -9,13 +9,11 @@
             <h1>@ViewData["Title"]</h1>
         </div>
     </div>
-
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
             <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
     </div>
-
     <div class="row my-2">
         <div class="col">
             <hr class="hr-blue" />
@@ -23,14 +21,11 @@
     </div>
 </section>
 
-
-<div class="row">
+<section class="row">
     <div class="col">
-
         <div class="body-settings">
             <div class="form-add">
                 <form asp-action="AddFilmLanguage">
-
                     <div class="row row-cols-2">
                         <div class="col-5 col-md-3">
                             <div class="form-floating">
@@ -41,7 +36,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-5 col-sm-4 col-md-3">
                             <div class="form-floating">
                                 <input asp-for="TaalId" type="number" class="form-control" id="floatingInput" placeholder="firstname" />
@@ -52,7 +46,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col">
                             <div class="form-floating text-start">
@@ -63,6 +56,5 @@
                 </form>
             </div>
         </div>
-
     </div>
-</div>
+</section>

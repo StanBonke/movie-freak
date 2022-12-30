@@ -7,10 +7,8 @@
     <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
-            
         </div>
     </div>
-
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
             <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
@@ -19,13 +17,11 @@
             <a asp-action="AddFilm" class="btn btn-stnd">Add new movie <i class="fa fa-caret-right fa-light"></i></a>
         </div>
     </div>
-
     <div class="row my-2">
         <div class="col">
             <hr class="hr-blue" />
         </div>
     </div>
-
 </section>
 
 <section class="container">
@@ -45,7 +41,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var t in Model.FilmTalen)
                     {
                         <tr>
@@ -71,7 +66,6 @@
                             </td>
                         </tr>
                     }
-
                 </tbody>
             </table>
         </div>

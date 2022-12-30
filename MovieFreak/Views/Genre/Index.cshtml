@@ -9,7 +9,6 @@
             <h1>@ViewData["Title"]</h1>
         </div>
     </div>
-
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
             <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
@@ -18,13 +17,11 @@
             <a asp-action="AddGenre" class="btn btn-stnd">Add new genre <i class="fa fa-caret-right fa-light"></i></a>
         </div>
     </div>
-
     <div class="row my-2">
         <div class="col">
             <hr class="hr-blue" />
         </div>
     </div>
-
     <div class="row mb-4">
         <div class="col-12 col-md-6 col-lg-4">
             <form asp-controller="Genre" asp-action="Search" method="get">
@@ -35,7 +32,6 @@
             </form>
         </div>
     </div>
-
 </section>
 
 <section class="container">
@@ -51,7 +47,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var g in Model.Genres)
                     {
                         <tr>
@@ -69,7 +64,6 @@
                             </td>
                         </tr>
                     }
-
                 </tbody>
             </table>
         </div>
