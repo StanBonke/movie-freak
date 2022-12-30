@@ -2,19 +2,18 @@
 @{
     ViewData["Title"] = "Edit movie";
 }
+
 <section class="container mt-3">
     <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
         </div>
     </div>
-
     <div class="row mt-3">
         <div class="col">
             <a asp-action="Films" class="btn btn-stnd"><i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             <hr class="hr-blue" />
@@ -28,13 +27,10 @@
             <div class="body-settings">
                 <div class="form-add">
                     <form asp-action="EditFilm">
-
                         <input type="hidden" asp-for="Id" />
-
                         <div class="row">
                             <div class="col">
                                 <div class="row row-cols-2">
-
                                     <div class="col-9">
                                         <div class="form-floating">
                                             <input asp-for="Titel" type="text" class="form-control" id="floatingInput" placeholder="firstname" />
@@ -44,7 +40,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-3">
                                         <div class="form-floating">
                                             <input asp-for="Duurtijd" type="text" class="form-control" id="floatingInput" placeholder="lastname" />
@@ -55,9 +50,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row row-cols-2">
-
                                     <div class="col-9">
                                         <div class="form-floating">
                                             <input asp-for="Trailerlink" type="text" class="form-control" id="floatingInput" placeholder="lastname" />
@@ -67,7 +60,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-3">
                                         <div class="form-floating">
                                             <input asp-for="GenreId" type="number" class="form-control" id="floatingInput" placeholder="0" />
@@ -78,7 +70,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating">
@@ -90,7 +81,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating text-start">

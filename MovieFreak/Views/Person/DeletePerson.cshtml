@@ -2,31 +2,28 @@
 @{
     ViewData["Title"] = $"Delete {this.Model.Rol}";
 }
+
 <section class="container mt-3">
     <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
         </div>
     </div>
-
     <div class="row mt-3">
         <div class="col">
             <a asp-action="Index" class="btn btn-stnd"><i class="fa fa-caret-left fa-light"></i> Back</a>
         </div>
     </div>
-
     <div class="row">
         <div class="col my-2">
             <hr class="hr-blue" />
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             <h4>Are you sure you want to remove <span class="txt-color-link">@Model.Voornaam @Model.Achternaam</span> from the database?</h4>
         </div>
     </div>
-
     <div class="row mt-3">
         <div class="col">
             <form asp-action="DeletePerson">
@@ -35,5 +32,4 @@
             </form>
         </div>
     </div>
-
 </section>

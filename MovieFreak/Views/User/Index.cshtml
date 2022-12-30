@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "User management";
 }
+
 <section class="container mt-3">
     <div class="row">
         <div class="col">
@@ -36,27 +37,22 @@
             <div class="col mb-3">
                 <div class="card user-card" style="width: 18rem;">
                     <div class="card-body">
-
                         <div class="row">
                             <div class="col">
                                 <i class="fa fa-user fa-main fs-3">
                                 </i>
                             </div>
                             <div class="col text-end">
-
                                 <a class="" asp-action="DeleteUser" asp-route-id="@gebruiker.Id" data-bs-toggle="tooltip" title="Delete - @gebruiker.UserName">
                                     <i class="fa fa-close fa-main-close fs-5"></i>
                                 </a>
-
                             </div>
                         </div>
-
                         <div class="pt-3">
                             <h5 class="card-title pb-2">@Html.DisplayFor(modelitem => gebruiker.UserName)</h5>
                             <h6 class="card-subtitle mb-2 text-muted small">@Html.DisplayFor(modelitem => gebruiker.Email)</h6>
                             <p class="card-text text-muted small">@Html.DisplayFor(modelitem => gebruiker.Id)</p>
                         </div>
-
                     </div>
                 </div>
             </div>

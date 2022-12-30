@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = "Persons";
 }
+
 <section class="container mt-3">
     <div class="row">
         <div class="col">
             <h1>@ViewData["Title"]</h1>
         </div>
     </div>
-
     <div class="row row-cols-2">
         <div class="col-6 mt-3">
             <a asp-controller="Admin" asp-action="Index" class="btn btn-stnd"> <i class="fa fa-caret-left fa-light"></i> Back</a>
@@ -17,13 +17,11 @@
             <a asp-action="AddPerson" class="btn btn-stnd">Add new person <i class="fa fa-caret-right fa-light"></i></a>
         </div>
     </div>
-
     <div class="row my-2">
         <div class="col">
             <hr class="hr-blue" />
         </div>
     </div>
-
     <div class="row mb-4">
         <div class="col-12 col-md-6 col-lg-4">
             <form asp-controller="Person" asp-action="Search" method="get">
@@ -34,10 +32,8 @@
             </form>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
-
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">All</button>
@@ -49,10 +45,10 @@
                     <button class="nav-link" id="pills-directors-tab" data-bs-toggle="pill" data-bs-target="#pills-directors" type="button" role="tab" aria-controls="pills-directors" aria-selected="false">Directors</button>
                 </li>
             </ul>
-
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
 
+                @* TAB ALL PERSONS *@
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
                     <div class="row">
                         <div class="col table-responsive">
                             <table class="table">
@@ -71,7 +67,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach (var p in Model.Personen)
                                     {
                                         <tr>
@@ -99,15 +94,15 @@
                                             </td>
                                         </tr>
                                     }
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                 </div>
-                <div class="tab-pane fade" id="pills-actors" role="tabpanel" aria-labelledby="pills-actors-tab">
 
+                @* TAB ACTORS *@
+                <div class="tab-pane fade" id="pills-actors" role="tabpanel" aria-labelledby="pills-actors-tab">
                     <div class="row">
                         <div class="col table-responsive">
                             <table class="table">
@@ -126,7 +121,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach (var p in Model.Personen)
                                     {
                                         if(p.Rol == "Actor")
@@ -157,15 +151,14 @@
                                             </tr>
                                         }
                                     }
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-                <div class="tab-pane fade" id="pills-directors" role="tabpanel" aria-labelledby="pills-directors-tab">
 
+                @* TAB DIRECTORS *@
+                <div class="tab-pane fade" id="pills-directors" role="tabpanel" aria-labelledby="pills-directors-tab">
                     <div class="row">
                         <div class="col table-responsive">
                             <table class="table">
@@ -184,7 +177,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach (var p in Model.Personen)
                                     {
                                         if (p.Rol == "Director")
@@ -215,16 +207,14 @@
                                             </tr>
                                         }
                                     }
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-
 </section>

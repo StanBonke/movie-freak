@@ -6,7 +6,7 @@ namespace MovieFreak.ViewModels.LanguageViewModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Language cannot be empty")]
+        [Required(ErrorMessage = "Language can't be empty.")]
         public string GesprokenTaal { get; set; }
     }
 }

@@ -12,8 +12,10 @@
             if (@Model.DisplayConfirmAccountLink)
             {
                 <p>
-                    This website can't verify your account yet through email. Click on the next link to confirm your email address:'
-                    <a class="txt-color-link" id="confirm-link" href="@Model.EmailConfirmationUrl"><br><i class="fa fa-caret-right fa-main"></i> Activate your account!</a>
+                    This website can't verify your account yet through email. Click on the next link to confirm your email address:
+                </p>
+                <p>
+                    <a class="btn btn-caution" id="confirm-link" href="@Model.EmailConfirmationUrl">Activate your account!</a>
                 </p>
             }
             else

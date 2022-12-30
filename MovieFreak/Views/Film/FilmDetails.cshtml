@@ -3,59 +3,227 @@
     ViewData["Title"] = this.Model.Titel;
 }
 
-@*LAPTOP ALL SIZES*@
-<section class="container mt-3 d-none d-lg-block">
+@*// LAPTOP ALL SIZES //*@
+<div>
+    <section class="container mt-3 d-none d-lg-block">
+        <div class="row row-cols-2">
 
-    <div class="row row-cols-2">
-        <div class="col-4">
-            <img src="/images/placeholder-cover.jpg" class="img-fluid rounded"/>
-        </div>
-        <div class="col-8 pt-2 ">
-            <h2 class="my-1">@this.Model.Titel</h2>
-            <div class="row row-cols-2">
-                <div class="col-10">
-                    <hr class="hr-blue" />
-                </div>
-                <div class="col-2">
-                    <h5 class="h4 py-2 m-0">@this.Model.Duurtijd</h5>
-                </div>
+            @* MOVIE COVER IMAGE *@
+            <div class="col-4">
+                <img src="/images/placeholder-cover.jpg" class="img-fluid rounded" />
             </div>
-
-            <div class="row row-cols-2">
-                <div class="col-3">
-                    <h4 class="h4">@this.Model.Genre.FilmGenre</h4>
-                </div>
-
-                <div class="col-auto">
-                    <div class="row">
-                        @foreach (var t in this.Model.FilmTalen)
-                        {
-                            @if (this.Model.Id == t.FilmId)
-                            {
-                                <h4 class="col h4">
-                                    @t.Taal.GesprokenTaal
-                                </h4>
-                            }
-                        }
+            <div class="col-8 pt-2 ">
+                <h2 class="my-1">@this.Model.Titel</h2>
+                <div class="row row-cols-2">
+                    <div class="col-10">
+                        <hr class="hr-blue" />
+                    </div>
+                    <div class="col-2">
+                        <h5 class="h4 py-2 m-0">@this.Model.Duurtijd</h5>
                     </div>
                 </div>
-            </div>
+                <div class="row row-cols-2">
+                    <div class="col-3">
+                        <h4 class="h4">@this.Model.Genre.FilmGenre</h4>
+                    </div>
+                    <div class="col-auto">
+                        <div class="row">
+                            @foreach (var t in this.Model.FilmTalen)
+                            {
+                                @if (this.Model.Id == t.FilmId)
+                                {
+                                    <h4 class="col h4">@t.Taal.GesprokenTaal</h4>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
 
-            <div class="py-4 fs-6 d-none d-xl-block">
-                <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
-            </div>
+                @* DESCRIPTION -  LAPTOP 4K & LARGE *@
+                <div class="py-4 fs-6 d-none d-xl-block">
+                    <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
+                </div>
 
-            <div class="py-1 small d-xl-none">
-                <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
-            </div>
+                @* DESCRIPTION - LAPTOP SMALL *@
+                <div class="py-1 small d-xl-none">
+                    <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
+                </div>
 
                 <div class="row row-cols-2 mt-1">
                     <div class="col-auto">
+
+                        @* FAVORITE BUTTON - LAPTOP 4K & LARGE *@
                         <button class="btn btn-lg d-none d-xl-block">
                             <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
                         </button>
 
+                        @* FAVORITE BUTTON - LAPTOP SMALL *@
                         <button class="btn btn d-xl-none">
+                            <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
+                        </button>
+
+                    </div>
+                    <div class="col-auto mt-3 ps-0">
+                        <a href="@this.Model.Trailerlink" target="_blank" class="link">
+                            <i class="fa fa-caret-right fa-main"></i> Watch trailer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* DIVIDER *@
+        <div class="row my-4">
+            <div class="col">
+                <hr class="my-4" style="width:75%; margin: auto" />
+            </div>
+        </div>
+
+        @* DIRECTOR SECTION *@
+        <div class="row">
+            <div class="col">
+                <h2 class="pb-3">Director</h2>
+                @foreach (var p in this.Model.Personages)
+                {
+                    if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="row row-cols-4">
+
+                            @* DIRECTOR TUMBNAIL *@
+                            <div class="col-2">
+                                <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                            </div>
+
+                            <div class="row row-cols-3 col-10 py-2">
+                                <div class="col-6">
+                                    <h3 class="mb-0">
+                                        @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                    </h3>
+
+                                    @* - is invisible because director does not have a character name, but it's there so spacing is the same *@
+                                    <h4 class="h4-details mt-0 invisible">Personage naam</h4>
+
+                                    <div class="pt-0 pt-xl-3">
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteplaats</h4>
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteland</h4>
+                                    </div>
+                                </div>
+                                <div class="col-6 vl ps-4">
+
+                                    @* SHORT BIO *@
+                                    <p class="p-truncate">@p.Persoon.Biografie</p>
+
+                                    @* LONG BIO AS POPOVER *@
+                                    <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                        <i class="fa fa-caret-right fa-main"></i> Read more
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col">
+                <hr class="my-4" style="width:75%; margin: auto" />
+            </div>
+        </div>
+
+        @* ACTORS SECTION *@
+        <div class="row">
+            <div class="col">
+                <h2 class="pb-3">Actors</h2>
+                @foreach (var p in this.Model.Personages)
+                {
+                    if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="row row-cols-4 mb-4">
+
+                            @* ACTOR TUMBNAIL *@
+                            <div class="col-2">
+                                <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                            </div>
+
+                            <div class="row row-cols-3 col-10 py-2">
+                                <div class="col-6">
+                                    <h3 class="mb-0">
+                                        @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                    </h3>
+                                    <h4 class="h4-details mt-0">
+                                        as
+                                        <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
+                                    </h4>
+                                    <div class="pt-xl-3">
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteplaats</h4>
+                                        <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteland</h4>
+                                    </div>
+                                </div>
+                                <div class="col-6 vl ps-4">
+
+                                    @* SHORT BIO *@
+                                    <p class="p-truncate">@p.Persoon.Biografie</p>
+
+                                    @* LONG BIO AS POPOVER *@
+                                    <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                        <i class="fa fa-caret-right fa-main"></i> Read more
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@*// TABLET //*@
+<div>
+    <section class="container d-lg-none mt-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="my-1">@this.Model.Titel</h1>
+                <div class="row row-cols-2">
+                    <div class="col-12 col-md-10">
+                        <hr class="hr-blue" />
+                    </div>
+                    <div class="col-auto col-md-2 d-none d-sm-block">
+                        <h5 class="h4 py-2 fs-6 m-0">@this.Model.Duurtijd</h5>
+                    </div>
+                </div>
+                <div class="row row-cols-2">
+                    <div class="col-auto d-md-none">
+                        <h4 class="h4 fs-6 ">@this.Model.Duurtijd</h4>
+                    </div>
+                    <div class="col-auto col-md-3">
+                        <h4 class="h4 fs-6">@this.Model.Genre.FilmGenre</h4>
+                    </div>
+                    <div class="col-auto">
+                        <div class="row">
+                            @foreach (var t in this.Model.FilmTalen)
+                            {
+                                @if (this.Model.Id == t.FilmId)
+                                {
+                                    <h4 class="col h4 fs-6">
+                                        @t.Taal.GesprokenTaal
+                                    </h4>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="py-4 fs-6 d-lg-none">
+                    <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
+                </div>
+                <div class="row row-cols-2 mt-1">
+                    <div class="col-auto">
+                        <button class="btn btn-lg d-lg-none">
                             <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
                         </button>
                     </div>
@@ -65,232 +233,215 @@
                         </a>
                     </div>
                 </div>
-            
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="row my-4">
-        <div class="col">
-            <hr class="my-4" style="width:75%; margin: auto"/>
-        </div>
-    </div>
+    <section class="container mt-4 d-lg-none d-none d-sm-block">
+        <div class="row">
 
-    <div class="row">
-        <div class="col">
-            
-            <h2 class="pb-3">Director</h2>
+            @* MOVIE COVER IMAGE*@
+            <div class="col-6">
+                <img src="/images/placeholder-cover.jpg" class="img-fluid rounded" />
+            </div>
 
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
+            @* DIRECTOR SECTION *@
+            <div class="col-6 py-4">
+                <h2 class="mb-2">Director</h2>
+                @foreach (var p in this.Model.Personages)
                 {
-                    <div class="row row-cols-4">
-                        <div class="col-2">
-                            <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
-                        </div>
-                        <div class="row row-cols-3 col-10 py-2">
-                            <div class="col-6">
-                                <h3 class="mb-0">
+                    if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="mb-0">
                                     @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
-                                </h3>
-                                <h4 class="h4-details mt-0 invisible">Personage naam</h4>
-                                <div class="pt-0 pt-xl-3">
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteplaats</h4>
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteland</h4>
-                                </div>
+                                </h4>
                             </div>
-                            <div class="col-6 vl ps-4">
-                                <p class="p-truncate">
-                                    @p.Persoon.Biografie
-                                </p>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <h4 class="h4-details my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                <h4 class="h4-details my-1">@p.Persoon.Geboorteplaats</h4>
+                                <h4 class="h4-details my-1">@p.Persoon.Geboorteland</h4>
+                            </div>
+                        </div>
 
-                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    <i class="fa fa-caret-right fa-main"></i> Read more
+                        @* BIOGRAPHY POPOVER *@
+                        <div class="row mt-3">
+                            <div class="col">
+                                <a tabindex="0" class="link ps-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                    <i class="fa fa-caret-right fa-main"></i> Read biography
                                 </a>
                             </div>
                         </div>
-                    </div>
-                }
-            }
 
-        </div>
-    </div>
-
-    <div class="row my-4">
-        <div class="col">
-            <hr class="my-4" style="width:75%; margin: auto" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-
-            <h2 class="pb-3">Actors</h2>
-
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
-                {
-                    <div class="row row-cols-4 mb-4">
-                        <div class="col-2">
-                            <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                        <div class="row mt-4">
+                            <div class="col-7">
+                                <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                            </div>
                         </div>
-                        <div class="row row-cols-3 col-10 py-2">
-                            <div class="col-6">
-                                <h3 class="mb-0">
-                                    @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
-                                </h3>
-                                <h4 class="h4-details mt-0">as
-                                    <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
-                                </h4>
-                                <div class="pt-xl-3">
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteplaats</h4>
-                                    <h4 class="h4-details my-0 my-xl-2">@p.Persoon.Geboorteland</h4>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="container d-lg-none d-none d-sm-block">
+        <div class="row my-4">
+            <div class="col">
+                <hr class="my-4" style="width:75%; margin: auto" />
+            </div>
+        </div>
+
+        @* ACTORS SECTION *@
+        <div action="row">
+            <div class="col">
+                <h2 class="mb-4">Actors</h2>
+                @foreach (var p in this.Model.Personages)
+                {
+                    if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="row row-cols-2 mb-4">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-8 py-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="mb-0">
+                                            @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                        </h4>
+                                    </div>
+                                    <div class="col-12">
+                                        <h4 class="h4-details mt-0">
+                                            as
+                                            <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <h4 class="h4-details my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                        <h4 class="h4-details my-1">@p.Persoon.Geboorteplaats</h4>
+                                        <h4 class="h4-details my-1">@p.Persoon.Geboorteland</h4>
+                                    </div>
+                                </div>
+
+                                @* BIOGRAPHY POPOVER *@
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <a tabindex="0" class="link ps-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                            <i class="fa fa-caret-right fa-main"></i> Read biography
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@*// SMARTPHONE //*@
+<div>
+    <section class="container mt-3 d-md-none">
+
+        @* MOVIE COVER IMAGE *@
+        <div class="row">
+            <div class="col-12">
+                <img src="/images/placeholder-cover-square.jpg" class="img-fluid rounded" />
+            </div>
+        </div>
+
+    </section>
+
+    <section class="container d-md-none">
+        <div class="row">
+            <div class="col">
+                <div class="row my-4">
+                    <div class="col">
+                        <hr class="my-4" style="width:75%; margin: auto" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* DIRECTOR SECTION *@
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-4 text-center txt-color-main">Director</h2>
+                @foreach (var p in this.Model.Personages)
+                {
+                    if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="mb-0">
+                                        @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
+                                    </h4>
                                 </div>
                             </div>
-                            <div class="col-6 vl ps-4">
-                                <p class="p-truncate">
-                                    @p.Persoon.Biografie
-                                </p>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteplaats</h4>
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteland</h4>
+                                </div>
+                            </div>
 
-                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
-                                    <i class="fa fa-caret-right fa-main"></i> Read more</a>
+                            @* BIOGRAPHY POPOVER *@
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <a tabindex="0" class="link ps-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                        <i class="fa fa-caret-right fa-main"></i> Read biography
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 justify-content-center">
+                                <div class="col-6">
+                                    <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
-            }
-        </div>
-    </div>
-</section>
-
-@*TABLET*@
-<section class="container d-lg-none mt-3">
-    <div class="row">
-        <div class="col">
-            <h1 class="my-1">@this.Model.Titel</h1>
-
-            <div class="row row-cols-2">
-                <div class="col-12 col-md-10">
-                    <hr class="hr-blue" />
-                </div>
-                <div class="col-auto col-md-2 d-none d-sm-block">
-                    <h5 class="h4 py-2 fs-6 m-0">@this.Model.Duurtijd</h5>
-                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="row row-cols-2">
-                <div class="col-auto d-md-none">
-                    <h4 class="h4 fs-6 ">@this.Model.Duurtijd</h4>
-                </div>
-                <div class="col-auto col-md-3">
-                    <h4 class="h4 fs-6">@this.Model.Genre.FilmGenre</h4>
-                </div>
-
-                <div class="col-auto">
-                    <div class="row">
-                        @foreach (var t in this.Model.FilmTalen)
-                        {
-                            @if (this.Model.Id == t.FilmId)
-                            {
-                                <h4 class="col h4 fs-6">
-                                    @t.Taal.GesprokenTaal
-                                </h4>
-                            }
-                        }
+    <section class="container d-md-none">
+        <div class="row">
+            <div class="col">
+                <div class="row my-4">
+                    <div class="col">
+                        <hr class="my-4" style="width:75%; margin: auto" />
                     </div>
                 </div>
             </div>
-
-            <div class="py-4 fs-6 d-lg-none">
-                <p class="line-clamp-10 mb-0">@this.Model.Omschrijving</p>
-            </div>
-
-            <div class="row row-cols-2 mt-1">
-                <div class="col-auto">
-                    <button class="btn btn-lg d-lg-none">
-                        <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
-                    </button>
-                </div>
-                <div class="col-auto mt-3 ps-0">
-                    <a href="@this.Model.Trailerlink" target="_blank" class="link">
-                        <i class="fa fa-caret-right fa-main"></i> Watch trailer
-                    </a>
-                </div>
-            </div>
         </div>
-    </div>
-</section>
 
-<section class="container mt-4 d-lg-none d-none d-sm-block">
-    <div class="row">
-        <div class="col-6">
-            <img src="/images/placeholder-cover.jpg" class="img-fluid rounded" />
-        </div>
-        <div class="col-6">
-            <h2 class="mb-2">Director</h2>
+        @* ACTORS SECTION *@
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-4 text-center txt-color-main">Actors</h2>
 
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
+                @foreach (var p in this.Model.Personages)
                 {
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="mb-0">
-                                @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
-                            </h4>
-                        </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col">
-                            <h4 class="h4-details my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                            <h4 class="h4-details my-1">@p.Persoon.Geboorteplaats</h4>
-                            <h4 class="h4-details my-1">@p.Persoon.Geboorteland</h4>
-                        </div>
-                    </div>
-
-                    <div class="row py-3">
-                        <div class="col">
-                            <p class="p-truncate">
-                                @p.Persoon.Biografie
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <a tabindex="0" class="btn btn-stnd" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">Read more
-                            </a>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-</section>
-
-<section class="container d-lg-none d-none d-sm-block">
-
-    <div class="row my-4">
-        <div class="col">
-            <hr class="my-4" style="width:75%; margin: auto" />
-        </div>
-    </div>
-
-    <div action="row">
-        <div class="col">
-            <h2 class="mb-2">Actors</h2>
-
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
-                {
-                    <div class="row row-cols-2">
-                        <div class="col-6">
-
+                    if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
+                    {
+                        <div class="text-center">
                             <div class="row">
                                 <div class="col-12">
                                     <h4 class="mb-0">
@@ -299,170 +450,47 @@
                                 </div>
                                 <div class="col-12">
                                     <h4 class="h4-details mt-0">
-                                        as
-                                        <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
+                                        as <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
                                     </h4>
                                 </div>
                             </div>
 
                             <div class="row mt-2">
                                 <div class="col">
-                                    <h4 class="h4-details my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                                    <h4 class="h4-details my-1">@p.Persoon.Geboorteplaats</h4>
-                                    <h4 class="h4-details my-1">@p.Persoon.Geboorteland</h4>
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteplaats</h4>
+                                    <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteland</h4>
                                 </div>
                             </div>
 
-                        </div>
-
-                        <div class="col-6">
-
-                            <div class="row">
+                            @* BIOGRAPHY POPOVER *@
+                            <div class="row mt-3">
                                 <div class="col">
-                                    <p class="p-truncate">
-                                        @p.Persoon.Biografie
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <a tabindex="0" class="btn btn-stnd" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">Read more
+                                    <a tabindex="0" class="link ps-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">
+                                        <i class="fa fa-caret-right fa-main"></i> Read biography
                                     </a>
                                 </div>
                             </div>
 
+                            <div class="row mt-4 justify-content-center">
+                                <div class="col-6">
+                                    <img src="/images/placeholder-user-square.jpg" class="img-fluid rounded" />
+                                </div>
+                            </div>
                         </div>
-                    </div>                    
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <hr class="my-4" style="width:75%; margin: auto" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 }
-            }
-        </div>
-    </div>
-</section>
-
-
-
-
-@*SMARTPHONE*@
-<section class="container mt-3 d-md-none">
-    <div class="row">
-        <div class="col-12">
-            <img src="/images/placeholder-cover-square.jpg" class="img-fluid rounded" />
-        </div>
-    </div>
-</section>
-
-<section class="container d-md-none">
-    <div class="row">
-        <div class="col">
-            <div class="row my-4">
-                <div class="col">
-                    <hr class="my-4" style="width:75%; margin: auto" />
-                </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <h2 class="mb-2">Director</h2>
-
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Director" && this.Model.Id == p.FilmId)
-                {
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="mb-0">
-                                @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
-                            </h4>
-                        </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col">
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteplaats</h4>
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteland</h4>
-                        </div>
-                    </div>
-
-                    <div class="row pt-3">
-                        <div class="col">
-                            <p class="p-truncate">
-                                @p.Persoon.Biografie
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <a tabindex="0" class="btn btn-stnd" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">Read more
-                            </a>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-</section>
-
-<section class="container d-md-none">
-    <div class="row">
-        <div class="col">
-            <div class="row my-4">
-                <div class="col">
-                    <hr class="my-4" style="width:75%; margin: auto" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h2 class="mb-2">Actors</h2>
-
-            @foreach (var p in this.Model.Personages)
-            {
-                if (p.Persoon.Rol == "Actor" && this.Model.Id == p.FilmId)
-                {
-                    <div class="row">
-                        <div class="col-12">
-                            <h4 class="mb-0">
-                                @p.Persoon.Voornaam @p.Persoon.Achternaam <span class="fs-6">(@this.Model.BerekenLeeftijd(p.Persoon.Geboortedatum))</span>
-                            </h4>
-                        </div>
-                        <div class="col-12">
-                            <h4 class="h4-details mt-0">
-                                as
-                                <span class="txt-color-accent-non-hover">@p.VoornaamPersonage @p.AchternaamPersonage</span>
-                            </h4>
-                        </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col">
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboortedatum.ToString("dd/MM/yyyy")</h4>
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteplaats</h4>
-                            <h4 class="h4-details fs-6 my-1">@p.Persoon.Geboorteland</h4>
-                        </div>
-                    </div>
-
-                    <div class="row pt-3">
-                        <div class="col">
-                            <p class="p-truncate">
-                                @p.Persoon.Biografie
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-5">
-                        <div class="col">
-                            <a tabindex="0" class="btn btn-stnd" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Biografie - @p.Persoon.Voornaam @p.Persoon.Achternaam" data-bs-custom-class="custom-popover" data-bs-content="@p.Persoon.Biografie">Read more
-                            </a>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-</section>
+    </section>
+</div>

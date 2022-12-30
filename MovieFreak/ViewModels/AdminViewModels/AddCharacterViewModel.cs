@@ -11,10 +11,10 @@ namespace MovieFreak.ViewModels.AdminViewModels
 
         // foreign keys
 
-        [Range(1, int.MaxValue, ErrorMessage = "Persoon id can't be 0")]
+        [Range(1, int.MaxValue, ErrorMessage = "Persoon id can't be 0.")]
         public int PersoonId { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Film id can't be 0")]
+        [Range(1, int.MaxValue, ErrorMessage = "Film id can't be 0.")]
         public int FilmId { get; set; }
     }
 }
