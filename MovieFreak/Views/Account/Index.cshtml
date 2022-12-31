@@ -1,11 +1,53 @@
-﻿@{
+﻿@model MovieFreak.ViewModels.AccountViewModels.FavoritesViewModel;
+@{
     ViewData["Title"] = "Favorites";
 } 
 
 <section class="container mt-3">
-    <div class="row">
-        <div class="col">
-            <h1>Your @ViewData["Title"]</h1>
+     <div class="row row-cols-1 row-cols-md-2">
+        <div class="col-6 col-md-7 col-lg-8">
+            <h1 class="m-0 pb-3 pb-sm-0">@ViewData["Title"]</h1>
         </div>
+        <div class="col-6 col-md-5 col-lg-4">
+            <form asp-controller="Account" asp-action="Search" method="get">
+                <div class="input-group py-1">
+                    <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
+                    <input asp-for="Search" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col">
+            <hr class="hr-blue" />
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        @foreach (var f in Model.Films.OrderBy(x => x.Titel))
+        {
+            <div class="col mb-3">
+                <div class="card user-card" style="width: 18rem; height: 25rem">
+                    <div class="card-body position-relative">
+                        <a asp-controller="Film" asp-action="FilmDetails" asp-route-id="@f.Id" data-bs-toggle="tooltip" title="Discover more - @f.Titel">
+                            <img src="/images/placeholder-cover-square.jpg" class="card-img-top rounded">
+                        </a>
+                        <div class="pt-3">
+                            <h5 class="card-title pb-2">@f.Titel</h5>
+                            <h6 class="card-subtitle mb-2 text-muted small">@f.Genre.FilmGenre</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col position-absolute bottom-0 text-end">
+                                <a data-bs-toggle="tooltip" title="Delete - @f.Titel">
+                                    <i class="fa fa-close fa-main-close fs-5 me-2 mb-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </section>
