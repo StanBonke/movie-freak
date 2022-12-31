@@ -5,9 +5,7 @@ using MovieFreak.Data;
 using MovieFreak.Models;
 using MovieFreak.ViewModels.PersonViewModels;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace MovieFreak.Controllers
@@ -46,7 +44,9 @@ namespace MovieFreak.Controllers
                 {
                     query = query.Where(x =>
                     x.Voornaam.Contains(item)
-                    || x.Achternaam.Contains(item));
+                    || x.Achternaam.Contains(item)
+                    || x.Geboorteplaats.Contains(item)
+                    || x.Geboorteland.Contains(item));
                 }
 
                 vm.Personen = query.ToList();

@@ -28,7 +28,7 @@
 @*LAPTOP & TABLET*@
 <section class="container d-none d-sm-block">
     <div class="row row-cols-1 row-cols-lg-2" id="cardlist">
-        @foreach (var f in Model.Films.OrderBy(x => x.Id))
+        @foreach (var f in Model.Films.OrderBy(x => x.Titel))
         {
             <div class="col">
                 <div class="card mb-4 border-0" style="max-width: 540px;">
@@ -43,18 +43,21 @@
                                 <h5 class="card-title mt-0 mb-1">@f.Titel</h5>
                                 <p class="card-text my-0 fs-5">
                                     <small class="text-muted">
-                                        @if(f.GenreId == f.Genre.Id)
-                                        { @f.Genre.FilmGenre }
+                                        @if (f.GenreId == f.Genre.Id)
+                                        {
+                                            @f.Genre.FilmGenre
+                                        }
                                     </small>
                                 </p>
-                                @foreach(var p in Model.Personages){
+                                @foreach (var p in Model.Personages)
+                                {
                                     if (p.Persoon.Rol == "Director" && f.Id == p.FilmId)
                                     {
                                         <p class="card-text my-2 fs-6 d-none d-lg-block"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                         <p class="card-text my-2 fs-5 d-lg-none"><small class="text-muted">@p.Persoon.Voornaam @p.Persoon.Achternaam</small></p>
                                     }
                                 }
-                                @foreach (var p in Model.Personages )
+                                @foreach (var p in Model.Personages)
                                 {
                                     if (p.Persoon.Rol == "Actor" && f.Id == p.FilmId)
                                     {
@@ -84,6 +87,24 @@
                 </div>
             </div>
         }
+    </div>
+</section>
+
+<section class="container d-none d-sm-block mt-5 mb-4">
+    <div class="pagination d-flex justify-content-center align-items-center">
+        <ul>
+@*
+            <li class="btn prev"><span><i class="fa fa-angle-left"></i> Prev</span></li>
+            <li class="numb active"><span>1</span></li>
+            <li class="numb"><span>2</span></li>
+            <li class="dots"><span>...</span></li>
+            <li class="numb"><span>4</span></li>
+            <li class="numb"><span>5</span></li>
+            <li class="dots"><span>...</span></li>
+            <li class="numb"><span>7</span></li>
+            <li class="btn next"><span>Next <i class="fa fa-angle-right"></i></span></li>
+*@
+        </ul>
     </div>
 </section>
 
