@@ -1,16 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using MovieFreak.Data;
 using MovieFreak.Models;
 using MovieFreak.ViewModels.FilmViewModels;
-using MovieFreak.ViewModels.PersonViewModels;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -59,7 +54,6 @@ namespace MovieFreak.Controllers
             // MULTIPLE PROPERTY SEARCH
 
             var query = _context.Films.AsQueryable();
-            var query2 = _context.Personages.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(vm.Search))
             {
@@ -116,6 +110,31 @@ namespace MovieFreak.Controllers
             //return View("Index", vm);
         }
 
+        public IActionResult Search2(FilmsViewModel vm)
+        {
+            var query = _context.Films.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(vm.Search))
+            {
+                string[] search = vm.Search.Split(' ', ',');
+                foreach (var item in search)
+                {
+                    query = query.Where(x =>
+                        x.Titel.Contains(item) ||
+                        x.Genre.FilmGenre.Contains(item))
+                        .Include(g => g.Genre);
+                }
+
+                vm.Films = query.ToList();
+            }
+            else
+            {
+                vm.Films = query.Include(g => g.Genre).ToList();
+            }
+
+            return View("Films", vm);
+        }
+
         // FILM DETAILS
         [Authorize]
         public IActionResult FilmDetails(int id)
@@ -157,10 +176,8 @@ namespace MovieFreak.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Films()
         {
-            List<FilmTaal> filmTalen = _context.FilmTalen
-                .Include(t => t.Taal)
-                .Include(f => f.Film)
-                .Include(g => g.Film.Genre)
+            List<Film> films = _context.Films
+                .Include(g => g.Genre)
                 .ToList();
 
             Genre genre = _context.Genres
@@ -168,8 +185,8 @@ namespace MovieFreak.Controllers
 
             FilmsViewModel vm = new FilmsViewModel()
             {
+                Films = films,
                 Genre = genre,
-                FilmTalen = filmTalen
             };
             return View(vm);
         }

@@ -5,7 +5,10 @@ namespace MovieFreak.ViewModels.FilmViewModels
 {
     public class FilmsViewModel
     {
-        public List<FilmTaal> FilmTalen { get; set; }
+        public List<Film> Films { get; set; }
         public Genre Genre { get; set; }
+
+        // SEARCH
+        public string Search { get; set; }
     }
 }

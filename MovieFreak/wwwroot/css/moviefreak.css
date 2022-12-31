@@ -108,6 +108,7 @@ body {
 
 .fa-main-accent {
     color: var(--main);
+    transition: all 0.3s ease;
 }
 
     .fa-main-accent:hover {
@@ -116,6 +117,7 @@ body {
 
 .fa-main-close {
     color: var(--main);
+    transition: all 0.3s ease;
 }
 
     .fa-main-close:hover {
@@ -151,6 +153,7 @@ input:focus {
     color: var(--main);
     text-decoration: none;
     padding: 5px;
+    transition: all 0.3s ease;
 }
 
     .link:hover {
@@ -163,6 +166,7 @@ input:focus {
     border-color: var(--link);
     border-radius: 8px;
     border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
     .btn-caution:hover {
@@ -183,6 +187,7 @@ input:focus {
     background: var(--main);
     border-color: var(--main);
     border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
     .btn-stnd:hover {
@@ -202,12 +207,14 @@ input:focus {
     color: var(--main);
     background: transparent;
     border: 0px;
+    transition: all 0.3s ease;
 }
 
 .btn-read-more {
     color: var(--main);
     background: transparent;
     border: 0px;
+    transition: all 0.3s ease;
 }
 
     .btn-check:focus + .btn-read-more, .btn-read-more:focus {
@@ -223,6 +230,7 @@ input:focus {
     position: absolute;
     right: 0;
     bottom: 0;
+    transition: all 0.3s ease;
 }
 
 .btn-details-tablet {
@@ -255,6 +263,7 @@ a.nav-link {
     font-size: 14pt;
     font-family: Poppins;
     font-weight: 300;
+    transition: all 0.3s ease;
 }
 
 .navbar-custom .navbar-brand,
@@ -308,9 +317,14 @@ a.nav-link {
         background: var(--lightText);
     }
 
+.dropdown-item {
+    transition: all 0.3s ease;
+}
+
 /*TABS*/
 .nav-pills .nav-item .nav-link {
     color: var(--darkText);
+    transition: all 0.3s ease;
 }
 
     .nav-pills .nav-item .nav-link:hover {
@@ -326,6 +340,7 @@ a.nav-link {
 
 button.nav-link {
     color: var(--darkText);
+    transition: all 0.3s ease;
 }
 
     button.nav-link:hover {
@@ -464,6 +479,7 @@ table {
     border: 1px solid var(--lightText);
     border-radius: 8px;
     box-shadow: 0 0 5px #cecece;
+    transition: all 0.3s ease;
 }
 
     .user-card:hover {
@@ -530,6 +546,59 @@ table {
     border: 0px;
     color: var(--main);
 }
+
+/* PAGINATION */
+.pagination ul {
+    display: flex;
+    background: var(--lightText);
+    padding: 8px;
+    border-radius: 50px;
+    margin: 0;
+}
+
+    .pagination ul li {
+        list-style: none;
+        line-height: 45px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 50%;
+        color: var(--main);
+        transition: all 0.3s ease;
+    }
+
+        .pagination ul li.numb {
+            height: 47px;
+            width: 47px;
+            margin: 0 3px;
+        }
+
+        .pagination ul li.dots {
+            font-size: 22px;
+            cursor: default;
+            margin: 0 3px;
+        }
+
+        .pagination ul li.btn {
+            /*background: var(--lightText);*/
+            padding: 0 20px;
+        }
+
+        .pagination ul li.prev {
+            border-radius: 25px;
+        }
+
+        .pagination ul li.next {
+            border-radius: 25px;
+        }
+
+        .pagination ul li.active,
+        .pagination ul li.numb:hover,
+        .pagination ul li.btn:hover {
+            background: var(--accent);
+            color: var(--lightText);
+        }
 
 /* OTHER */
 

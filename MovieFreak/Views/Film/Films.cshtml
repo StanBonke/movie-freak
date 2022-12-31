@@ -22,6 +22,16 @@
             <hr class="hr-blue" />
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <form asp-controller="Film" asp-action="Search2" method="get">
+                <div class="input-group py-1">
+                    <span class="input-group-text border-orange" id="search-addon"><i class="fa-solid fa-magnifying-glass fa-main"></i></span>
+                    <input asp-for="Search" type="search" class="form-control border-orange" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 
 <section class="container">
@@ -34,33 +44,37 @@
                         <th class="txt-color-dark" scope="col">Title</th>
                         <th class="txt-color-dark" scope="col">Duration</th>
                         <th class="txt-color-dark" scope="col">Genre</th>
-                        <th class="txt-color-dark" scope="col">Spoken language</th>
-                        <th class="txt-color-dark" scope="col"> </th>
+                        <th class="txt-color-dark" scope="col">Description</th>
+                        <th class="txt-color-dark" scope="col">Trailer</th>
                         <th class="txt-color-dark" scope="col"> </th>
                         <th class="txt-color-dark" scope="col"> </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var t in Model.FilmTalen)
+                    @foreach (var f in Model.Films)
                     {
                         <tr>
-                            <td class="py-3">@t.Film.Id</td>
-                            <td class="py-3">@t.Film.Titel</td>
-                            <td class="py-3">@t.Film.Duurtijd</td>
-                            <td class="py-3">@t.Film.Genre.FilmGenre</td>
-                            <td class="py-3">@t.Taal.GesprokenTaal</td>
+                            <td class="py-3">@f.Id</td>
+                            <td class="py-3">@f.Titel</td>
+                            <td class="py-3">@f.Duurtijd</td>
+                            <td class="py-3">@f.Genre.FilmGenre</td>
                             <td class="py-3" style="max-width:max-content">
-                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Description - @t.Film.Titel" data-bs-custom-class="custom-popover" data-bs-content="@t.Film.Omschrijving">
+                                <a tabindex="0" class="link" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Description - @f.Titel" data-bs-custom-class="custom-popover" data-bs-content="@f.Omschrijving">
                                     <i class="fa fa-align-left fa-main-accent"></i>
                                 </a>
                             </td>
+                            <td class="py-3" style="max-width:max-content">
+                                <a href="@f.Trailerlink" target="_blank">
+                                    <i class="fa fa-youtube fa-main-accent"></i>
+                                </a>
+                            </td>
                             <td class="py-3">
-                                <a  asp-action="EditFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Edit - @t.Film.Titel">
+                                <a  asp-action="EditFilm" asp-route-id="@f.Id" data-bs-toggle="tooltip" title="Edit - @f.Titel">
                                     <i class="fa fa-pencil fa-main-accent"></i>
                                 </a>
                             </td>
                             <td class="py-3">
-                                <a asp-action="DeleteFilm" asp-route-id="@t.Film.Id" data-bs-toggle="tooltip" title="Delete - @t.Film.Titel">
+                                <a asp-action="DeleteFilm" asp-route-id="@f.Id" data-bs-toggle="tooltip" title="Delete - @f.Titel">
                                     <i class="fa fa-close fa-main-close"></i>
                                 </a>
                             </td>
