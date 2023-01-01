@@ -52,15 +52,17 @@
                 <div class="row row-cols-2 mt-1">
                     <div class="col-auto">
 
-                        @* FAVORITE BUTTON - LAPTOP 4K & LARGE *@
-                        <button class="btn btn-lg d-none d-xl-block">
-                            <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
-                        </button>
+                        @if(User.IsInRole("user")){
+                            @* FAVORITE BUTTON - LAPTOP 4K & LARGE *@
+                            <a asp-controller="Account" asp-action="Index" class="btn btn-lg d-none d-xl-block">
+                                <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
+                            </a>
 
-                        @* FAVORITE BUTTON - LAPTOP SMALL *@
-                        <button class="btn btn d-xl-none">
-                            <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
-                        </button>
+                            @* FAVORITE BUTTON - LAPTOP SMALL *@
+                            <a asp-controller="Account" asp-action="Index" class="btn btn d-xl-none">
+                                <i class="fa-solid fa-heart fa-2x txt-color-link"></i>
+                            </a>
+                        }
 
                     </div>
                     <div class="col-auto mt-3 ps-0">
